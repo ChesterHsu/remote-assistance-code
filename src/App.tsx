@@ -9,6 +9,7 @@ import { ThemeProvider } from "styled-components";
 
 
 function App () {
+
     const dispatch = useDispatch();
 
     const themeValue = useSelector(theme);
@@ -17,14 +18,16 @@ function App () {
         dispatch(setDarkTheme());
     };
 
-    const setDefault = () => {
+    const setLight = () => {
         dispatch(setLightTheme());
     };
 
     return(
-        <ThemeProvider theme={ themeValue }>
-            <RemoteAssistanceRoute />
-        </ThemeProvider>
+        <div>
+            <ThemeProvider theme={ themeValue }>
+                <RemoteAssistanceRoute />
+            </ThemeProvider>
+        </div>
     )
 }
 

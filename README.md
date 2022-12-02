@@ -31,3 +31,18 @@ yarn test
 '@store': 'src/store',
 '@css': 'src/css',
 '@tool
+````
+
+## 多國語言 i18n 
+````
+// 增加語言路徑 ：src/config/i18n/langs 
+
+組件使用
+
+import { useSelector } from "react-redux";
+import { selectTranslations } from '@/store/slice/i18nSlice'
+
+// ...
+
+const t = useSelector(selectTranslations);
+````
