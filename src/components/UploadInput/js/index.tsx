@@ -7,10 +7,11 @@ import {
     BeforeUploadFileType,
     RcFile,
     ParsedFileInfo,
-} from "@/tools/upload/interface";
+} from "@/components/UploadInput/js/interface";
 import defaultRequest from './request';
 import attrAccept from './attr-accept';
 import getUid from './uid';
+import { setUid } from "@/store/slice/upload";
 
 
 export class UploadMethod {
@@ -28,7 +29,6 @@ export class UploadMethod {
 
     saveFileInput = (node: HTMLInputElement) => {
         this.fileInput = node;
-        console.log(this.props.directory)
     };
 
     post({ data, origin, action, parsedFile }: ParsedFileInfo) {
@@ -162,7 +162,7 @@ export class UploadMethod {
             return this.processFile(file, originFiles);
         });
 
-        // Batch upload files
+        // Batch js files
         Promise.all(postFiles).then(fileList => {
             const { onBatchStart } = this.props;
 
@@ -178,7 +178,7 @@ export class UploadMethod {
     };
 
     reset() {
-
+        setUid( getUid() )
     }
 
 

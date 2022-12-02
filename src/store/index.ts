@@ -1,8 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todoReducer from "./slice/todo";
+import themeSlice from "./slice/themeSlice";
+
+import uploadReducer from "./slice/upload";
+import toolsReducer from "./slice/tools";
 
 export default configureStore({
     reducer: {
-        todo: todoReducer,
+        upload: uploadReducer,
+        tools: toolsReducer,
+        theme: themeSlice,
     },
 });

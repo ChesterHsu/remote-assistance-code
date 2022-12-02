@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-export const todoSlice = createSlice({
+export const uploadSlice = createSlice({
     name: "upload",
     initialState: {
         uid: ''
@@ -12,5 +12,5 @@ export const todoSlice = createSlice({
 });
 
 export const upload = (state) => state.upload;
-export const { setUid } = todoSlice.actions;
-export default todoSlice.reducer;
+export const { setUid } = uploadSlice.actions;
+export default uploadSlice.reducer;

@@ -1,10 +1,14 @@
-import pickAttrs from 'rc-util/lib/pickAttrs';
-import { UploadProps } from '@/tools/upload/interface'
-import { UploadMethod } from '@/tools/upload/index'
 import type * as React from 'react';
+import pickAttrs from 'rc-util/lib/pickAttrs';
+import { UploadProps } from '@/components/UploadInput/js/interface'
+import { UploadMethod } from '@/components/UploadInput/js'
+import { useSelector } from "react-redux";
+import { upload } from '@/store/slice/upload'
 
 
 function UploadInput(props) {
+
+    const states = useSelector(upload);
 
     const {
         component,
@@ -41,7 +45,7 @@ function UploadInput(props) {
                 type="file"
                 ref={ uploadMethod.saveFileInput }
                 onClick={ e => e.stopPropagation() }
-                // key={this.state.uid}
+                key={ states.uid }
                 style={ style }
                 accept={ accept }
                 {...dirProps}

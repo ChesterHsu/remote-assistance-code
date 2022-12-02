@@ -1,14 +1,29 @@
 import React from 'react'
-import { Provider } from "react-redux";
 import RemoteAssistanceRoute from './router'
 import '@css/index.scss'
-import store from "@/store";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { setDarkTheme, setLightTheme } from "@/store/slice/themeSlice";
+import { ThemeProvider } from "styled-components";
+
 
 function App () {
+    const dispatch = useDispatch();
+    // @ts-ignore
+    const theme = useSelector((state) => state.theme);
+
+    const setDark = () => {
+        dispatch(setDarkTheme());
+    };
+
+    const setDefault = () => {
+        dispatch(setLightTheme());
+    };
+
     return(
-        <Provider store={ store }>
+        <ThemeProvider theme={ theme }>
             <RemoteAssistanceRoute />
-        </Provider>
+        </ThemeProvider>
     )
 }
 

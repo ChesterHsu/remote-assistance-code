@@ -1,10 +1,14 @@
 import React from "react";
 import UploadInput from '@/components/UploadInput/index'
+import {useSelector} from "react-redux";
 
 
 function Home() {
 
     function empty(val) { console.log(val) }
+
+    // @ts-ignore
+    const darkMode = useSelector((state) => state.theme.darkMode);
 
     const style = {
         uploadStyle: {
@@ -14,7 +18,7 @@ function Home() {
 
     const props = {
         component: 'span',
-        prefixCls: 'rc-upload',
+        prefixCls: 'rc-js',
         data: {},
         style: style.uploadStyle,
         headers: {},
@@ -31,6 +35,7 @@ function Home() {
         directory: true,
     };
 
+    console.log(234234234234, darkMode)
 
     return (
         <div>
