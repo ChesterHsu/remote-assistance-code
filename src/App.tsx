@@ -4,13 +4,14 @@ import '@css/index.scss'
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { setDarkTheme, setLightTheme } from "@/store/slice/themeSlice";
+import { theme } from '@/store/slice/themeSlice'
 import { ThemeProvider } from "styled-components";
 
 
 function App () {
     const dispatch = useDispatch();
-    // @ts-ignore
-    const theme = useSelector((state) => state.theme);
+
+    const themeValue = useSelector(theme);
 
     const setDark = () => {
         dispatch(setDarkTheme());
@@ -21,7 +22,7 @@ function App () {
     };
 
     return(
-        <ThemeProvider theme={ theme }>
+        <ThemeProvider theme={ themeValue }>
             <RemoteAssistanceRoute />
         </ThemeProvider>
     )

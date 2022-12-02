@@ -1,14 +1,13 @@
 import React from "react";
 import UploadInput from '@/components/UploadInput/index'
-import {useSelector} from "react-redux";
-
+import { useSelector } from "react-redux";
+import { theme } from '@/store/slice/themeSlice'
 
 function Home() {
 
     function empty(val) { console.log(val) }
 
-    // @ts-ignore
-    const darkMode = useSelector((state) => state.theme.darkMode);
+    const darkMode = useSelector( theme );
 
     const style = {
         uploadStyle: {
@@ -34,8 +33,6 @@ function Home() {
         openFileDialogOnClick: true,
         directory: true,
     };
-
-    console.log(234234234234, darkMode)
 
     return (
         <div>

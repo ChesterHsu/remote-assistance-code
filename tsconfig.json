@@ -5,6 +5,7 @@
       "src/types",
       "webpack-env"
     ],
+    "useUnknownInCatchVariables": false,
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
