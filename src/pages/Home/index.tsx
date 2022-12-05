@@ -2,6 +2,7 @@ import React from "react";
 import UploadInput from '@/components/UploadInput/index'
 import { useSelector } from "react-redux";
 import { theme } from '@/store/slice/themeSlice'
+import SvgIcon from "@/components/SvgIcon";
 
 function Home() {
 
@@ -38,6 +39,9 @@ function Home() {
 
     return (
         <div>
+            <SvgIcon
+                iconName='logo'
+            />
             <UploadInput { ...props } />
         </div>
     )

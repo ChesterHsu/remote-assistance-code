@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import * as path from 'path';
 import svgr from "vite-plugin-svgr";
+import babel from 'vite-plugin-babel';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -22,7 +23,8 @@ export default defineConfig({
     },
   },
   plugins: [
-      react(),
-      svgr(),
+    react(),
+    svgr(),
+    babel(),
   ]
 })

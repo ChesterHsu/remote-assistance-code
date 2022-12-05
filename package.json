@@ -29,6 +29,7 @@
     "sass": "^1.56.1",
     "typescript": "^4.6.4",
     "vite": "^3.2.3",
+    "vite-plugin-babel": "^1.1.2",
     "vite-plugin-svgr": "^2.2.2"
   }
 }

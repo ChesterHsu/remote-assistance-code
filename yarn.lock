@@ -2463,6 +2463,11 @@ vary@^1:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
+vite-plugin-babel@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/vite-plugin-babel/-/vite-plugin-babel-1.1.2.tgz#faf27bf69628e20d4f36f85b415789e6121d93e3"
+  integrity sha512-NPqUSzxzdPo1UyZGvL1KOIYy5R1T9+Af6cZ9Qw/f7tepjp6FSmx4SbK6eZ9xttEnSsdYj3IJmXwlU8PYeZstWw==
+
 vite-plugin-svg-icons@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/vite-plugin-svg-icons/-/vite-plugin-svg-icons-2.0.1.tgz#7269a0962593509f371b9e2bb344d469db2c6df9"
