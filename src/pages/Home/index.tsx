@@ -1,16 +1,11 @@
 import React from "react";
 import UploadInput from '@/components/UploadInput/index'
-import { useSelector } from "react-redux";
-import { theme } from '@/store/slice/themeSlice'
 import SvgIcon from "@/components/SvgIcon";
 
 function Home() {
 
 
     function empty(val) { console.log(val) }
-
-    const darkMode = useSelector( theme );
-
 
     const style = {
         uploadStyle: {
