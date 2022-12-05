@@ -18,7 +18,7 @@
     "noImplicitAny": false,
     "lib": ["esnext", "dom","es5", "es6", "dom.iterable"],
     "baseUrl": "./",
-    "types": ["vite/client", "jest"],
+    "types": ["vite/client", "jest", "vite-plugin-svg-icons/client"],
     "paths":{
       "@": ["src"],
       "@/*": ["src/*"],

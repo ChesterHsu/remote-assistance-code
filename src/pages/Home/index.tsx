@@ -2,9 +2,9 @@ import React from "react";
 import UploadInput from '@/components/UploadInput/index'
 import { useSelector } from "react-redux";
 import { theme } from '@/store/slice/themeSlice'
-import { selectTranslations } from '@/store/slice/i18nSlice'
 
 function Home() {
+
 
     function empty(val) { console.log(val) }
 

@@ -9,7 +9,6 @@ import { ThemeProvider } from "styled-components";
 
 
 function App () {
-
     const dispatch = useDispatch();
 
     const themeValue = useSelector(theme);
