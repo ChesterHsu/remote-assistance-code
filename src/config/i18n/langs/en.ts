@@ -1,4 +1,3 @@
 export const en = {
-    tagline: "Continuous improvement",
-    ratings: "Ratings",
+    file: "File",
 }

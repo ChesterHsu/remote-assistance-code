@@ -3,12 +3,12 @@ import {
     defaultLang,
     supportedLangs,
 } from '@/config/i18n/i18nConfig';
-import { en, de, fr } from "@/config/i18n/langs";
+import { en, de, fr, zhTW } from "@/config/i18n/langs";
 
 const initialState = {
     lang: defaultLang, // "en" when app loads
     supportedLangs: { ...supportedLangs },
-    translations: { en, de, fr },
+    translations: { en, de, fr, zhTW },
 
 };
 
