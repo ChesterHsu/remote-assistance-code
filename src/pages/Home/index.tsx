@@ -4,7 +4,6 @@ import SvgIcon from "@/components/SvgIcon";
 
 function Home() {
 
-
     function empty(val) { console.log(val) }
 
     const style = {
@@ -36,7 +35,6 @@ function Home() {
         <div>
             <SvgIcon
                 iconName='logo'
-                svgProp={{ fill: '#000' }}
                 darkTheme={ "#1da7da|#e3e6e8" }
             />
             <UploadInput

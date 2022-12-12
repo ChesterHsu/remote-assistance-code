@@ -1,28 +1,25 @@
 import React from 'react'
 import RemoteAssistanceRoute from './router'
 import '@css/index.scss'
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { setDarkTheme, setLightTheme } from "@/store/slice/themeSlice";
 import { theme } from '@/store/slice/themeSlice'
 import { ThemeProvider } from "styled-components";
+import { getTheme } from "@/tools/getTheme";
+import { isDark } from "@/tools/judge";
 
 
 function App () {
-    const dispatch = useDispatch();
+    /**
+     * 取得預設Theme模式
+     * **/
+    getTheme()
 
     const themeValue = useSelector(theme);
 
-    const setDark = () => {
-        dispatch(setDarkTheme());
-    };
-
-    const setLight = () => {
-        dispatch(setLightTheme());
-    };
+    const themeClassName = isDark() ? 'dark' : 'light'
 
     return(
-        <div>
+        <div className={ themeClassName }>
             <ThemeProvider theme={ themeValue }>
                 <RemoteAssistanceRoute />
             </ThemeProvider>
