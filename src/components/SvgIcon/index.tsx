@@ -2,31 +2,87 @@ import React from "react";
 import { useDynamicSvgImport } from "./useDynamicSvgImport";
 import { useSelector } from "react-redux";
 import { theme } from '@/store/slice/themeSlice'
+import { isDark } from '@/tools/judge'
 
 interface IProps {
     iconName: string;
     wrapperStyle?: string;
     svgProp?: React.SVGProps<SVGSVGElement>;
+    darkTheme?: Boolean | String
+}
+
+interface SvgDarkColor {
+    dark: string;
+    light: string;
+}
+
+/**
+ * 將傳入的 darkTheme 邏輯拆開 並返還參數進行下一步處理
+ * **/
+function svgDarkColor(darkTheme): SvgDarkColor | Boolean {
+    const darkThemeType = typeof darkTheme
+    switch (darkThemeType) {
+        case 'string':
+            const darkType = darkTheme.split('|') // 將其拆開
+            return checkDarkThemeFormat(darkType) ? { dark: darkType[0], light: darkType[1] } as SvgDarkColor : false
+        case 'boolean':
+            return darkTheme
+        default:
+            return false
+    }
+}
+
+/**
+ * 檢查Dark格式化是否符合對應條件
+ * **/
+function checkDarkThemeFormat(val) {
+    return val.length === 2
 }
 
 function SvgIcon(props: IProps) {
-    const { darkMode, colors } = useSelector( theme );
-    const { iconName, wrapperStyle, svgProp } = props;
-    const { loading, SvgIcon } = useDynamicSvgImport(iconName);
-    let svgStyle :  React.SVGProps<SVGSVGElement> = {
-        fill: ''
+    const { colors } = useSelector( theme );
+    let { iconName, wrapperStyle, svgProp, darkTheme } = props;
+    const { loading, SvgIcon, svgFill } = useDynamicSvgImport(iconName);
+
+    let svgStyle :  React.SVGProps<SVGSVGElement> = {}
+
+    /**
+     * 將傳入darkTheme去做拆分,並返還相應參數做後續顏色切換
+     * **/
+    const darkThemeType = svgDarkColor(darkTheme)
+
+
+    /**
+     * 判斷是否為dark模式
+     * **/
+    const dark = isDark()
+
+    let darkFill = ''
+
+    /**
+     * 如果svg顏色遍歷不達一種以上則可由傳入參數去做切換顏色
+     * **/
+    if (svgFill.repeat) {
+        /**
+         * 如果 darkThemeType 型別回傳為string,  就去抓當前dark模式給予傳入參數做切換
+         * 如果 darkThemeType 型別回傳為boolean, 就去判別darkThemeType是否有為true,若是給予預設值
+         * **/
+        darkFill = typeof darkThemeType === 'object'  ? ( dark ?  darkThemeType['dark'] : darkThemeType['light']) : ( darkThemeType ? colors.svgFill : '' )
     }
 
-
-    // 黑暗模式切換,如果沒給預設顏色依據dark參數去變換svg顏色
+    /**
+     * svgProp 如果有帶入值,去檢核其中fill是否有給值
+     * 若否,在檢核 darkTheme 是否為true, 為true時檢核其條件給值
+     * **/
     if (svgProp) {
-        if (!svgProp.fill) {
-            svgProp.fill = colors.svgFill
-        }
-        svgStyle = Object.assign(svgProp)
-    } else {
-        svgStyle.fill = colors.svgFill
+        const { fill, ...params } = svgProp
+        svgStyle = !svgProp.fill ? (darkThemeType ? { fill: darkFill} : params) : svgProp
     }
+
+    /**
+     *  判斷 darkTheme 是否有帶入值,有的話給相對應參數
+     * **/
+    if (darkThemeType) svgStyle.fill = darkFill
 
     return (
         <>

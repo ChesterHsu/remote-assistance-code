@@ -32,12 +32,16 @@ function Home() {
         directory: true,
     };
 
-    return (
+     return (
         <div>
             <SvgIcon
                 iconName='logo'
+                svgProp={{ fill: '#000' }}
+                darkTheme={ "#1da7da|#e3e6e8" }
             />
-            <UploadInput { ...props } />
+            <UploadInput
+                { ...props }
+            />
         </div>
     )
 }
