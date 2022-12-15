@@ -18,35 +18,8 @@ export function getTheme() {
         }
 
         if (!themeData || themeData === 'auto') {
+            setTheme(darkTheme, lightTheme)
             setAttribute('auto')
-
-            window.onload = function getDark () {
-                /**
-                 * 首次載入現在的模式
-                 * **/
-                if (
-                    window.matchMedia &&
-                    window.matchMedia("(prefers-color-scheme: dark)").matches
-                ) {
-                    darkTheme()
-                } else {
-                    lightTheme()
-                }
-
-                /**
-                 * 監聽模式的變更
-                 * **/
-                window
-                    .matchMedia("(prefers-color-scheme: dark)")
-                    .addEventListener("change", (e) => {
-                        const newColorScheme = e.matches ? "dark" : "light";
-                        if (newColorScheme == "dark") {
-                            darkTheme()
-                        } else if (newColorScheme == "light") {
-                            lightTheme()
-                        }
-                    });
-            };
         } else {
             switch (nowTheme) {
                 case 'dark':
@@ -67,4 +40,35 @@ export function getTheme() {
 export function setAttribute(value : string) {
     localStorage.setItem('data-theme', value)
     document.body.setAttribute('data-theme',value)
+}
+
+function setTheme(darkTheme, lightTheme) {
+    // 監聽使用者系統模式
+    window.onload = function getDark () {
+        /**
+         * 首次載入現在的模式
+         * **/
+        if (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+            darkTheme()
+        } else {
+            lightTheme()
+        }
+
+        /**
+         * 監聽模式的變更
+         * **/
+        window
+            .matchMedia("(prefers-color-scheme: dark)")
+            .addEventListener("change", (e) => {
+                const newColorScheme = e.matches ? "dark" : "light";
+                if (newColorScheme == "dark") {
+                    darkTheme()
+                } else if (newColorScheme == "light") {
+                    lightTheme()
+                }
+            });
+    };
 }
