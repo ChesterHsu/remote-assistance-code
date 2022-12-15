@@ -86,7 +86,7 @@ const darkMode = useSelector( theme );
   background-color: var(--test-background);
 }
 
-====================Global 用法====================
+====================Global Class 用法====================
 路徑如下：
 Dark:  src/css/theme/dark.scss
 Light: src/css/theme/light.scss
