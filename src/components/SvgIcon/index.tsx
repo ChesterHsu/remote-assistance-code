@@ -8,7 +8,7 @@ export interface IProps {
     iconName: string;
     wrapperStyle?: string;
     svgProp?: React.SVGProps<SVGSVGElement>;
-    darkTheme?: Boolean | String
+    darkTheme?: Boolean | String;
     onStart?: () => void;
 }
 
