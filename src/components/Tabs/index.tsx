@@ -6,21 +6,19 @@ import '@/css/components/Tab/index.scss'
 
 function TabDetail (props : [TabsProps]) : JSX.Element {
 
-    const closeProps = {
-        iconName: 'close',
-        svgProp: { width: 10, height: 10 },
-        wrapperStyle: 'close-icon',
-        darkTheme: '#5f6161|#000000',
-        onStart: close,
-    } as IProps
-
-    function close() {
-
-    }
 
     return (
         <>
             {Object.entries(props).map(([key, tab]) => {
+
+                const closeProps = {
+                    iconName: 'close',
+                    svgProp: { width: 10, height: 10 },
+                    wrapperStyle: 'close-icon',
+                    darkTheme: '#5f6161|#000000',
+                    onStart: tab.closeTab,
+                } as IProps
+
                 return(
                     <div
                         key={ `${tab.uid}-${key}` }
