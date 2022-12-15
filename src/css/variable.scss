@@ -1,0 +1,27 @@
+@mixin light {
+  --tab-background: blue;
+  --font-color: #fffffd;
+}
+
+@mixin dark {
+  --tab-background: #000;
+  --font-color: #fff;
+}
+
+body[data-theme='auto'] {
+  @include light();
+
+  @media (prefers-color-scheme: dark) {
+    @include dark();
+  }
+}
+
+body[data-theme='light'] {
+  @include light();
+}
+
+body[data-theme='dark'] {
+  @include dark();
+}
+
+

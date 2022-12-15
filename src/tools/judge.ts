@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { theme } from '@/store/slice/themeSlice'
 
 // 判斷陣列值是否有重複
-export function isRepeat(array : any[]) : boolean {
+export function isRepeat(array : any[]) : Boolean {
     const set = new Set()
 
     array.map((item) => {

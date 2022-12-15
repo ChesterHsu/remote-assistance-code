@@ -1,13 +1,59 @@
 import { useDispatch } from "react-redux";
 import { setDarkTheme, setLightTheme } from "@/store/slice/themeSlice";
+import { useEffect } from "react";
 
 export function getTheme() {
+    // Get localStorage value
+    const themeData = localStorage.getItem('data-theme')
+    const nowTheme = localStorage.getItem('now-theme')
+
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        const lightTheme = () => {
+            dispatch(setLightTheme());
+        }
+        const darkTheme = () => {
+            dispatch(setDarkTheme());
+        }
+
+        if (!themeData || themeData === 'auto') {
+            setTheme()
+            setAttribute('auto')
+        } else {
+            switch (nowTheme) {
+                case 'dark':
+                    darkTheme()
+                    setAttribute('dark')
+                    break;
+                case 'light':
+                    lightTheme()
+                    setAttribute('light')
+                    break;
+            }
+        }
+    }, []);
+
+}
+
+
+export function setAttribute(value : string) {
+    localStorage.setItem('data-theme', value)
+    document.body.setAttribute('data-theme',value)
+}
+
+function setTheme() {
+    const dispatch = useDispatch();
+
+    const darkTheme = () => {
+        dispatch(setDarkTheme());
+    }
+    const lightTheme = () => {
+        dispatch(setLightTheme());
+    }
 
     // 監聽使用者系統模式
     window.onload = function getDark () {
-        let mode = document.getElementById("mode");
-
         /**
          * 首次載入現在的模式
          * **/
@@ -15,9 +61,9 @@ export function getTheme() {
             window.matchMedia &&
             window.matchMedia("(prefers-color-scheme: dark)").matches
         ) {
-            dispatch(setDarkTheme());
+            darkTheme()
         } else {
-            setLightTheme();
+            lightTheme()
         }
 
         /**
@@ -28,9 +74,9 @@ export function getTheme() {
             .addEventListener("change", (e) => {
                 const newColorScheme = e.matches ? "dark" : "light";
                 if (newColorScheme == "dark") {
-                    dispatch(setDarkTheme());
+                    darkTheme()
                 } else if (newColorScheme == "light") {
-                    dispatch(setLightTheme());
+                    lightTheme()
                 }
             });
     };

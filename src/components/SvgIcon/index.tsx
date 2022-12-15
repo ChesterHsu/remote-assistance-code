@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { theme } from '@/store/slice/themeSlice'
 import { isDark } from '@/tools/judge'
 
-interface IProps {
+export interface IProps {
     iconName: string;
     wrapperStyle?: string;
     svgProp?: React.SVGProps<SVGSVGElement>;

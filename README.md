@@ -59,6 +59,39 @@ import { theme } from '@/store/slice/themeSlice'
 // ...
 
 const darkMode = useSelector( theme );
+
+====================Css Mode用法====================
+
+引入：
+
+@import "@/css/variable.scss";
+
+在 /src/css/variable.scss 中 會有兩個 @mixin 分別加入需要對應樣式 加上參數
+
+
+@mixin light {
+  ...(省略)
+  --test-background: blue;
+}
+
+@mixin dark {
+  ...(省略)
+  --test-background: red;
+}
+
+使用：
+@import "@/css/variable.scss";
+
+.test-class {
+  background-color: var(--test-background);
+}
+
+====================Global 用法====================
+路徑如下：
+Dark:  src/css/theme/dark.scss
+Light: src/css/theme/light.scss
+
+直接新增class name 便可在全局使用
 ````
 
 ## Svg組件

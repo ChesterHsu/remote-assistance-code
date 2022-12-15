@@ -1,6 +1,8 @@
 import React from "react";
 import UploadInput from '@/components/UploadInput/index'
 import SvgIcon from "@/components/SvgIcon";
+import Tabs from "@/components/Tabs";
+
 
 function Home() {
 
@@ -30,17 +32,20 @@ function Home() {
         openFileDialogOnClick: true,
         directory: true,
     };
-
+    const iconProps = {
+        iconName: 'logo',
+        darkTheme: '#1da7da|#e3e6e8'
+    }
      return (
-        <div>
+        <>
+            <Tabs></Tabs>
             <SvgIcon
-                iconName='logo'
-                darkTheme={ "#1da7da|#e3e6e8" }
+                {...iconProps}
             />
             <UploadInput
                 { ...props }
             />
-        </div>
+        </>
     )
 }
 
