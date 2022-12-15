@@ -4,8 +4,8 @@
 }
 
 @mixin dark {
-  --tab-background: #000;
-  --font-color: #fff;
+  --tab-background: #202123;
+  --font-color: #5f6161;
 }
 
 body[data-theme='auto'] {

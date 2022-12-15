@@ -17,7 +17,6 @@ function App () {
 
     getTheme()
 
-
     const themeClassName = isDark() ? 'dark' : 'light'
 
     return(

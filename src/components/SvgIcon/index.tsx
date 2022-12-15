@@ -9,6 +9,7 @@ export interface IProps {
     wrapperStyle?: string;
     svgProp?: React.SVGProps<SVGSVGElement>;
     darkTheme?: Boolean | String
+    onStart?: () => void;
 }
 
 interface SvgDarkColor {
@@ -41,7 +42,7 @@ function checkDarkThemeFormat(val) {
 
 function SvgIcon(props: IProps) {
     const { colors } = useSelector( theme );
-    let { iconName, wrapperStyle, svgProp, darkTheme } = props;
+    let { iconName, wrapperStyle, svgProp, darkTheme, onStart } = props;
     const { loading, SvgIcon, svgFill } = useDynamicSvgImport(iconName);
 
     let svgStyle :  React.SVGProps<SVGSVGElement> = {}
@@ -76,8 +77,10 @@ function SvgIcon(props: IProps) {
      * **/
     if (svgProp) {
         const { fill, ...params } = svgProp
-        svgStyle = !svgProp.fill ? (darkThemeType ? { fill: darkFill} : params) : svgProp
+        svgStyle = !svgProp.fill ? (darkThemeType ? { fill: darkFill, ...params} : params) : svgProp
+
     }
+
 
     /**
      *  判斷 darkTheme 是否有帶入值,有的話給相對應參數
@@ -90,7 +93,7 @@ function SvgIcon(props: IProps) {
                 <div className="rounded-full bg-slate-400 animate-pulse h-8 w-8"></div>
             )}
             {SvgIcon && (
-                <div className={ wrapperStyle }>
+                <div className={ wrapperStyle } onClick={ onStart }>
                     <SvgIcon {...svgStyle} />
                 </div>
             )}
