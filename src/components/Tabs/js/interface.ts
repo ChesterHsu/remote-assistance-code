@@ -1,7 +1,5 @@
 import * as React from "react";
-import { IProps } from '@/components/SvgIcon/index'
-
-
+import { IProps } from "@/components/SvgIcon/js/interface";
 
 export interface TabsProps {
     uid: string,

@@ -1,7 +1,8 @@
 import '@/css/components/Tab/index.scss'
 import { TabsProps } from "@/components/Tabs/js/interface";
 import React from "react";
-import SvgIcon, { IProps } from "@/components/SvgIcon";
+import SvgIcon from "@/components/SvgIcon";
+import { IProps } from "@/components/SvgIcon/js/interface";
 import '@/css/components/Tab/index.scss'
 
 function TabDetail (props : [TabsProps]) : JSX.Element {

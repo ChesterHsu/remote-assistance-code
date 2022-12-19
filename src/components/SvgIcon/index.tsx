@@ -1,21 +1,9 @@
 import React from "react";
-import { useDynamicSvgImport } from "./useDynamicSvgImport";
+import { useDynamicSvgImport } from "./js/useDynamicSvgImport";
 import { useSelector } from "react-redux";
 import { theme } from '@/store/slice/themeSlice'
 import { isDark } from '@/tools/judge'
-
-export interface IProps {
-    iconName: string;
-    wrapperStyle?: string;
-    svgProp?: React.SVGProps<SVGSVGElement>;
-    darkTheme?: Boolean | String;
-    onStart?: () => void;
-}
-
-interface SvgDarkColor {
-    dark: string;
-    light: string;
-}
+import { IProps, SvgDarkColor } from "@/components/SvgIcon/js/interface";
 
 /**
  * 將傳入的 darkTheme 邏輯拆開 並返還參數進行下一步處理

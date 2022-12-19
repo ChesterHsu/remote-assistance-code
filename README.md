@@ -139,6 +139,7 @@ import SvgIcon from "@/tools/SvgIcon/index";
     darkTheme={ true } />
 
 <!-- darkTheme 按需改變 當不想依照store給定預設顏色時,可輸入dark以及 light 兩者分開則用用豎線分開--!>
+<!-- 前方為Dark色碼,後方為Light色碼 --!>
 
 <SvgIcon 
     iconName='icon1' 
