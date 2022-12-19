@@ -13,5 +13,6 @@ export interface TabsProps {
     tabDetailStyle?: React.CSSProperties;
     tabClassName?: string;
     tabDetailClassName?: string;
+    tabDetailTextClassName?: string;
     closeTab: () => void;
 }

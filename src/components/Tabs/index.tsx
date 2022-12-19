@@ -48,7 +48,7 @@ function Tabs (props : [TabsProps]) : JSX.Element {
                         >
                             <>{ !closeButton ? <SvgIcon {...closeProps} /> : null }</>
                             <>{ tab.icon && iconLocationBoolean  ? <SvgIcon {...tab.icon} /> : null }</>
-                            <div className={`tab-detail-text`}>{ tab.name }</div>
+                            <div className={`tab-detail-text ${ tab.tabDetailTextClassName ? tab.tabDetailTextClassName : '' }`}>{ tab.name }</div>
                             <>{ tab.icon && !iconLocationBoolean ? <SvgIcon {...tab.icon} /> : null }</>
                             <>{ closeButton ?  <SvgIcon {...closeProps} /> : null }</>
                         </div>

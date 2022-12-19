@@ -63,6 +63,11 @@ tabContent：當前tab資訊
 為Tab選項ClassName
 ```
 
+### tabDetailTextClassName
+```
+為Tab選項內文的ClassName
+```
+
 #### closeTab
 ```
 點擊Tab Close後觸發功能
