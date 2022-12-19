@@ -2,6 +2,7 @@ import React from "react";
 import UploadInput from '@/components/UploadInput/index'
 import SvgIcon from "@/components/SvgIcon";
 import Tabs from "@/components/Tabs";
+import {TabsProps} from "@/components/Tabs/js/interface";
 
 
 function Home() {
@@ -36,9 +37,19 @@ function Home() {
         iconName: 'logo',
         darkTheme: '#1da7da|#e3e6e8'
     }
+
+    const hoveTest = (e) => {
+        console.log(234234234, e)
+    }
+
+    const tabProps = [{
+        name: 'test',
+        onHover: hoveTest
+    }] as [TabsProps]
+
      return (
         <>
-            <Tabs></Tabs>
+            <Tabs {...tabProps}></Tabs>
             <SvgIcon
                 {...iconProps}
             />

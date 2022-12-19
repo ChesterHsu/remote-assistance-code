@@ -5,8 +5,7 @@ import SvgIcon from "@/components/SvgIcon";
 import { IProps } from "@/components/SvgIcon/js/interface";
 import '@/css/components/Tab/index.scss'
 
-function TabDetail (props : [TabsProps]) : JSX.Element {
-
+function Tabs (props : [TabsProps]) : JSX.Element {
 
     return (
         <>
@@ -56,27 +55,6 @@ function TabDetail (props : [TabsProps]) : JSX.Element {
                     </div>
                 )
             })}
-        </>
-    )
-}
-
-
-
-function Tabs(props) {
-
-    const hoveTest = (e) => {
-        console.log(234234234, e)
-    }
-
-    const test = [{
-        name: 'test',
-        onHover: hoveTest
-    }] as [TabsProps]
-
-
-    return(
-        <>
-            { TabDetail ? <TabDetail{...test}/> : null }
         </>
     )
 }
