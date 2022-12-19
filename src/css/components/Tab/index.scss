@@ -1,6 +1,7 @@
 @import "@/css/variable.scss";
 
 .tab {
+  display: flex;
   height: 25px;
   background: var(--tab-background);
   .tab-detail {

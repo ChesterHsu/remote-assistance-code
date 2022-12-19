@@ -1,8 +1,9 @@
 import React from "react";
 import UploadInput from '@/components/UploadInput/index'
 import SvgIcon from "@/components/SvgIcon";
-import Tabs from "@/components/Tabs";
-import {TabsProps} from "@/components/Tabs/js/interface";
+import ProjectTab from "@/components/Tabs/ProjectTab";
+import {ProjectTabProps} from "@/components/Tabs/ProjectTab/js/interface";
+
 
 
 function Home() {
@@ -38,18 +39,32 @@ function Home() {
         darkTheme: '#1da7da|#e3e6e8'
     }
 
-    const hoveTest = (e) => {
-        console.log(234234234, e)
-    }
-
-    const tabProps = [{
-        name: 'test',
-        onHover: hoveTest
-    }] as [TabsProps]
+    const projectProps = [
+        {
+            uid: '3423442',
+            name: 'test',
+            patch: 'src/pages/Home/index1.tsx',
+        },
+        {
+            uid: '1212121',
+            name: 'test2',
+            patch: 'src/pages/Home/index2.tsx',
+        },
+        {
+            uid: '1212121',
+            name: 'test2234234234234',
+            patch: 'src/pages/Home/index3.tsx',
+        },
+        {
+            uid: '1212121121212121212121',
+            name: 'test2',
+            patch: 'src/pages/Home/index4.tsx',
+        } as ProjectTabProps,
+    ]
 
      return (
         <>
-            <Tabs {...tabProps}></Tabs>
+            <ProjectTab {...projectProps} />
             <SvgIcon
                 {...iconProps}
             />

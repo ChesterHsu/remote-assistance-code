@@ -1,62 +1,77 @@
 import '@/css/components/Tab/index.scss'
-import { TabsProps } from "@/components/Tabs/js/interface";
-import React from "react";
-import SvgIcon from "@/components/SvgIcon";
+import React, {ReactElement, ReactNode} from "react";
+import {TabContentProps, TabsProps} from "@/components/Tabs/js/interface";
 import { IProps } from "@/components/SvgIcon/js/interface";
-import '@/css/components/Tab/index.scss'
+import SvgIcon from "@/components/SvgIcon";
 
-function Tabs (props : [TabsProps]) : JSX.Element {
+export function Tabs (props) : ReactElement {
+    const { tabClassName, tabStyle, TabChildren } = props
 
-    return (
-        <>
-            {Object.entries(props).map(([key, tab]) => {
-
-                // 關閉按鈕觸發功能
-                const closeProps = {
-                    iconName: 'close',
-                    svgProp: { width: 10, height: 10 },
-                    wrapperStyle: 'close-icon',
-                    darkTheme: '#5f6161|#000000',
-                    onStart: tab.closeTab,
-                } as IProps
-
-                // 移動到Tab上觸發功能
-                const hoverAction = (e) => {
-                    e['isHove'] = e._reactName === 'onMouseOver'
-                    e['tabContent'] = tab
-                    if (tab.onHover) tab.onHover(e)
-                }
-
-                // 判斷關閉按鈕擺放位置,預設為後方
-                const closeButton = !tab.closeLocation && tab.closeLocation !== undefined ? tab.closeLocation === 'back' : true
-                // 判斷icon擺放位置,預設為前方
-                const iconLocationBoolean = !tab.iconLocation && tab.iconLocation !== undefined ? tab.iconLocation === 'front' : true
-
-                return(
-                    <div
-                        key={ `${tab.uid}-${key}` }
-                        className={ `tab ${tab.tabClassName ? tab.tabClassName: ''}` }
-                        style={ tab.tabStyle }
-                    >
-                        <div
-                            className={ `tab-detail ${ tab.tabDetailClassName ? tab.tabDetailClassName : ''}` }
-                            style={ tab.tabDetailStyle }
-                            key={ `${tab.name}-${key}` }
-                            onClick={ tab.onStart }
-                            onMouseOver={ hoverAction }
-                            onMouseLeave={ hoverAction }
-                        >
-                            <>{ !closeButton ? <SvgIcon {...closeProps} /> : null }</>
-                            <>{ tab.icon && iconLocationBoolean  ? <SvgIcon {...tab.icon} /> : null }</>
-                            <div className={`tab-detail-text ${ tab.tabDetailTextClassName ? tab.tabDetailTextClassName : '' }`}>{ tab.name }</div>
-                            <>{ tab.icon && !iconLocationBoolean ? <SvgIcon {...tab.icon} /> : null }</>
-                            <>{ closeButton ?  <SvgIcon {...closeProps} /> : null }</>
-                        </div>
-                    </div>
-                )
-            })}
-        </>
+    return(
+        <div
+            className={ `tab ${tabClassName ? tabClassName: ''}` }
+            style={ tabStyle }
+        >
+            <TabChildren />
+        </div>
     )
 }
 
-export default Tabs
+export function TabContent (props) : ReactElement  {
+    const {
+        key,
+        uid,
+        name,
+        icon,
+        tabDetailStyle,
+        tabDetailClassName,
+        tabDetailTextClassName,
+        onHover,
+        onStart,
+        closeTab,
+        closeLocation,
+        iconLocation,
+    } : TabContentProps = props
+
+    // 關閉按鈕觸發功能
+    const closeProps = {
+        iconName: 'close',
+        svgProp: { width: 10, height: 10 },
+        wrapperStyle: 'close-icon',
+        darkTheme: '#5f6161|#000000',
+        onStart: closeTab,
+    } as IProps
+
+    // 移動到Tab上觸發功能
+    const hoverAction = (e) => {
+        e['isHove'] = e._reactName === 'onMouseOver'
+        e['tabContent'] = props
+        if (onHover) onHover(e)
+    }
+
+
+    // 判斷關閉按鈕擺放位置,預設為後方
+    const closeButton = !closeLocation && closeLocation !== undefined ? closeLocation === 'back' : true
+    // 判斷icon擺放位置,預設為前方
+    const iconLocationBoolean = !iconLocation && iconLocation !== undefined ? iconLocation === 'front' : true
+
+    return(
+        <>
+            <div
+
+                className={ `tab-detail ${ tabDetailClassName ? tabDetailClassName : ''}` }
+                style={ tabDetailStyle }
+                key={ `${uid}-${name}-${key}` }
+                onClick={ onStart }
+                onMouseOver={ hoverAction }
+                onMouseLeave={ hoverAction }
+            >
+                <>{ !closeButton ? <SvgIcon {...closeProps} /> : null }</>
+                <>{ icon && iconLocationBoolean  ? <SvgIcon {...icon} /> : null }</>
+                <div className={`tab-detail-text ${ tabDetailTextClassName ? tabDetailTextClassName : '' }`}>{ name }</div>
+                <>{ icon && !iconLocationBoolean ? <SvgIcon {...icon} /> : null }</>
+                <>{ closeButton ?  <SvgIcon {...closeProps} /> : null }</>
+            </div>
+        </>
+    )
+}
