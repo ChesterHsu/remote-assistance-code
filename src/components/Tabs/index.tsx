@@ -12,6 +12,7 @@ function TabDetail (props : [TabsProps]) : JSX.Element {
         <>
             {Object.entries(props).map(([key, tab]) => {
 
+                // 關閉按鈕觸發功能
                 const closeProps = {
                     iconName: 'close',
                     svgProp: { width: 10, height: 10 },
@@ -20,13 +21,16 @@ function TabDetail (props : [TabsProps]) : JSX.Element {
                     onStart: tab.closeTab,
                 } as IProps
 
+                // 移動到Tab上觸發功能
                 const hoverAction = (e) => {
                     e['isHove'] = e._reactName === 'onMouseOver'
                     e['tabContent'] = tab
                     if (tab.onHover) tab.onHover(e)
                 }
 
+                // 判斷關閉按鈕擺放位置,預設為後方
                 const closeButton = !tab.closeLocation && tab.closeLocation !== undefined ? tab.closeLocation === 'back' : true
+                // 判斷icon擺放位置,預設為前方
                 const iconLocationBoolean = !tab.iconLocation && tab.iconLocation !== undefined ? tab.iconLocation === 'front' : true
 
                 return(
