@@ -19,21 +19,34 @@ function TabDetail (props : [TabsProps]) : JSX.Element {
                     onStart: tab.closeTab,
                 } as IProps
 
+                const hoverAction = (e) => {
+                    e['isHove'] = e._reactName === 'onMouseOver'
+                    e['tabContent'] = tab
+                    if (tab.onHover) tab.onHover(e)
+                }
+
+                const closeButton = !tab.closeLocation && tab.closeLocation !== undefined ? tab.closeLocation === 'back' : true
+                const iconLocationBoolean = !tab.iconLocation && tab.iconLocation !== undefined ? tab.iconLocation === 'front' : true
+
                 return(
                     <div
                         key={ `${tab.uid}-${key}` }
                         className={ `tab ${tab.tabClassName ? tab.tabClassName: ''}` }
+                        style={ tab.tabStyle }
                     >
                         <div
                             className={ `tab-detail ${ tab.tabDetailClassName ? tab.tabDetailClassName : ''}` }
-                            key={ `${tab.fileName}-${key}` }
+                            style={ tab.tabDetailStyle }
+                            key={ `${tab.name}-${key}` }
                             onClick={ tab.onStart }
-                            onMouseOver={ tab.onHover }
+                            onMouseOver={ hoverAction }
+                            onMouseLeave={ hoverAction }
                         >
-                            <>{ tab.closeLocation === 'front' ? <SvgIcon {...closeProps} /> : null }</>
-                            <>{ tab.icon ? <SvgIcon {...tab.icon} /> : null }</>
-                            <div className={`tab-detail-text`}>{ tab.fileName }</div>
-                            <>{ tab.closeLocation === 'back' ?  <SvgIcon {...closeProps} /> : null }</>
+                            <>{ !closeButton ? <SvgIcon {...closeProps} /> : null }</>
+                            <>{ tab.icon && iconLocationBoolean  ? <SvgIcon {...tab.icon} /> : null }</>
+                            <div className={`tab-detail-text`}>{ tab.name }</div>
+                            <>{ tab.icon && !iconLocationBoolean ? <SvgIcon {...tab.icon} /> : null }</>
+                            <>{ closeButton ?  <SvgIcon {...closeProps} /> : null }</>
                         </div>
                     </div>
                 )
@@ -45,10 +58,16 @@ function TabDetail (props : [TabsProps]) : JSX.Element {
 
 
 function Tabs(props) {
+
+    const hoveTest = (e) => {
+        console.log(234234234, e)
+    }
+
     const test = [{
-        fileName: 'test',
-        closeLocation: 'back'
+        name: 'test',
+        onHover: hoveTest
     }] as [TabsProps]
+
 
     return(
         <>

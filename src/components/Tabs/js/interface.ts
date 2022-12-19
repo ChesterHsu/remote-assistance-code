@@ -5,12 +5,14 @@ import { IProps } from '@/components/SvgIcon/index'
 
 export interface TabsProps {
     uid: string,
-    fileName: string,
-    closeLocation: 'front' | 'back'
+    name: string,
+    closeLocation?: 'front' | 'back'
     icon?: IProps,
+    iconLocation?: 'front' | 'back',
     onStart?: () => void;
-    onHover?: () => void;
-    style?: React.CSSProperties;
+    onHover?: (e) => void;
+    tabStyle?: React.CSSProperties;
+    tabDetailStyle?: React.CSSProperties;
     tabClassName?: string;
     tabDetailClassName?: string;
     closeTab: () => void;
