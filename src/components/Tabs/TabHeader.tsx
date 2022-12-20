@@ -1,6 +1,6 @@
 import React from "react";
-import {TabContentProps} from "@/components/Tabs/js/interface";
-import {IProps} from "@/components/SvgIcon/js/interface";
+import { TabContentProps } from "@/components/Tabs/js/interface";
+import { IProps } from "@/components/SvgIcon/js/interface";
 import SvgIcon from "@/components/SvgIcon";
 
 

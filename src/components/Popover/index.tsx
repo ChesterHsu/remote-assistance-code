@@ -8,21 +8,17 @@ function Popover(props) {
         popoverClassName,
     } = props
 
-    const PopoverContent = () => {
-        return (
-            <>
-                <div>{ message }</div>
-            </>
-        )
-    }
-
     return(
-        <div
-            className={`popover${popoverClassName ? ` ${popoverClassName}` : ''}`}
-            style={ popoverStyle }
-        >
-            {open ? <PopoverContent /> : null}
-        </div>
+        <>
+            { open ?
+                <div
+                    className={`popover${popoverClassName ? ` ${popoverClassName}` : ''}`}
+                    style={ popoverStyle }
+                >
+                    <div className={`popover-content`}>{ message }</div>
+                </div> : null
+            }
+        </>
     )
 }
 

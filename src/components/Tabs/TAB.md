@@ -1,7 +1,25 @@
 # Tab api 文件
 
+## TabProps
+以下星號（*）為必填
 
-## TabsProps
+### TabChildren
+```
+Tab中的元件可自定義傳入,傳入值須為React.ElementType
+```
+
+### tabClassName
+```
+為Tab外框ClassName
+```
+
+### tabStyle
+```
+為Tab外框Style
+```
+
+
+## TabContentProps
 
 以下星號（*）為必填 
 
@@ -43,19 +61,9 @@ false：移開當前Tab上
 tabContent：當前tab資訊
 ```
 
-### tabStyle
-```
-為Tab外框Style
-```
-
 ### tabDetailStyle
 ```
 為Tab選項Style
-```
-
-### tabClassName
-```
-為Tab外框ClassName
 ```
 
 ### tabDetailClassName

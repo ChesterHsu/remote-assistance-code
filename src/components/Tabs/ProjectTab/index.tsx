@@ -30,11 +30,11 @@ function ProjectTab(props) {
 
                     return(
                         <Suspense fallback={ <div>{ t.loading }</div> } key={ key }>
-                            <TabHeader {...tabHeaderProps} />
                             <Popover
                                 open={ showPopover }
                                 message={ popoverMessage }
                             />
+                            <TabHeader {...tabHeaderProps} />
                         </Suspense>
                     )
                 })}
