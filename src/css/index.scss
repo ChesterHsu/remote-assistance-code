@@ -1,3 +1,10 @@
 @import "reset";
 @import "theme/dark";
 @import "theme/light";
+
+.switch-theme {
+  padding: 5px 10px;
+  width: 150px;
+  background: #5f6161;
+  color: #bdbdbd;
+}

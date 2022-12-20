@@ -2,6 +2,9 @@ import React, { lazy, Suspense }  from "react";
 import UploadInput from '@/components/UploadInput/index'
 import SvgIcon from "@/components/SvgIcon";
 import {ProjectTabProps} from "@/components/Tabs/ProjectTab/js/interface";
+import { useDispatch } from "react-redux";
+import {setDarkTheme, setLightTheme} from "@/store/slice/themeSlice";
+import {setAttribute} from "@/tools/getTheme";
 const ProjectTab = lazy(() => import('@/components/Tabs/ProjectTab'))
 
 
@@ -34,10 +37,27 @@ function Home() {
         openFileDialogOnClick: true,
         directory: true,
     };
+
+    // 切換Dark模式
+    const nowTheme = localStorage.getItem('now-theme')
+
+    const dispatch = useDispatch();
+
+    const lightTheme = () => {
+        setAttribute('light')
+        dispatch(setLightTheme());
+    }
+    const darkTheme = () => {
+        setAttribute('dark')
+        dispatch(setDarkTheme());
+    }
+
     const iconProps = {
         iconName: 'logo',
         darkTheme: '#1da7da|#e3e6e8'
     }
+
+
 
     const projectProps = [
         {
@@ -73,6 +93,11 @@ function Home() {
             <UploadInput
                 { ...props }
             />
+            <div
+                className={'switch-theme'}
+                onClick={ nowTheme === 'dark' ? lightTheme : darkTheme }>
+                切換Dark模式功能
+            </div>
         </>
     )
 }
