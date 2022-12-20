@@ -1,25 +1,11 @@
-import '@/css/components/Tab/index.scss'
-import React, {ReactElement, ReactNode} from "react";
-import {TabContentProps, TabsProps} from "@/components/Tabs/js/interface";
-import { IProps } from "@/components/SvgIcon/js/interface";
+import React from "react";
+import {TabContentProps} from "@/components/Tabs/js/interface";
+import {IProps} from "@/components/SvgIcon/js/interface";
 import SvgIcon from "@/components/SvgIcon";
 
-export function Tabs (props) : ReactElement {
-    const { tabClassName, tabStyle, TabChildren } = props
 
-    return(
-        <div
-            className={ `tab ${tabClassName ? tabClassName: ''}` }
-            style={ tabStyle }
-        >
-            <TabChildren />
-        </div>
-    )
-}
-
-export function TabContent (props) : ReactElement  {
+function TabHeader (props) {
     const {
-        key,
         uid,
         name,
         icon,
@@ -59,19 +45,23 @@ export function TabContent (props) : ReactElement  {
         <>
             <div
 
-                className={ `tab-detail ${ tabDetailClassName ? tabDetailClassName : ''}` }
+                className={ `tab-detail${ tabDetailClassName ? ` ${ tabDetailClassName }` : ''}` }
                 style={ tabDetailStyle }
-                key={ `${uid}-${name}-${key}` }
+                key={ `${uid}-${name}` }
                 onClick={ onStart }
                 onMouseOver={ hoverAction }
                 onMouseLeave={ hoverAction }
             >
                 <>{ !closeButton ? <SvgIcon {...closeProps} /> : null }</>
                 <>{ icon && iconLocationBoolean  ? <SvgIcon {...icon} /> : null }</>
-                <div className={`tab-detail-text ${ tabDetailTextClassName ? tabDetailTextClassName : '' }`}>{ name }</div>
+                <div className={`tab-detail-text${ tabDetailTextClassName ? ` ${ tabDetailTextClassName }` : '' }`}>{ name }</div>
                 <>{ icon && !iconLocationBoolean ? <SvgIcon {...icon} /> : null }</>
                 <>{ closeButton ?  <SvgIcon {...closeProps} /> : null }</>
             </div>
         </>
     )
 }
+
+export default TabHeader
+
+

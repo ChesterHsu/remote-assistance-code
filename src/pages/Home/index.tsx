@@ -1,8 +1,8 @@
-import React from "react";
+import React, { lazy, Suspense }  from "react";
 import UploadInput from '@/components/UploadInput/index'
 import SvgIcon from "@/components/SvgIcon";
-import ProjectTab from "@/components/Tabs/ProjectTab";
 import {ProjectTabProps} from "@/components/Tabs/ProjectTab/js/interface";
+const ProjectTab = lazy(() => import('@/components/Tabs/ProjectTab'))
 
 
 
@@ -64,7 +64,9 @@ function Home() {
 
      return (
         <>
-            <ProjectTab {...projectProps} />
+            <Suspense fallback={ <div>Loading...</div> }>
+                <ProjectTab {...projectProps}></ProjectTab>
+            </Suspense>
             <SvgIcon
                 {...iconProps}
             />

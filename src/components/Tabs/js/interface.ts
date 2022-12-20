@@ -1,17 +1,15 @@
 import * as React from "react";
 import { IProps } from "@/components/SvgIcon/js/interface";
-import { ReactNode } from "react";
 
 
 
-export interface TabsProps {
-    TabChildren: ReactNode
+export interface TabProps {
+    TabChildren?: React.ElementType
     tabStyle?: React.CSSProperties;
     tabClassName?: string;
 }
 
 export interface TabContentProps {
-    key: string,
     uid: string,
     name: string,
     closeLocation?: 'front' | 'back'
