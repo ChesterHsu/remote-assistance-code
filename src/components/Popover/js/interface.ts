@@ -2,7 +2,7 @@ import * as React from "react";
 
 export interface PopoverProps {
     open: boolean,
-    type: 'ordinary' | 'svg' | 'png',
+    type: '' | 'svg' | 'png',
     message: string | PopoverMessage,
     popoverStyle?: React.CSSProperties,
     popoverClassName?: string,

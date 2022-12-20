@@ -32,6 +32,7 @@ function ProjectTab(props) {
                         <Suspense fallback={ <div>{ t.loading }</div> } key={ key }>
                             <Popover
                                 open={ showPopover }
+                                type={ 'svg' }
                                 message={ popoverMessage }
                             />
                             <TabHeader {...tabHeaderProps} />

@@ -14,11 +14,7 @@ function Popover(props) {
     } : PopoverProps = props
 
     const SwitchContent = () => {
-        const SvgPopoverProps = {}
-
-        if (typeof message === 'object') {
-             Object.assign(message as PopoverMessage)
-        }
+        const SvgPopoverProps : PopoverMessage = typeof message === 'object' ? Object.assign(message as PopoverMessage) : {}
 
         switch (type) {
             case 'svg':
