@@ -1,12 +1,33 @@
 import '@/css/components/Popover/index.scss'
+import { PopoverMessage, PopoverProps } from "@/components/Popover/js/interface";
+import React, { lazy } from "react";
+
+const SvgPopover = lazy(() => import('@/components/Popover/components/SvgPopover'))
 
 function Popover(props) {
     const {
         open,
         message,
+        type,
         popoverStyle,
         popoverClassName,
-    } = props
+    } : PopoverProps = props
+
+    const SwitchContent = () => {
+        const SvgPopoverProps = {}
+
+        if (typeof message === 'object') {
+             Object.assign(message as PopoverMessage)
+        }
+
+        switch (type) {
+            case 'svg':
+                return (<SvgPopover {...SvgPopoverProps}/>)
+            default:
+                return (<>{ typeof message === 'string' ? message: '' }</>)
+        }
+    }
+
 
     return(
         <>
@@ -15,7 +36,9 @@ function Popover(props) {
                     className={`popover${popoverClassName ? ` ${popoverClassName}` : ''}`}
                     style={ popoverStyle }
                 >
-                    <div className={`popover-content`}>{ message }</div>
+                    <div className={`popover-content`}>
+                        <SwitchContent />
+                    </div>
                 </div> : null
             }
         </>

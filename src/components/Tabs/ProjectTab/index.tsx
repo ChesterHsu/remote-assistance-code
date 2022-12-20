@@ -1,4 +1,4 @@
-import React, {lazy, Suspense, useState} from "react";
+import React, { lazy, Suspense, useState } from "react";
 // i18n組件
 import { useSelector } from "react-redux";
 import { selectTranslations } from '@/store/slice/i18nSlice'
