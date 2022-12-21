@@ -11,6 +11,7 @@
     "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore --fix src"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
     "@reduxjs/toolkit": "^1.9.0",
     "axios": "^1.2.0",
     "eslint-plugin-react-hooks": "^4.6.0",

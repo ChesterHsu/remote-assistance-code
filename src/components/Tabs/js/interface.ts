@@ -13,6 +13,7 @@ export interface TabContentProps {
     uid: string,
     name: string,
     closeLocation?: 'front' | 'back'
+    id?: string,
     icon?: IProps,
     iconLocation?: 'front' | 'back',
     onStart?: () => void;

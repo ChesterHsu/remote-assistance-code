@@ -7,6 +7,7 @@ import SvgIcon from "@/components/SvgIcon";
 function TabHeader (props) {
     const {
         uid,
+        id,
         name,
         icon,
         tabDetailStyle,
@@ -44,7 +45,7 @@ function TabHeader (props) {
     return(
         <>
             <div
-
+                id={`${id}`}
                 className={ `tab-detail${ tabDetailClassName ? ` ${ tabDetailClassName }` : ''}` }
                 style={ tabDetailStyle }
                 key={ `${uid}-${name}` }

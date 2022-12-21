@@ -1,40 +1,50 @@
 import '@/css/components/Popover/index.scss'
-import { PopoverMessage, PopoverProps } from "@/components/Popover/js/interface";
-import React, { lazy } from "react";
+import { PopoverProps } from "@/components/Popover/js/interface";
 
-const SvgPopover = lazy(() => import('@/components/Popover/components/SvgPopover'))
 
-function Popover(props) {
+function Popover(this: any, props) {
     const {
         open,
-        message,
-        type,
-        popoverStyle,
+        followID,
+        PopoverChildren,
         popoverClassName,
     } : PopoverProps = props
 
-    const SwitchContent = () => {
-        const SvgPopoverProps : PopoverMessage = typeof message === 'object' ? Object.assign(message as PopoverMessage) : {}
+    // 取得需綁定元件的ID
+    const followElement = document.querySelector(`#${followID}`);
+    const numberRe = new RegExp(/^[0-9]+(.[0-9]{2})?$/g)
 
-        switch (type) {
-            case 'svg':
-                return (<SvgPopover {...SvgPopoverProps}/>)
-            default:
-                return (<>{ typeof message === 'string' ? message: '' }</>)
-        }
+    // 初始值
+    let left : number = 0
+    let top : number = 0
+    let width: number = 0
+    let height : number = 0
+
+
+    // 取得綁定元素的參數
+    if (followElement instanceof HTMLElement) {
+        const widthStr = window.getComputedStyle(followElement).width
+        const heightStr = window.getComputedStyle(followElement).height
+        left = followElement.offsetLeft
+        top = followElement.offsetTop
+        width = parseFloat(widthStr)
+        height = parseFloat(heightStr)
     }
 
+    const style = {
+        popoverStyle: {
+            transform: `translate(${left}px, ${top}px)`
+        }
+    }
 
     return(
         <>
             { open ?
                 <div
                     className={`popover${popoverClassName ? ` ${popoverClassName}` : ''}`}
-                    style={ popoverStyle }
+                    style={ style.popoverStyle }
                 >
-                    <div className={`popover-content`}>
-                        <SwitchContent />
-                    </div>
+                    { PopoverChildren === undefined ? null : <PopoverChildren /> }
                 </div> : null
             }
         </>

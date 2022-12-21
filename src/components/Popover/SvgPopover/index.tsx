@@ -1,6 +1,6 @@
 import { PopoverMessage } from "@/components/Popover/js/interface";
 
-function SvgPopover(props : PopoverMessage) {
+function Index(props : PopoverMessage) {
 
     const {
         fileName,
@@ -17,4 +17,4 @@ function SvgPopover(props : PopoverMessage) {
     )
 }
 
-export default SvgPopover
+export default Index

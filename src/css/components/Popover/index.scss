@@ -1,8 +1,9 @@
 @import "@/css/variable.scss";
 
 .popover {
-  position: relative;
-  left: 10px;
+  position: absolute;
+  inset: 0 auto auto 0;
+  margin: 0px;
 }
 .popover-content {
   position: absolute;

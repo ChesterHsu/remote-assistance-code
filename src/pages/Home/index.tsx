@@ -3,8 +3,8 @@ import UploadInput from '@/components/UploadInput/index'
 import SvgIcon from "@/components/SvgIcon";
 import {ProjectTabProps} from "@/components/Tabs/ProjectTab/js/interface";
 import { useDispatch } from "react-redux";
-import {setDarkTheme, setLightTheme} from "@/store/slice/themeSlice";
-import {setAttribute} from "@/tools/getTheme";
+import { setDarkTheme, setLightTheme } from "@/store/slice/themeSlice";
+import { setAttribute } from "@/tools/getTheme";
 const ProjectTab = lazy(() => import('@/components/Tabs/ProjectTab'))
 
 
@@ -84,12 +84,14 @@ function Home() {
 
      return (
         <>
-            <Suspense fallback={ <div>Loading...</div> }>
-                <ProjectTab {...projectProps}></ProjectTab>
-            </Suspense>
             <SvgIcon
                 {...iconProps}
             />
+
+            <Suspense fallback={ <div>Loading...</div> }>
+                <ProjectTab {...projectProps}></ProjectTab>
+            </Suspense>
+
             <UploadInput
                 { ...props }
             />

@@ -1,7 +1,9 @@
 import React, { lazy, Suspense, useState } from "react";
+
 // i18n組件
 import { useSelector } from "react-redux";
 import { selectTranslations } from '@/store/slice/i18nSlice'
+import {TabContentProps} from "@/components/Tabs/js/interface";
 
 const Tab = lazy(() => import('@/components/Tabs/Tab'))
 const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
@@ -14,8 +16,9 @@ function ProjectTab(props) {
     const Content = () => {
         return(
             <>
-                { Object.entries(props).map(([key, projectTab]) => {
+                { Object.entries(props).map(([key, projectTab ]) => {
 
+                    const tabHeader =  projectTab as TabContentProps
                     let [showPopover, setShowPopover] = useState(false);
                     let [popoverMessage, setPopoverMessage] = useState('')
 
@@ -25,14 +28,17 @@ function ProjectTab(props) {
                     }
 
                     // Tab Header Props
-                    const tabHeaderProps = Object.assign(projectTab as Object)
+                    const tabHeaderProps = Object.assign(tabHeader as Object)
                     tabHeaderProps['onHover'] = onHover
+                    tabHeaderProps['id'] = `${ tabHeader.name }-${ key }`
+
 
                     return(
                         <Suspense fallback={ <div>{ t.loading }</div> } key={ key }>
                             <Popover
                                 open={ showPopover }
                                 type={ 'svg' }
+                                followID={ `${ tabHeaderProps['id'] }` }
                                 message={ popoverMessage }
                             />
                             <TabHeader {...tabHeaderProps} />
