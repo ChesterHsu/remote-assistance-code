@@ -1,11 +1,11 @@
 import React, { lazy, Suspense }  from "react";
 import UploadInput from '@/components/UploadInput/index'
 import SvgIcon from "@/components/SvgIcon";
-import {ProjectTabProps} from "@/components/Tabs/ProjectTab/js/interface";
+import { TextTab } from '@/components/Tabs/js/interface'
 import { useDispatch } from "react-redux";
 import { setDarkTheme, setLightTheme } from "@/store/slice/themeSlice";
 import { setAttribute } from "@/tools/getTheme";
-const ProjectTab = lazy(() => import('@/components/Tabs/ProjectTab'))
+const ProjectTab = lazy(() => import('@/components/Tabs/TextTab'))
 
 
 
@@ -63,23 +63,23 @@ function Home() {
         {
             uid: '3423442',
             name: 'test',
-            patch: 'src/pages/Home/index1.tsx',
+            text: 'src/pages/Home/index1.tsx',
         },
         {
             uid: '1212121',
             name: 'test2',
-            patch: 'src/pages/Home/index2.tsx',
+            text: 'src/pages/Home/index2.tsx',
         },
         {
             uid: '1212121',
             name: 'test2234234234234',
-            patch: 'src/pages/Home/index3.tsx',
+            text: 'src/pages/Home/index3.tsx',
         },
         {
             uid: '1212121121212121212121',
             name: 'test2',
-            patch: 'src/pages/Home/index4.tsx',
-        } as ProjectTabProps,
+            text: 'src/pages/Home/index4.tsx',
+        } as TextTab,
     ]
 
      return (

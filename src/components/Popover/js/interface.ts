@@ -1,14 +1,17 @@
 import * as React from "react";
 
-export interface PopoverProps {
+interface Popover {
     open: boolean,
+    referenceID: string,
+    spacing?: number,
+    placement?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'
+}
+
+export interface PopoverProps extends Popover{
     PopoverChildren?: React.ElementType,
-    followID: string,
     popoverClassName?: string,
 }
 
-export interface  PopoverMessage {
-    fileName: string,
-    fileSize: string,
-    filePatch: string,
+export interface TextPopoverProps extends Popover{
+    text: string,
 }

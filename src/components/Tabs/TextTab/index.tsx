@@ -3,11 +3,11 @@ import React, { lazy, Suspense, useState } from "react";
 // i18n組件
 import { useSelector } from "react-redux";
 import { selectTranslations } from '@/store/slice/i18nSlice'
-import {TabContentProps} from "@/components/Tabs/js/interface";
+import {TabHeaderProps, TextTab} from "@/components/Tabs/js/interface";
 
 const Tab = lazy(() => import('@/components/Tabs/Tab'))
 const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
-const Popover = lazy(() => import('@/components/Popover/index'))
+const TextPopover = lazy(() => import('@/components/Popover/TextPopover'))
 
 function ProjectTab(props) {
     // i18n
@@ -18,7 +18,7 @@ function ProjectTab(props) {
             <>
                 { Object.entries(props).map(([key, projectTab ]) => {
 
-                    const tabHeader =  projectTab as TabContentProps
+                    const tabHeader =  projectTab as TextTab
                     let [showPopover, setShowPopover] = useState(false);
                     let [popoverMessage, setPopoverMessage] = useState('')
 
@@ -30,18 +30,18 @@ function ProjectTab(props) {
                     // Tab Header Props
                     const tabHeaderProps = Object.assign(tabHeader as Object)
                     tabHeaderProps['onHover'] = onHover
-                    tabHeaderProps['id'] = `${ tabHeader.name }-${ key }`
+                    tabHeaderProps['id'] = `${ tabHeader.text }-${ key }`
 
 
                     return(
                         <Suspense fallback={ <div>{ t.loading }</div> } key={ key }>
-                            <Popover
-                                open={ showPopover }
-                                type={ 'svg' }
-                                followID={ `${ tabHeaderProps['id'] }` }
-                                message={ popoverMessage }
-                            />
                             <TabHeader {...tabHeaderProps} />
+                            <TextPopover
+                                text={ popoverMessage }
+                                open={ showPopover }
+                                placement={'bottom'}
+                                referenceID={ `${ tabHeaderProps['id'] }` }
+                            />
                         </Suspense>
                     )
                 })}

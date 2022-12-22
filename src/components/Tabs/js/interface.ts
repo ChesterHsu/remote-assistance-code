@@ -1,7 +1,11 @@
 import * as React from "react";
 import { IProps } from "@/components/SvgIcon/js/interface";
 
-
+interface Tab {
+    uid: string,
+    name: string,
+    onStart?: () => void;
+}
 
 export interface TabProps {
     TabChildren?: React.ElementType
@@ -9,9 +13,7 @@ export interface TabProps {
     tabClassName?: string;
 }
 
-export interface TabContentProps {
-    uid: string,
-    name: string,
+export interface TabHeaderProps extends Tab{
     closeLocation?: 'front' | 'back'
     id?: string,
     icon?: IProps,
@@ -22,4 +24,9 @@ export interface TabContentProps {
     tabDetailClassName?: string;
     tabDetailTextClassName?: string;
     closeTab?: () => void;
+}
+
+export interface TextTab extends Tab{
+    text: string;
+    TextProjectTabClassName?: string;
 }

@@ -2,6 +2,7 @@
 
 .tab {
   display: flex;
+  width: 100vw;
   height: 25px;
   background: var(--tab-background);
   .tab-detail {

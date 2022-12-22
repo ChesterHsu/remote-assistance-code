@@ -1,10 +1,9 @@
 import React from "react";
-import { TabContentProps } from "@/components/Tabs/js/interface";
+import { TabHeaderProps } from "@/components/Tabs/js/interface";
 import { IProps } from "@/components/SvgIcon/js/interface";
 import SvgIcon from "@/components/SvgIcon";
 
-
-function TabHeader (props) {
+function TabHeader (props : TabHeaderProps) {
     const {
         uid,
         id,
@@ -16,9 +15,9 @@ function TabHeader (props) {
         onHover,
         onStart,
         closeTab,
-        closeLocation,
-        iconLocation,
-    } : TabContentProps = props
+        closeLocation = 'back',
+        iconLocation = 'front',
+    } : TabHeaderProps = props
 
     // 關閉按鈕觸發功能
     const closeProps = {
@@ -38,9 +37,9 @@ function TabHeader (props) {
 
 
     // 判斷關閉按鈕擺放位置,預設為後方
-    const closeButton = !closeLocation && closeLocation !== undefined ? closeLocation === 'back' : true
+    const closeButton = closeLocation === 'back'
     // 判斷icon擺放位置,預設為前方
-    const iconLocationBoolean = !iconLocation && iconLocation !== undefined ? iconLocation === 'front' : true
+    const iconLocationBoolean = iconLocation === 'front'
 
     return(
         <>

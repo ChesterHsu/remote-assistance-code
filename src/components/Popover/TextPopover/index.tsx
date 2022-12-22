@@ -6,7 +6,7 @@ import '@/css/components/Popover/index.scss'
 
 const Popover = lazy(() => import('@/components/Popover/index'))
 
-function SvgPopover(props: TextPopoverProps) {
+function TextPopover(props: TextPopoverProps) {
 
     const t = useSelector(selectTranslations);
 
@@ -20,7 +20,7 @@ function SvgPopover(props: TextPopoverProps) {
 
     const Children = () => {
         return (
-            <div className={ `svg-popover` }>
+            <div className={ `text-popover` }>
                 { text }
             </div>
         )
@@ -39,5 +39,4 @@ function SvgPopover(props: TextPopoverProps) {
     )
 }
 
-export default SvgPopover
-
+export default TextPopover
