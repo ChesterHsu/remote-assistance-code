@@ -1,10 +1,12 @@
 import * as React from "react";
 
+export type Placement = 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';
+
 interface Popover {
     open: boolean,
     referenceID: string,
     spacing?: number,
-    placement?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'
+    placement?: Placement,
 }
 
 export interface PopoverProps extends Popover{
@@ -14,4 +16,13 @@ export interface PopoverProps extends Popover{
 
 export interface TextPopoverProps extends Popover{
     text: string,
+    TextPopoverClassName?: string,
+}
+
+export interface SvgPopoverProps extends Popover{
+    file: string,
+    fileSize: string,
+    fileType: string,
+    filePatch: string,
+    svgPopoverClassName?: string,
 }

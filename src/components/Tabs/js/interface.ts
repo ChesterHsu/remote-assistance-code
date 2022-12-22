@@ -30,3 +30,9 @@ export interface TextTab extends Tab{
     text: string;
     TextProjectTabClassName?: string;
 }
+
+export interface FileTab extends Tab{
+    patch: string;
+    size: string;
+    TextProjectTabClassName?: string;
+}

@@ -12,6 +12,7 @@ function TextPopover(props: TextPopoverProps) {
 
     const {
         text,
+        TextPopoverClassName,
         open,
         referenceID,
         placement = 'bottom',
@@ -20,7 +21,7 @@ function TextPopover(props: TextPopoverProps) {
 
     const Children = () => {
         return (
-            <div className={ `text-popover` }>
+            <div className={ `text-popover${TextPopoverClassName ? ` ${TextPopoverClassName}` : ''}` }>
                 { text }
             </div>
         )

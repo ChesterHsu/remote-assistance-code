@@ -1,24 +1,25 @@
-import React, { lazy, Suspense, useState } from "react";
-
-// i18n組件
+import React, {lazy, Suspense, useState} from "react";
 import { useSelector } from "react-redux";
-import { selectTranslations } from '@/store/slice/i18nSlice'
-import {TabHeaderProps, TextTab} from "@/components/Tabs/js/interface";
+import { selectTranslations } from "@/store/slice/i18nSlice";
+import { FileTab } from "@/components/Tabs/js/interface";
+import {FileInformation, FileValue} from "@/tools/js/interface";
+import { fileAnalyze } from "@/tools/analyze";
+import {SvgPopoverProps} from "@/components/Popover/js/interface";
 
 const Tab = lazy(() => import('@/components/Tabs/Tab'))
 const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
-const TextPopover = lazy(() => import('@/components/Popover/TextPopover'))
+const SvgPopover = lazy(() => import('@/components/Popover/SvgPopover'))
 
-function ProjectTab(props) {
-    // i18n
+function FilesTab(props) {
+    const {} = props
     const t = useSelector(selectTranslations);
 
     const Content = () => {
         return(
             <>
-                { Object.entries(props).map(([key, textTab ]) => {
+                { Object.entries(props).map(([key, fileTab ]) => {
 
-                    const tabHeader =  textTab as TextTab
+                    const tabHeader =  fileTab as FileTab
                     let [showPopover, setShowPopover] = useState(false);
                     let [popoverMessage, setPopoverMessage] = useState('')
 
@@ -27,21 +28,29 @@ function ProjectTab(props) {
                         setPopoverMessage(e.tabContent.text)
                     }
 
+                    const SvgProps : SvgPopoverProps = {
+                        open: showPopover,
+                        referenceID: `${tabHeader.name}-${key}`,
+                        file: '',
+                        fileSize: '',
+                        fileType: '',
+                        filePatch: ''
+
+                    }
+
                     // Tab Header Props
                     const tabHeaderProps = Object.assign(tabHeader as Object)
                     tabHeaderProps['onHover'] = onHover
                     tabHeaderProps['id'] = `${ tabHeader.name }-${ key }`
 
 
+
+
+
                     return(
                         <Suspense fallback={ <div>{ t.loading }</div> } key={ key }>
                             <TabHeader {...tabHeaderProps} />
-                            <TextPopover
-                                text={ popoverMessage }
-                                open={ showPopover }
-                                placement={'bottom'}
-                                referenceID={ `${ tabHeaderProps['id'] }` }
-                            />
+                            <SvgPopover {...SvgProps}></SvgPopover>
                         </Suspense>
                     )
                 })}
@@ -49,7 +58,6 @@ function ProjectTab(props) {
         )
     }
 
-    // Tab的Props
     const TabProps = {
         TabChildren: Content
     }
@@ -61,4 +69,4 @@ function ProjectTab(props) {
     )
 }
 
-export default ProjectTab
+export default FilesTab

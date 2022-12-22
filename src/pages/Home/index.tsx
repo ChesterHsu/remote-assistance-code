@@ -1,11 +1,11 @@
 import React, { lazy, Suspense }  from "react";
 import UploadInput from '@/components/UploadInput/index'
 import SvgIcon from "@/components/SvgIcon";
-import { TextTab } from '@/components/Tabs/js/interface'
+import {FileTab, TextTab} from '@/components/Tabs/js/interface'
 import { useDispatch } from "react-redux";
 import { setDarkTheme, setLightTheme } from "@/store/slice/themeSlice";
 import { setAttribute } from "@/tools/getTheme";
-const ProjectTab = lazy(() => import('@/components/Tabs/TextTab'))
+const FilesTab = lazy(() => import('@/components/Tabs/FilesTab'))
 
 
 
@@ -18,6 +18,9 @@ function Home() {
             // display: 'none',
         }
     }
+    const start = (e) => {
+      console.log(e)
+    }
 
     const props = {
         component: 'span',
@@ -27,7 +30,7 @@ function Home() {
         headers: {},
         name: 'file',
         multipart: false,
-        onStart: empty,
+        onStart: start,
         onError: empty,
         onSuccess: empty,
         multiple: false,
@@ -63,23 +66,23 @@ function Home() {
         {
             uid: '3423442',
             name: 'test',
-            text: 'src/pages/Home/index1.tsx',
+            patch: 'src/pages/Home/index1.tsx',
         },
         {
             uid: '1212121',
             name: 'test2',
-            text: 'src/pages/Home/index2.tsx',
+            patch: 'src/pages/Home/index2.tsx',
         },
         {
             uid: '1212121',
             name: 'test2234234234234',
-            text: 'src/pages/Home/index3.tsx',
+            patch: 'src/pages/Home/index3.tsx',
         },
         {
             uid: '1212121121212121212121',
             name: 'test2',
-            text: 'src/pages/Home/index4.tsx',
-        } as TextTab,
+            patch: 'src/pages/Home/index4.tsx',
+        } as FileTab,
     ]
 
      return (
@@ -88,9 +91,9 @@ function Home() {
                 {...iconProps}
             />
 
-            <Suspense fallback={ <div>Loading...</div> }>
-                <ProjectTab {...projectProps}></ProjectTab>
-            </Suspense>
+            {/*<Suspense fallback={ <div>Loading...</div> }>*/}
+            {/*    <TextTab {...projectProps}></TextTab>*/}
+            {/*</Suspense>*/}
 
             <UploadInput
                 { ...props }
@@ -100,6 +103,10 @@ function Home() {
                 onClick={ nowTheme === 'dark' ? lightTheme : darkTheme }>
                 切換Dark模式功能
             </div>
+
+            <Suspense fallback={ <div>Loading...</div> }>
+                <FilesTab {...projectProps}></FilesTab>
+            </Suspense>
         </>
     )
 }
