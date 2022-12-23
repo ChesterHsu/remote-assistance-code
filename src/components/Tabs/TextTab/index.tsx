@@ -9,7 +9,7 @@ const Tab = lazy(() => import('@/components/Tabs/Tab'))
 const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
 const TextPopover = lazy(() => import('@/components/Popover/TextPopover'))
 
-function ProjectTab(props : [TextTab]) {
+function ProjectTab(props : Array<TextTab>) {
     // i18n
     const t = useSelector(selectTranslations);
 

@@ -1,11 +1,11 @@
 import React, { lazy, Suspense }  from "react";
 import UploadInput from '@/components/UploadInput/index'
 import SvgIcon from "@/components/SvgIcon";
-import {FileTab, TextTab} from '@/components/Tabs/js/interface'
+import { TextTab } from '@/components/Tabs/js/interface'
 import { useDispatch } from "react-redux";
 import { setDarkTheme, setLightTheme } from "@/store/slice/themeSlice";
 import { setAttribute } from "@/tools/getTheme";
-const FilesTab = lazy(() => import('@/components/Tabs/FilesTab'))
+const ProjectTab = lazy(() => import('@/components/Tabs/TextTab'))
 
 
 
@@ -62,27 +62,27 @@ function Home() {
 
 
 
-    const projectProps = [
+    const projectProps : Array<TextTab> = [
         {
             uid: '3423442',
             name: 'test',
-            patch: 'src/pages/Home/index1.tsx',
+            text: 'src/pages/Home/index1.tsx',
         },
         {
             uid: '1212121',
             name: 'test2',
-            patch: 'src/pages/Home/index2.tsx',
+            text: 'src/pages/Home/index2.tsx',
         },
         {
             uid: '1212121',
             name: 'test2234234234234',
-            patch: 'src/pages/Home/index3.tsx',
+            text: 'src/pages/Home/index3.tsx',
         },
         {
             uid: '1212121121212121212121',
             name: 'test2',
-            patch: 'src/pages/Home/index4.tsx',
-        } as FileTab,
+            text: 'src/pages/Home/index4.tsx',
+        } as TextTab,
     ]
 
      return (
@@ -91,9 +91,9 @@ function Home() {
                 {...iconProps}
             />
 
-            {/*<Suspense fallback={ <div>Loading...</div> }>*/}
-            {/*    <TextTab {...projectProps}></TextTab>*/}
-            {/*</Suspense>*/}
+            <Suspense fallback={ <div>Loading...</div> }>
+                <ProjectTab {...projectProps}></ProjectTab>
+            </Suspense>
 
             <UploadInput
                 { ...props }
@@ -103,10 +103,6 @@ function Home() {
                 onClick={ nowTheme === 'dark' ? lightTheme : darkTheme }>
                 切換Dark模式功能
             </div>
-
-            <Suspense fallback={ <div>Loading...</div> }>
-                <FilesTab {...projectProps}></FilesTab>
-            </Suspense>
         </>
     )
 }
