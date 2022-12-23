@@ -31,8 +31,18 @@ export interface TextTab extends Tab{
     TextProjectTabClassName?: string;
 }
 
-export interface FileTab extends Tab{
-    patch: string;
-    size: string;
-    TextProjectTabClassName?: string;
+export interface FileTab extends Tab, FileValue{
+    fileTabClassName?: string;
+}
+
+export interface FileInformation {
+    file: string,
+    fileSize: string,
+    fileType: string,
+    filePatch: string,
+}
+
+export interface FileValue {
+    webkitRelativePath: string,
+    fileSize: string,
 }

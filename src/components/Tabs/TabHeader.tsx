@@ -63,5 +63,3 @@ function TabHeader (props : TabHeaderProps) {
 }
 
 export default TabHeader
-
-

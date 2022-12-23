@@ -1,16 +1,14 @@
 import React, {lazy, Suspense, useState} from "react";
 import { useSelector } from "react-redux";
 import { selectTranslations } from "@/store/slice/i18nSlice";
-import { FileTab } from "@/components/Tabs/js/interface";
-import {FileInformation, FileValue} from "@/tools/js/interface";
-import { fileAnalyze } from "@/tools/analyze";
-import {SvgPopoverProps} from "@/components/Popover/js/interface";
+import { FileInformation, FileTab, FileValue } from "@/components/Tabs/js/interface";
+import { fileAnalyze } from "@/components/Tabs/FilesTab/js/analyze";
+import { SvgPopoverProps } from "@/components/Popover/js/interface";
 
 const Tab = lazy(() => import('@/components/Tabs/Tab'))
 const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
-const SvgPopover = lazy(() => import('@/components/Popover/SvgPopover'))
 
-function FilesTab(props) {
+function FilesTab(props : [ FileTab ]) {
     const {} = props
     const t = useSelector(selectTranslations);
 
@@ -19,38 +17,51 @@ function FilesTab(props) {
             <>
                 { Object.entries(props).map(([key, fileTab ]) => {
 
-                    const tabHeader =  fileTab as FileTab
-                    let [showPopover, setShowPopover] = useState(false);
-                    let [popoverMessage, setPopoverMessage] = useState('')
+                    const {
+                        webkitRelativePath,
+                        fileSize,
+                        uid,
+                        name,
+                        onStart,
+                        fileTabClassName,
+                    } : FileTab = fileTab
 
-                    const onHover = (e) => {
-                        setShowPopover(e.isHove)
-                        setPopoverMessage(e.tabContent.text)
-                    }
+                    const setId = `${ name }-${ key }`
 
-                    const SvgProps : SvgPopoverProps = {
-                        open: showPopover,
-                        referenceID: `${tabHeader.name}-${key}`,
-                        file: '',
-                        fileSize: '',
-                        fileType: '',
-                        filePatch: ''
+                    let [open, setOpen] = useState(false);
+                    let [text, setText] = useState('')
 
-                    }
+                    const fileValue : FileValue = { webkitRelativePath, fileSize }
+
+                    const file : FileInformation = fileAnalyze(fileValue)
 
                     // Tab Header Props
-                    const tabHeaderProps = Object.assign(tabHeader as Object)
-                    tabHeaderProps['onHover'] = onHover
-                    tabHeaderProps['id'] = `${ tabHeader.name }-${ key }`
+                    const onHover = (e) => {
+                        setOpen(e.isHove)
+                        setText(e.tabContent.text)
+                    }
+
+                    // Svg Popover
+                    const SvgProps : SvgPopoverProps = {
+                        open,
+                        referenceID: setId,
+                        ...file
+                    }
 
 
-
-
+                    const tabHeaderProps = {
+                        id: setId,
+                        uid,
+                        name,
+                        onStart,
+                        onHover,
+                    }
 
                     return(
                         <Suspense fallback={ <div>{ t.loading }</div> } key={ key }>
-                            <TabHeader {...tabHeaderProps} />
-                            <SvgPopover {...SvgProps}></SvgPopover>
+                            <div className={ `${ fileTabClassName }` }>
+                                <TabHeader {...tabHeaderProps} />
+                            </div>
                         </Suspense>
                     )
                 })}

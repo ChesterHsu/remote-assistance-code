@@ -1,9 +1,8 @@
-import {FileInformation, FileValue} from "@/tools/js/interface";
-import { SvgPopoverProps } from "@/components/Popover/js/interface";
+import { FileInformation, FileValue } from '@/components/Tabs/js/interface'
 
 export function fileAnalyze(props : FileValue) : FileInformation {
     const {
-        size,
+        fileSize,
         webkitRelativePath,
     } : FileValue = props
 
@@ -11,13 +10,12 @@ export function fileAnalyze(props : FileValue) : FileInformation {
     const cutSlash = webkitRelativePath.split('/')
     const slashLength = cutSlash.length
 
-
     const fileInformation = {
         file: cutSlash[slashLength - 1],
-        fileSize: size,
+        fileSize: fileSize,
         fileType: cutDot[1],
         filePatch: webkitRelativePath,
-    } as SvgPopoverProps
+    } as FileInformation
 
     return fileInformation
 }

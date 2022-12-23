@@ -9,7 +9,7 @@ const Tab = lazy(() => import('@/components/Tabs/Tab'))
 const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
 const TextPopover = lazy(() => import('@/components/Popover/TextPopover'))
 
-function ProjectTab(props) {
+function ProjectTab(props : [TextTab]) {
     // i18n
     const t = useSelector(selectTranslations);
 
@@ -28,9 +28,11 @@ function ProjectTab(props) {
                     }
 
                     // Tab Header Props
-                    const tabHeaderProps = Object.assign(tabHeader as Object)
-                    tabHeaderProps['onHover'] = onHover
-                    tabHeaderProps['id'] = `${ tabHeader.name }-${ key }`
+                    const tabHeaderProps = {
+                        id: `${ tabHeader.name }-${ key }`,
+                        ...textTab,
+                        onHover,
+                    }
 
 
                     return(
