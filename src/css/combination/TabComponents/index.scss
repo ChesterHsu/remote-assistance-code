@@ -1,0 +1,21 @@
+@import "@/css/variable.scss";
+
+.project-tab {
+  height: 40px;
+  background: var(--project-tab-background-color);
+}
+
+.project-tab-header {
+  &:hover {
+    background: var(--project-tab-hover-background-color);
+  }
+  .close-icon {
+    margin: 0px 5%;
+  }
+  .text {
+    margin: 0px 10px;
+    color: var(--project-tab-text-color);
+  }
+}
+
+

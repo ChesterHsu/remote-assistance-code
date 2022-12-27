@@ -1,16 +1,23 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import { TabProps } from "@/components/Tabs/js/interface";
 import '@/css/components/Tab/index.scss'
 
 function Tab (props: TabProps) {
-    const { tabClassName, tabStyle, TabChildren } = props
+
+    const {
+        tabClassName,
+        TabHeader,
+        TabContent
+    } : TabProps = props
 
     return(
-        <div
-            className={ `tab${tabClassName ? ` ${tabClassName}`: ''}` }
-            style={ tabStyle }
-        >
-            { TabChildren === undefined ? null : <TabChildren /> }
+        <div className={ `tab${ tabClassName ? ` ${ tabClassName }`: ''}` }>
+            <>
+                { TabHeader === undefined ? null : <TabHeader /> }
+            </>
+            <>
+                { TabContent === undefined ? null : <TabContent /> }
+            </>
         </div>
     )
 }

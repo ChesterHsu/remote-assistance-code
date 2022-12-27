@@ -6,8 +6,7 @@ import { useDispatch } from "react-redux";
 import { setDarkTheme, setLightTheme } from "@/store/slice/themeSlice";
 import { setAttribute } from "@/tools/getTheme";
 
-const TextTab = lazy(() => import('@/components/Tabs/TextTab'))
-const FilesTab = lazy(() => import('@/components/Tabs/FilesTab'))
+const ProjectTab = lazy(() => import('@/combination/TabComponents/ProjectTab'))
 
 
 
@@ -64,83 +63,23 @@ function Home() {
 
 
 
-    const projectProps : Array<TextTabProps> = [
-        {
-            uid: '3423442',
-            name: 'test',
-            popoverMessage: 'src/pages/Home/index1.tsx',
-        },
-        {
-            uid: '1212121',
-            name: 'test2',
-            popoverMessage: 'src/pages/Home/index2.tsx',
-        },
-        {
-            uid: '1212121',
-            name: 'test2234234234234',
-            popoverMessage: 'src/pages/Home/index3.tsx',
-        },
-        {
-            uid: '1212121121212121212121',
-            name: 'test2',
-            popoverMessage: 'src/pages/Home/index4.tsx',
-        } as TextTabProps,
-    ]
-
-    const fileTabProps : Array<FileTabProps> = [
-        {
-            uid: '3423442',
-            name: 'chester1',
-            popoverMessage: 'src/icons/svg/logo.svg',
-            webkitRelativePath: 'src/icons/svg/logo.svg',
-            fileSize: '211',
-        },
-        {
-            uid: '1212121',
-            name: 'chester2',
-            popoverMessage: 'src/pages/Home/index2.tsx',
-            webkitRelativePath: 'src/pages/Home/index1.tsx',
-            fileSize: '211',
-        },
-        {
-            uid: '1212121',
-            name: 'chester3',
-            popoverMessage: 'src/pages/Home/index3.tsx',
-            webkitRelativePath: 'src/pages/Home/index1.tsx',
-            fileSize: '211',
-        },
-        {
-            uid: '1212121121212121212121',
-            name: 'chester4',
-            popoverMessage: 'src/pages/Home/index4.tsx',
-            webkitRelativePath: 'src/pages/Home/index1.tsx',
-            fileSize: '211',
-        },
-    ]
-
      return (
         <>
-            <SvgIcon
-                {...iconProps}
-            />
-
-            <Suspense fallback={ <div>Loading...</div> }>
-                <TextTab {...projectProps} />
+            <Suspense>
+                <ProjectTab />
             </Suspense>
+            {/*<SvgIcon*/}
+            {/*    {...iconProps}*/}
+            {/*/>*/}
 
-            <UploadInput
-                { ...props }
-            />
-            <div
-                className={'switch-theme'}
-                onClick={ nowTheme === 'dark' ? lightTheme : darkTheme }>
-                切換Dark模式功能
-            </div>
-
-            <Suspense fallback={ <div>Loading...</div> }>
-                <FilesTab {...fileTabProps} />
-            </Suspense>
-
+            {/*<UploadInput*/}
+            {/*    { ...props }*/}
+            {/*/>*/}
+            {/*<div*/}
+            {/*    className={'switch-theme'}*/}
+            {/*    onClick={ nowTheme === 'dark' ? lightTheme : darkTheme }>*/}
+            {/*    切換Dark模式功能*/}
+            {/*</div>*/}
 
         </>
     )

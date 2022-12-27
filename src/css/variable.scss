@@ -1,15 +1,13 @@
 @mixin light {
-  --tab-background: #a360fc;
-  --font-color: #fffff;
-  --popover-background: #fffff;
-  --popover-text: #202123;
+  --project-tab-background-color: #fff;
+  --project-tab-hover-background-color: #202123;
+  --project-tab-text-color: #656161;
 }
 
 @mixin dark {
-  --tab-background: #202123;
-  --font-color: #5f6161;
-  --popover-background: #4A4B4B;
-  --popover-text: #bdbdbd;
+  --project-tab-background-color: #181412;
+  --project-tab-hover-background-color: #282221;
+  --project-tab-text-color: #656161;
 }
 
 body[data-theme='auto'] {

@@ -3,7 +3,7 @@ import React, { lazy, Suspense, useState } from "react";
 // i18n組件
 import { useSelector } from "react-redux";
 import { selectTranslations } from '@/store/slice/i18nSlice'
-import {TabHeaderProps, TextTabProps} from "@/components/Tabs/js/interface";
+import { TextTabProps } from "@/components/Tabs/js/interface";
 
 const Tab = lazy(() => import('@/components/Tabs/Tab'))
 const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))

@@ -1,8 +1,8 @@
 import React from "react";
 
-export interface IProps {
+export interface IconProps {
     iconName: string,
-    wrapperStyle?: string,
+    wrapperClassName?: string,
     svgProp?: React.SVGProps<SVGSVGElement>,
     darkTheme?: Boolean | String,
     onStart?: () => void,

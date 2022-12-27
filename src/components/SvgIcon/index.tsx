@@ -3,7 +3,7 @@ import { useDynamicSvgImport } from "./js/useDynamicSvgImport";
 import { useSelector } from "react-redux";
 import { theme } from '@/store/slice/themeSlice'
 import { isDark } from '@/tools/judge'
-import { IProps, SvgDarkColor } from "@/components/SvgIcon/js/interface";
+import { IconProps, SvgDarkColor } from "@/components/SvgIcon/js/interface";
 
 /**
  * 將傳入的 darkTheme 邏輯拆開 並返還參數進行下一步處理
@@ -28,9 +28,9 @@ function checkDarkThemeFormat(val) {
     return val.length === 2
 }
 
-function SvgIcon(props: IProps) {
+function SvgIcon(props: IconProps) {
     const { colors } = useSelector( theme );
-    let { iconName, wrapperStyle, svgProp, darkTheme, onStart } = props;
+    let { iconName, wrapperClassName, svgProp, darkTheme, onStart } = props;
     const { loading, SvgIcon, svgFill } = useDynamicSvgImport(iconName);
 
     let svgStyle :  React.SVGProps<SVGSVGElement> = {}
@@ -81,7 +81,7 @@ function SvgIcon(props: IProps) {
                 <div className="rounded-full bg-slate-400 animate-pulse h-8 w-8"></div>
             )}
             {SvgIcon && (
-                <div className={ wrapperStyle } onClick={ onStart }>
+                <div className={ wrapperClassName } onClick={ onStart }>
                     <SvgIcon {...svgStyle} />
                 </div>
             )}
