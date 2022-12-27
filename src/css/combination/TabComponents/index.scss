@@ -6,11 +6,12 @@
 }
 
 .project-tab-header {
+  height: 40px;
   &:hover {
     background: var(--project-tab-hover-background-color);
   }
   .close-icon {
-    margin: 0px 5%;
+    margin: 0px 10px;
   }
   .text {
     margin: 0px 10px;

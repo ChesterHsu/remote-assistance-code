@@ -10,6 +10,7 @@ function TextPopover(props: TextPopoverProps) {
 
     const t = useSelector(selectTranslations);
 
+
     const {
         text,
         TextPopoverClassName,
@@ -18,6 +19,7 @@ function TextPopover(props: TextPopoverProps) {
         placement = 'bottom',
         spacing = 10
     } : TextPopoverProps = props
+
 
     const Children = () => {
         return (

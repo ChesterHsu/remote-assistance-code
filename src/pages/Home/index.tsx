@@ -5,6 +5,7 @@ import {FileTabProps, TextTabProps} from '@/components/Tabs/js/interface'
 import { useDispatch } from "react-redux";
 import { setDarkTheme, setLightTheme } from "@/store/slice/themeSlice";
 import { setAttribute } from "@/tools/getTheme";
+import {ProjectTabProps} from "@/combination/TabComponents/interface";
 
 const ProjectTab = lazy(() => import('@/combination/TabComponents/ProjectTab'))
 
@@ -61,12 +62,19 @@ function Home() {
         darkTheme: '#1da7da|#e3e6e8'
     }
 
+    const projectTabProps : Array<ProjectTabProps> = [
+        {
+            uid: '324324',
+            text: 'test',
+            patch: '測試',
+        }
+    ]
 
 
      return (
         <>
             <Suspense>
-                <ProjectTab />
+                <ProjectTab {...projectTabProps}/>
             </Suspense>
             {/*<SvgIcon*/}
             {/*    {...iconProps}*/}

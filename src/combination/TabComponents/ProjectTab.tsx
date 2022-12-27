@@ -2,6 +2,7 @@ import React, { lazy, Suspense, useState } from "react";
 import { TabHeaderProps, TabProps } from "@/components/Tabs/js/interface";
 import '@/css/combination/TabComponents/index.scss'
 import { IconProps } from "@/components/SvgIcon/js/interface";
+import { ProjectTabProps } from "@/combination/TabComponents/interface";
 
 const Tab = lazy(() => import('@/components/Tabs/Tab'))
 const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
@@ -12,7 +13,7 @@ const Header = (props : TabHeaderProps, key) => {
     let [hover, setHover] = useState(false);
     let [popoverMessage, setPopoverMessage] = useState('')
 
-    const tabId = `${ props.uid }-${ key }`
+    const tabId = `p${ props.uid }-${ key }`
 
     // Tab 關閉功能
     const CloseIcon = () => {
@@ -35,15 +36,15 @@ const Header = (props : TabHeaderProps, key) => {
     const headerProps : TabHeaderProps = {
         ...props,
         id: tabId,
-        text: '234234234234',
         contentClassName: 'project-tab-header',
         contentStyle: {
-            maxWidth: '50%'
+            maxWidth: '50%',
+            minWidth: '35%'
         },
         TextFont: CloseIcon,
         onHover: (e) => {
             setHover(e.isHove)
-            setPopoverMessage(e.tabContent)
+            setPopoverMessage(e.tabContent.patch)
         }
     }
 
@@ -62,29 +63,32 @@ const Header = (props : TabHeaderProps, key) => {
     )
 }
 
-export default function ProjectTab(props) {
+export default function ProjectTab(props : Array<ProjectTabProps>) {
 
     const Content = () => {
         return(
             <>
                 { Object.entries(props).map(([key, projectTab ]) => {
-                    return Header(projectTab, key)
+
+                    return (
+                        <div key={ key }>
+                            { Header(projectTab, key) }
+                        </div>
+                    )
                 })}
             </>
         )
     }
 
-
-
     const TabProps : TabProps = {
         tabClassName: 'project-tab',
-        TabHeader: Header,
+        TabHeader: Content,
     }
 
     return(
         <>
             <Suspense fallback={ <div></div> }>
-                <Tab {...TabProps}/>
+                <Tab {...TabProps} />
             </Suspense>
         </>
     )

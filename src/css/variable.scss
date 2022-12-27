@@ -2,12 +2,16 @@
   --project-tab-background-color: #fff;
   --project-tab-hover-background-color: #202123;
   --project-tab-text-color: #656161;
+  --popover-background: #4b4d4d;
+  --popover-text: #c0bfc0;
 }
 
 @mixin dark {
   --project-tab-background-color: #181412;
   --project-tab-hover-background-color: #282221;
   --project-tab-text-color: #656161;
+  --popover-background: #4b4d4d;
+  --popover-text: #c0bfc0;
 }
 
 body[data-theme='auto'] {
