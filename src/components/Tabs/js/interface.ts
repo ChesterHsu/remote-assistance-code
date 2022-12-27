@@ -4,6 +4,7 @@ import { IProps } from "@/components/SvgIcon/js/interface";
 interface Tab {
     uid: string,
     name: string,
+    popoverMessage?: string,
     onStart?: () => void;
 }
 
@@ -26,12 +27,11 @@ export interface TabHeaderProps extends Tab{
     closeTab?: () => void;
 }
 
-export interface TextTab extends Tab{
-    text: string;
+export interface TextTabProps extends Tab{
     TextProjectTabClassName?: string;
 }
 
-export interface FileTab extends Tab, FileValue{
+export interface FileTabProps extends Tab, FileValue{
     fileTabClassName?: string;
 }
 

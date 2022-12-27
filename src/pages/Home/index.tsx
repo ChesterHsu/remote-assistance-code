@@ -1,11 +1,13 @@
 import React, { lazy, Suspense }  from "react";
 import UploadInput from '@/components/UploadInput/index'
 import SvgIcon from "@/components/SvgIcon";
-import { TextTab } from '@/components/Tabs/js/interface'
+import {FileTabProps, TextTabProps} from '@/components/Tabs/js/interface'
 import { useDispatch } from "react-redux";
 import { setDarkTheme, setLightTheme } from "@/store/slice/themeSlice";
 import { setAttribute } from "@/tools/getTheme";
-const ProjectTab = lazy(() => import('@/components/Tabs/TextTab'))
+
+const TextTab = lazy(() => import('@/components/Tabs/TextTab'))
+const FilesTab = lazy(() => import('@/components/Tabs/FilesTab'))
 
 
 
@@ -62,27 +64,58 @@ function Home() {
 
 
 
-    const projectProps : Array<TextTab> = [
+    const projectProps : Array<TextTabProps> = [
         {
             uid: '3423442',
             name: 'test',
-            text: 'src/pages/Home/index1.tsx',
+            popoverMessage: 'src/pages/Home/index1.tsx',
         },
         {
             uid: '1212121',
             name: 'test2',
-            text: 'src/pages/Home/index2.tsx',
+            popoverMessage: 'src/pages/Home/index2.tsx',
         },
         {
             uid: '1212121',
             name: 'test2234234234234',
-            text: 'src/pages/Home/index3.tsx',
+            popoverMessage: 'src/pages/Home/index3.tsx',
         },
         {
             uid: '1212121121212121212121',
             name: 'test2',
-            text: 'src/pages/Home/index4.tsx',
-        } as TextTab,
+            popoverMessage: 'src/pages/Home/index4.tsx',
+        } as TextTabProps,
+    ]
+
+    const fileTabProps : Array<FileTabProps> = [
+        {
+            uid: '3423442',
+            name: 'chester1',
+            popoverMessage: 'src/icons/svg/logo.svg',
+            webkitRelativePath: 'src/icons/svg/logo.svg',
+            fileSize: '211',
+        },
+        {
+            uid: '1212121',
+            name: 'chester2',
+            popoverMessage: 'src/pages/Home/index2.tsx',
+            webkitRelativePath: 'src/pages/Home/index1.tsx',
+            fileSize: '211',
+        },
+        {
+            uid: '1212121',
+            name: 'chester3',
+            popoverMessage: 'src/pages/Home/index3.tsx',
+            webkitRelativePath: 'src/pages/Home/index1.tsx',
+            fileSize: '211',
+        },
+        {
+            uid: '1212121121212121212121',
+            name: 'chester4',
+            popoverMessage: 'src/pages/Home/index4.tsx',
+            webkitRelativePath: 'src/pages/Home/index1.tsx',
+            fileSize: '211',
+        },
     ]
 
      return (
@@ -92,7 +125,7 @@ function Home() {
             />
 
             <Suspense fallback={ <div>Loading...</div> }>
-                <ProjectTab {...projectProps}></ProjectTab>
+                <TextTab {...projectProps} />
             </Suspense>
 
             <UploadInput
@@ -103,6 +136,12 @@ function Home() {
                 onClick={ nowTheme === 'dark' ? lightTheme : darkTheme }>
                 切換Dark模式功能
             </div>
+
+            <Suspense fallback={ <div>Loading...</div> }>
+                <FilesTab {...fileTabProps} />
+            </Suspense>
+
+
         </>
     )
 }

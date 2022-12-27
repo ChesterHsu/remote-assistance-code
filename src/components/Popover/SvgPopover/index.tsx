@@ -11,6 +11,9 @@ function SvgPopover(props: SvgPopoverProps) {
     const t = useSelector(selectTranslations);
 
     const {
+        file,
+        filePatch,
+        fileSize,
         svgPopoverClassName,
         open,
         referenceID,
@@ -23,12 +26,16 @@ function SvgPopover(props: SvgPopoverProps) {
             <div className={ `svg-popover${svgPopoverClassName ? ` ${svgPopoverClassName}` : ''}` }>
                 <div className={ `row` }>
                     <div>{ t.file }</div>
+                    <div>{ file }</div>
                 </div>
                 <div className={ `row` }>
                     <div>{ t.fileSize }</div>
+                    <div>{ fileSize }</div>
                 </div>
                 <div className={ `row` }>
                     <div>{ t.filePath }</div>
+                    <div>{ filePatch }</div>
+
                 </div>
             </div>
         )

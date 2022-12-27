@@ -1,9 +1,9 @@
 import React, { lazy, Suspense, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectTranslations } from "@/store/slice/i18nSlice";
-import { FileInformation, FileTab, FileValue } from "@/components/Tabs/js/interface";
+import { FileInformation, FileTabProps, FileValue } from "@/components/Tabs/js/interface";
 import { fileAnalyze } from "@/components/Tabs/FilesTab/js/analyze";
-import {SvgPopoverProps, TextPopoverProps} from "@/components/Popover/js/interface";
+import { SvgPopoverProps, TextPopoverProps } from "@/components/Popover/js/interface";
 
 const Tab = lazy(() => import('@/components/Tabs/Tab'))
 const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
@@ -19,23 +19,25 @@ const GetPopover = (props : FileInformation, id, openPopover, popoverText = '') 
             const svgPopoverProps : SvgPopoverProps = {
                 referenceID: id,
                 open: openPopover,
+                placement: 'bottom',
                 ...props
             }
             return (<SvgPopover {...svgPopoverProps}/>)
         default:
+
             const textPopoverProps : TextPopoverProps = {
                 referenceID: id,
                 open: openPopover,
+                placement: 'bottom',
                 text: popoverText
             }
-            return (<TextPopover {...textPopoverProps}/>)
+            return (<TextPopover {...textPopoverProps} />)
     }
 
 }
 
+function FilesTab(props : Array<FileTabProps>) {
 
-function FilesTab(props : [ FileTab ]) {
-    const {} = props
     const t = useSelector(selectTranslations);
 
     const Content = () => {
@@ -46,11 +48,10 @@ function FilesTab(props : [ FileTab ]) {
                     const {
                         webkitRelativePath,
                         fileSize,
-                        uid,
                         name,
                         onStart,
                         fileTabClassName,
-                    } : FileTab = fileTab
+                    } : FileTabProps = fileTab
 
                     // 統整file 需要參數
                     const fileValue : FileValue = {
@@ -66,26 +67,26 @@ function FilesTab(props : [ FileTab ]) {
                     let [popoverMessage, setPopoverMessage] = useState('')
 
                     const onHover = (e) => {
+                        setShowPopover(e.isHove)
+                        setPopoverMessage(e.tabContent.popoverMessage)
                     }
 
                     const tabHeaderProps = {
                         id: setId,
-                        uid,
-                        name,
                         onStart,
                         onHover,
+                        ...fileTab,
+                    }
+
+                    const Popover = () => {
+                        return GetPopover(fileInformation, setId, showPopover, popoverMessage)
                     }
 
                     return(
                         <Suspense fallback={ <div>{ t.loading }</div> } key={ key }>
                             <div className={ `${ fileTabClassName }` }>
                                 <TabHeader {...tabHeaderProps} />
-                                <GetPopover
-                                    fileInformation={ fileInformation }
-                                    id={ setId }
-                                    open={ showPopover }
-                                    popoverText={ popoverMessage }
-                                />
+                                <Popover />
                             </div>
                         </Suspense>
                     )

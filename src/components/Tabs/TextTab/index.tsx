@@ -3,13 +3,13 @@ import React, { lazy, Suspense, useState } from "react";
 // i18n組件
 import { useSelector } from "react-redux";
 import { selectTranslations } from '@/store/slice/i18nSlice'
-import {TabHeaderProps, TextTab} from "@/components/Tabs/js/interface";
+import {TabHeaderProps, TextTabProps} from "@/components/Tabs/js/interface";
 
 const Tab = lazy(() => import('@/components/Tabs/Tab'))
 const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
 const TextPopover = lazy(() => import('@/components/Popover/TextPopover'))
 
-function ProjectTab(props : Array<TextTab>) {
+function ProjectTab(props : Array<TextTabProps>) {
     // i18n
     const t = useSelector(selectTranslations);
 
@@ -18,13 +18,13 @@ function ProjectTab(props : Array<TextTab>) {
             <>
                 { Object.entries(props).map(([key, textTab ]) => {
 
-                    const tabHeader =  textTab as TextTab
+                    const tabHeader =  textTab as TextTabProps
                     let [showPopover, setShowPopover] = useState(false);
                     let [popoverMessage, setPopoverMessage] = useState('')
 
                     const onHover = (e) => {
                         setShowPopover(e.isHove)
-                        setPopoverMessage(e.tabContent.text)
+                        setPopoverMessage(e.tabContent.popoverMessage)
                     }
 
                     // Tab Header Props

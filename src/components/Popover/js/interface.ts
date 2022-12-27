@@ -20,5 +20,8 @@ export interface TextPopoverProps extends Popover{
 }
 
 export interface SvgPopoverProps extends Popover{
+    file: '',
+    filePatch: '',
+    fileSize: '',
     svgPopoverClassName?: string,
 }
