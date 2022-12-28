@@ -1,6 +1,7 @@
 import { Popover } from "@/components/Popover/js/interface";
 
 /**  @type {TextPopoverProps}
+ *   @property {string} text 顯示在Tab中的文字.
  *   @property {string} TextPopoverClassName Text Popover ClassName.
  * **/
 export interface TextPopoverProps extends Popover{
