@@ -1,4 +1,4 @@
-import { TextPopoverProps } from "@/components/Popover/js/interface";
+import { TextPopoverProps } from "@/combination/PopoverComponents/js/interface";
 import React, { lazy } from "react";
 import '@/css/combination/PopoverComponents/index.scss'
 

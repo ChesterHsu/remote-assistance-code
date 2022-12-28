@@ -1,4 +1,4 @@
-import { SvgPopoverProps } from "@/components/Popover/js/interface";
+import { SvgPopoverProps } from "@/combination/PopoverComponents/js/interface";
 import React, { lazy } from "react";
 import { useSelector } from "react-redux";
 import { selectTranslations } from "@/store/slice/i18nSlice";

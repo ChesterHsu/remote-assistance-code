@@ -4,7 +4,7 @@ import { TabHeaderProps, TabProps } from "@/components/Tabs/js/interface";
 import { FileTabProps } from "@/combination/TabComponents/js/interface";
 import { IconProps } from "@/components/SvgIcon/js/interface";
 import { fileAnalyze } from "@/combination/TabComponents/js/fileAnalyze";
-import { FileInformation, SvgPopoverProps, TextPopoverProps } from "@/components/Popover/js/interface";
+import { FileInformation, SvgPopoverProps, TextPopoverProps } from "@/combination/PopoverComponents/js/interface";
 
 const Tab = lazy(() => import('@/components/Tabs/Tab'))
 const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
