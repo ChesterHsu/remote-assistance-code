@@ -11,6 +11,8 @@
   // Popover
   --popover-background: #4b4d4d;
   --popover-text: #c0bfc0;
+  // Editor
+  --sequence-background-color: blue;
 }
 
 @mixin dark {
@@ -26,6 +28,7 @@
   // Popover
   --popover-background: #4b4d4d;
   --popover-text: #c0bfc0;
+  --sequence-background-color: #313334;
 }
 
 body[data-theme='auto'] {
