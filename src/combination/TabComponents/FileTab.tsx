@@ -8,6 +8,7 @@ import { FileInformation, SvgPopoverProps, TextPopoverProps } from "@/combinatio
 
 const Tab = lazy(() => import('@/components/Tabs/Tab'))
 const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
+const Editor = lazy(() => import('@/components/Editor'))
 const SvgIcon = lazy(() => import('@/components/SvgIcon'))
 const SvgPopover = lazy(() => import('@/combination/PopoverComponents/SvgPopover'))
 const TextPopover = lazy(() => import('@/combination/PopoverComponents/TextPopover'))
@@ -121,6 +122,7 @@ function FileTab(props : Array<FileTabProps>) {
         tabClassName: 'file-tab',
         tabHeaderItemClassName: 'file-header-item',
         TabHeader: HeaderItem,
+        TabContent: Editor,
     }
 
     return(
