@@ -19,7 +19,7 @@ export function useDynamicSvgImport(iconName: string) {
             iconName = iconName.replace('-', '/')  // 替換檔案路徑
             try {
                 importedIconRef.current = (
-                    await import(`/src/icons/svg/${iconName}.svg`)
+                    await import(`../../../../src/icons/svg/${iconName}.svg`)
                 ).ReactComponent;
                 const fill = importedIconRef.current?.toString().match(fillRegex)
                 svgFill.fill = fill

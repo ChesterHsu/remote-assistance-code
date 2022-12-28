@@ -11,18 +11,24 @@
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
-    "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "noImplicitAny": false,
-    "lib": ["esnext", "dom","es5", "es6", "dom.iterable"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "baseUrl": "./",
     "types": ["vite/client", "jest", "vite-plugin-svg-icons/client"],
     "paths":{
       "@": ["src"],
       "@/*": ["src/*"],
-    }
+    },
+    "allowJs": false,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"]
 }

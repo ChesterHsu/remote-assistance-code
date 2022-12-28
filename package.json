@@ -2,7 +2,14 @@
   "name": "remote-assistance",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "main": "dist-electron/main/index.js",
+  "description": "Electron Vite React boilerplate.",
+  "license": "MIT",
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_URL": "http://127.0.0.1:7777/"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -24,7 +31,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
     "styled-components": "^5.3.6",
-    "vite-plugin-svg-icons": "^2.0.1",
+    "vite-plugin-svg-icons": "^0.1.0",
     "wait-on": "^7.0.1"
   },
   "devDependencies": {
@@ -33,10 +40,18 @@
     "@types/react-dom": "^18.0.8",
     "@vitejs/plugin-react": "^2.2.0",
     "electron": "^22.0.0",
+    "electron-builder": "^22.10.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "sass": "^1.56.2",
     "typescript": "^4.6.4",
     "vite": "^4.0.0-alpha.6",
+    "vite-electron-plugin": "^0.6.4",
     "vite-plugin-babel": "^1.1.2",
+    "vite-plugin-electron-renderer": "^0.11.3",
     "vite-plugin-svgr": "^2.2.2"
+  },
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
   }
 }
