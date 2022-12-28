@@ -1,9 +1,9 @@
 import React from "react";
-import { useDynamicSvgImport } from "./js/useDynamicSvgImport";
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
+import { useDynamicSvgImport } from '@/components/SvgIcon/js/useDynamicSvgImport';
 import { theme } from '@/store/slice/themeSlice'
 import { isDark } from '@/tools/judge'
-import { IconProps, SvgDarkColor } from "@/components/SvgIcon/js/interface";
+import { IconProps, SvgDarkColor } from '@/components/SvgIcon/js/interface';
 
 /**
  * 將傳入的 darkTheme 邏輯拆開 並返還參數進行下一步處理

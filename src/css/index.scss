@@ -8,3 +8,16 @@
   background: #5f6161;
   color: #bdbdbd;
 }
+
+#root, .app {
+  height: 100%;
+  width: 100%;
+}
+
+.remote-assistance-route {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+  width: 100%;
+}

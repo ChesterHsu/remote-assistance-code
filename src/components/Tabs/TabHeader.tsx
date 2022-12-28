@@ -22,19 +22,17 @@ export default function TabHeader (props : TabHeaderProps) {
     }
 
     return(
-        <div className={`tab-header`}>
-            <div
-                id={`${id}`}
-                className={ `content${ contentClassName ? ` ${ contentClassName }` : ''}` }
-                style={ contentStyle }
-                onClick={ onStart }
-                onMouseOver={ hoverAction }
-                onMouseLeave={ hoverAction }
-            >
-                { TextFont === undefined ? null : <TextFont /> }
-                <div className={`text${ textClassName ? ` ${ textClassName }` : '' }`}>{ text }</div>
-                { TextBack === undefined ? null : <TextBack /> }
-            </div>
+        <div
+            id={`${id}`}
+            className={ `content${ contentClassName ? ` ${ contentClassName }` : ''}` }
+            style={ contentStyle }
+            onClick={ onStart }
+            onMouseOver={ hoverAction }
+            onMouseLeave={ hoverAction }
+        >
+            { TextFont === undefined ? null : <TextFont /> }
+            <div className={`text${ textClassName ? ` ${ textClassName }` : '' }`}>{ text }</div>
+            { TextBack === undefined ? null : <TextBack /> }
         </div>
     )
 }

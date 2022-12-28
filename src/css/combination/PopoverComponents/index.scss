@@ -10,10 +10,16 @@
 
 // svgPopover 組件css
 .svg-popover {
+  border-radius: 5px;
+  background: var( --popover-background );
+  color: var( --popover-text );
+  padding: 8px;
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 100%;
   .row {
     display: flex;
+  }
+  .show-img {
   }
 }

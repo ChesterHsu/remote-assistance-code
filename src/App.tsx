@@ -20,7 +20,7 @@ function App () {
     const themeClassName = isDark() ? 'dark' : 'light'
 
     return(
-        <div className={ themeClassName }>
+        <div className={ `app ${themeClassName}` }>
             <ThemeProvider theme={ themeValue }>
                 <RemoteAssistanceRoute />
             </ThemeProvider>

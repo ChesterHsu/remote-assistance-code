@@ -19,9 +19,19 @@ export interface TextPopoverProps extends Popover{
     TextPopoverClassName?: string,
 }
 
-export interface SvgPopoverProps extends Popover{
-    file: '',
-    filePatch: '',
-    fileSize: '',
+export interface SvgPopoverProps extends Popover, FileInformation{
     svgPopoverClassName?: string,
+}
+
+/**  @type {FileInformation}
+ *   @property {string} file 檔案名稱.
+ *   @property {string} fileSize 檔案大小.
+ *   @property {string} fileType 檔案副檔名型別.
+ *   @property {string} filePatch 檔案路徑.
+ * **/
+export interface FileInformation {
+    file: string,
+    fileSize: string,
+    fileType: string,
+    filePatch: string,
 }

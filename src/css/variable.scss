@@ -1,15 +1,29 @@
 @mixin light {
+  // Project Tab
   --project-tab-background-color: #fff;
   --project-tab-hover-background-color: #202123;
   --project-tab-text-color: #656161;
+  // File Tab
+  --file-tab-background-color: #fff;
+  --file-tab-header-background-color: #3d3f41;
+  --file-tab-hover-background-color: #282221;
+  --file-tab-text-color: #a2a3a3;
+  // Popover
   --popover-background: #4b4d4d;
   --popover-text: #c0bfc0;
 }
 
 @mixin dark {
-  --project-tab-background-color: #181412;
+  // Project Tab
+  --project-tab-background-color: #180e0c;
   --project-tab-hover-background-color: #282221;
   --project-tab-text-color: #656161;
+  // File Tab
+  --file-tab-background-color: #272a2a;
+  --file-tab-header-background-color: #3d3f41;
+  --file-tab-hover-background-color: #272a2a;
+  --file-tab-text-color: #a2a3a3;
+  // Popover
   --popover-background: #4b4d4d;
   --popover-text: #c0bfc0;
 }

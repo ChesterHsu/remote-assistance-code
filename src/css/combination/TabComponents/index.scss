@@ -1,15 +1,14 @@
 @import "@/css/variable.scss";
 
+$project-tab-height: 35px;
+$file-tab-height: 25px;
+
 .project-tab {
-  height: 40px;
-  background: var(--project-tab-background-color);
+  background-color: var(--project-tab-background-color);
 }
 
 .project-tab-header {
-  height: 40px;
-  &:hover {
-    background: var(--project-tab-hover-background-color);
-  }
+  height: $project-tab-height;
   .close-icon {
     margin: 0px 10px;
   }
@@ -17,6 +16,33 @@
     margin: 0px 10px;
     color: var(--project-tab-text-color);
   }
+  &:hover {
+    background-color: var(--project-tab-hover-background-color);
+  }
 }
 
+.file-tab {
+  background-color: var(--file-tab-background-color);
+  flex-grow: 1;
+  display: flex;
+}
+
+.file-header-item {
+  background-color: var(--file-tab-header-background-color);
+  border: 0.1px solid var(--file-tab-header-background-color) ;
+}
+
+.file-tab-header {
+  height: $file-tab-height;
+  .close-icon {
+    margin: 0px 10px;
+  }
+  .text {
+    margin: 0px 10px;
+    color: var(--file-tab-text-color);
+  }
+  &:hover {
+    background-color: var(--file-tab-hover-background-color);
+  }
+}
 

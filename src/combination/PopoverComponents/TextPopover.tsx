@@ -1,15 +1,10 @@
 import { TextPopoverProps } from "@/components/Popover/js/interface";
-import React, { lazy, Suspense } from "react";
-import { useSelector } from "react-redux";
-import { selectTranslations } from "@/store/slice/i18nSlice";
-import '@/css/components/Popover/index.scss'
+import React, { lazy } from "react";
+import '@/css/combination/PopoverComponents/index.scss'
 
-const Popover = lazy(() => import('@/components/Popover/index'))
+const Popover = lazy(() => import('@/components/Popover'))
 
 function TextPopover(props: TextPopoverProps) {
-
-    const t = useSelector(selectTranslations);
-
 
     const {
         text,
@@ -30,7 +25,7 @@ function TextPopover(props: TextPopoverProps) {
     }
 
     return (
-        <Suspense fallback={ <div>{ t.loading }</div> } >
+        <>
             <Popover
                 open={ open }
                 referenceID = { referenceID }
@@ -38,7 +33,7 @@ function TextPopover(props: TextPopoverProps) {
                 spacing={ spacing }
                 PopoverChildren={ Children }
             ></Popover>
-        </Suspense>
+        </>
     )
 }
 

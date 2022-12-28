@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 /**
  *  @type {Tab}
@@ -17,12 +17,14 @@ export interface Tab {
 /**
  *   @type {TabProps}
  *   @property {string} tabClassName 可賦予 Tab 中 ClassName 新增樣式的參數.
+ *   @property {string} tabHeaderItemClassName 可賦予 Tab Header 中 ClassName 新增樣式的參數.
  *   @property {React.CSSProperties} tabStyle 可賦予 Tab 中 Style屬性及參數.
  *   @property {React.ElementType} TabHeader Tab 上層切換功能樣式
  *   @property {React.ElementType} TabContent Tab 內層中資訊顯示功能
  * **/
 export interface TabProps {
     tabClassName?: string;
+    tabHeaderItemClassName? : string;
     tabStyle?: React.CSSProperties;
     TabHeader?: React.ElementType;
     TabContent? : React.ElementType;
@@ -46,22 +48,4 @@ export interface TabHeaderProps extends Tab{
     TextBack?: React.ElementType;
 }
 
-export interface TextTabProps extends Tab{
-    TextProjectTabClassName?: string;
-}
 
-export interface FileTabProps extends Tab, FileValue{
-    fileTabClassName?: string;
-}
-
-export interface FileInformation {
-    file: string,
-    fileSize: string,
-    fileType: string,
-    filePatch: string,
-}
-
-export interface FileValue {
-    webkitRelativePath: string,
-    fileSize: string,
-}

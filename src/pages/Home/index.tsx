@@ -1,13 +1,13 @@
 import React, { lazy, Suspense }  from "react";
 import UploadInput from '@/components/UploadInput/index'
 import SvgIcon from "@/components/SvgIcon";
-import {FileTabProps, TextTabProps} from '@/components/Tabs/js/interface'
 import { useDispatch } from "react-redux";
 import { setDarkTheme, setLightTheme } from "@/store/slice/themeSlice";
 import { setAttribute } from "@/tools/getTheme";
-import {ProjectTabProps} from "@/combination/TabComponents/interface";
+import { FileTabProps, ProjectTabProps } from "@/combination/TabComponents/js/interface";
 
 const ProjectTab = lazy(() => import('@/combination/TabComponents/ProjectTab'))
+const FileTab = lazy(() => import('@/combination/TabComponents/FileTab'))
 
 
 
@@ -65,8 +65,28 @@ function Home() {
     const projectTabProps : Array<ProjectTabProps> = [
         {
             uid: '324324',
-            text: 'test',
-            patch: '測試',
+            text: 'remote-assistance',
+            patch: '~/Desk/project/remote-assistance',
+        },
+        {
+            uid: '324324',
+            text: 'remote-assistance',
+            patch: '~/Desk/project/remote-assistance',
+        },
+    ]
+
+    const fileTabProps : Array<FileTabProps> = [
+        {
+            uid: '452324',
+            text: 'SvgPopover.tsx',
+            webkitRelativePath: 'src/pages/Home/SvgPopover.tsx',
+            fileSize: '210',
+        },
+        {
+            uid: '85445',
+            text: 'logo.svg',
+            webkitRelativePath: 'src/icons/svg/logo.svg',
+            fileSize: '410',
         }
     ]
 
@@ -75,6 +95,9 @@ function Home() {
         <>
             <Suspense>
                 <ProjectTab {...projectTabProps}/>
+            </Suspense>
+            <Suspense>
+                <FileTab {...fileTabProps}/>
             </Suspense>
             {/*<SvgIcon*/}
             {/*    {...iconProps}*/}

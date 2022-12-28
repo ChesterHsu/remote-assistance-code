@@ -6,15 +6,16 @@ function Tab (props: TabProps) {
 
     const {
         tabClassName,
+        tabHeaderItemClassName,
         TabHeader,
         TabContent
     } : TabProps = props
 
     return(
         <div className={ `tab${ tabClassName ? ` ${ tabClassName }`: ''}` }>
-            <>
+            <div className={ `tab-header-item${ tabHeaderItemClassName ? ` ${ tabHeaderItemClassName }`: ''}` }>
                 { TabHeader === undefined ? null : <TabHeader /> }
-            </>
+            </div>
             <>
                 { TabContent === undefined ? null : <TabContent /> }
             </>
