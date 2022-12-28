@@ -1,42 +1,25 @@
-// eslint-disable-next-line
 module.exports = {
-    root: true,
-
-    parserOptions: {
-        parser: '@babel/eslint-parser',
-        requireConfigFile: false,
-        ecmaVersion: 8, // Allows for the parsing of modern ECMAScript features
-        sourceType: 'module', // Allows for the use of imports
-    },
-
     env: {
         browser: true,
-        node: true,
-        es6: true,
+        es2021: true,
+        node: true
     },
-
-    // Rules order is important, please avoid shuffling them
     extends: [
-        'plugin:vue/essential',
-        'plugin:prettier/recommended',
         'eslint:recommended',
-        'plugin:react-hooks/recommended',
+        'plugin:react/recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:prettier/recommended',
+        'eslint-config-prettier'
     ],
-
-    plugins: [
-        'react-hooks',
-        'import',
-    ],
-
-    globals: {
-        ga: true,
-        cordova: true,
-        __statics: true,
-        process: true,
-        Capacitor: true,
-        chrome: true,
+    parser: '@typescript-eslint/parser',
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true
+        },
+        ecmaVersion: 'latest',
+        sourceType: 'module'
     },
-
+    plugins: ['react', '@typescript-eslint', 'prettier'],
     rules: {
         'prettier/prettier': 0,
         'generator-star-spacing': 'off',

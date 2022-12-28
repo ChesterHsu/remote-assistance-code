@@ -40,6 +40,7 @@ export interface TabProps {
  *   @property {React.ElementType} TextBack TabHeader文字“後”的元件
  * **/
 export interface TabHeaderProps extends Tab{
+    index?: string;
     id?: string;
     contentStyle?: React.CSSProperties;
     contentClassName?: string;

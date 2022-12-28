@@ -9,12 +9,12 @@ const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
 const TextPopover = lazy(() => import('@/combination/PopoverComponents/TextPopover'))
 const SvgIcon = lazy(() => import('@/components/SvgIcon'))
 
-const Header = (props : TabHeaderProps, key) => {
+const Header = (props : TabHeaderProps) => {
     let [hover, setHover] = useState(false);
     let [popoverMessage, setPopoverMessage] = useState('')
 
     // 預設ID 為防止ID值開頭為英文
-    const tabId = `p${ props.uid }-${ key }`
+    const tabId = `p${ props.uid }-${ props.index }`
 
     // Tab 關閉功能
     const CloseIcon = () => {
@@ -66,12 +66,15 @@ const Header = (props : TabHeaderProps, key) => {
 export default function ProjectTab(props : Array<ProjectTabProps>) {
 
     const HeaderItem = () => {
+
         return(
             <>
                 { Object.entries(props).map(([key, projectTab ]) => {
-
-                    return ( Header(projectTab, key) )
-
+                    const headerProps = {
+                        index: key,
+                        ...projectTab
+                    }
+                    return (<Header {...headerProps} key={ key }/>)
                 })}
             </>
         )

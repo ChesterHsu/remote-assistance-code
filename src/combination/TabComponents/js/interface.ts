@@ -8,6 +8,7 @@ export interface ProjectTabProps extends Tab {
 }
 
 export interface FileTabProps extends Tab, FileValue {
+    index?: string;
 
 }
 

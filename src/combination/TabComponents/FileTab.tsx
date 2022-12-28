@@ -44,7 +44,7 @@ const Header = (props : FileTabProps, key) => {
     let [popoverMessage, setPopoverMessage] = useState('')
 
     // 預設ID 為防止ID值開頭為英文
-    const tabId = `p${ props.uid }-${ key }`
+    const tabId = `p${ props.uid }-${ props.index }`
 
     // Tab 關閉功能
     const CloseIcon = () => {
@@ -107,9 +107,11 @@ function FileTab(props : Array<FileTabProps>) {
         return(
             <>
                 { Object.entries(props).map(([key, projectTab ]) => {
-                    return (
-                        Header(projectTab, key)
-                    )
+                    const headerProps = {
+                        index: key,
+                        ...projectTab
+                    }
+                    return (<Header {...headerProps} key={ key }/>)
                 })}
             </>
         )
