@@ -2,8 +2,6 @@ const aiga = new RegExp(/([\.|\(|\)|,|{|}|\W])/g)
 
 export function codeToSplit(code : string) : Array<string> {
     return code.split(/\n/)
-    const splitLine = code.split(/\n/)
-    const result : Array<string> = []
 
     // splitLine.map((item: string) => {
     //     result.push(combination(item.split(aiga)))
@@ -14,17 +12,8 @@ export function codeToSplit(code : string) : Array<string> {
 
 // ${codeRecompilation.className ? `className='${codeRecompilation.className}'` : ''}
 
-function combination(codeArray: string[]) {
-    let result : string = ''
-
-    codeArray.map((code) => {
-        if (code) {
-            const  codeRecompilation =  recompilation(code)
-            result += `<span ${codeRecompilation.className ? `className='${codeRecompilation.className}'` : ''}>${codeRecompilation.code}</span>`
-        }
-    })
-
-    return result
+export function combination(code: string) {
+    console.log(code.split(aiga))
 }
 
 function recompilation(code : string) {

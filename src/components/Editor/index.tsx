@@ -1,16 +1,24 @@
 import '@/css/components/Editor/index.scss'
 import React, { useEffect, useState } from "react";
-import { codeToSplit } from "@/components/Editor/js";
+import { codeToSplit, combination } from "@/components/Editor/js";
 
 function Editor() {
     const [codeStr, setCodeRow] = useState(`function  add(a, b) {\n  return a + b;\n}`)
 
     const [code, setCode] = useState( codeToSplit(codeStr) )
 
+    // 輸入後改變Code Array
     const changeCode = (event, index) => {
         const change = code
         change[index] = event.currentTarget.textContent
         setCode(change)
+    }
+
+    const CodeDetail = (value: string) => {
+        combination(value)
+        return(
+            <>{value}</>
+        )
     }
 
     const Row = () => {
@@ -30,7 +38,7 @@ function Editor() {
                                 suppressContentEditableWarning={ true }
                                 onInput={ event => { changeCode(event, index) } }
                             >
-                                { value }
+                                { CodeDetail(value) }
                             </div>
                         </div>
                         )
