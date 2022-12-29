@@ -13,6 +13,8 @@
   --popover-text: #c0bfc0;
   // Editor
   --sequence-background-color: blue;
+  --sequence-border-color: #4e4e50;
+  --sequence-text-color: #5d6062;
 }
 
 @mixin dark {
@@ -28,7 +30,10 @@
   // Popover
   --popover-background: #4b4d4d;
   --popover-text: #c0bfc0;
+  // Editor
   --sequence-background-color: #313334;
+  --sequence-border-color: #4e4e50;
+  --sequence-text-color: #5d6062;
 }
 
 body[data-theme='auto'] {

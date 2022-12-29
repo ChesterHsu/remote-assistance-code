@@ -1,11 +1,56 @@
 @import "@/css/variable.scss";
 
+$sequence-width: 80px;
+$sequence-border: 1px;
+$spacing-up-and-down: 4px;
+$spacing-about: 1px;
+
 .editor {
   width: 100%;
   height: 100%;
-  display: flex;
-  .sequence {
-    width: 60px;
-    background-color: var(--sequence-background-color);
+  background: linear-gradient(
+                  to right,
+                  var(--sequence-background-color) 0px,
+                  var(--sequence-background-color) $sequence-width,
+                  var(--sequence-border-color) $sequence-width,
+                  var(--sequence-border-color) calc($sequence-width + $sequence-border),
+                  transparent calc($sequence-width + $sequence-border),
+                  transparent 100%
+  );
+  .editor-row {
+    display: flex;
+    width: 100%;
+    font-size: var(--code-font-size);
+    .sequence {
+      width: calc($sequence-width + $sequence-border - ( $spacing-about * 2 ));
+      height: calc(( $spacing-up-and-down * 2 ) + var(--code-font-size));
+      padding: $spacing-up-and-down $spacing-about;
+    }
+    .edit {
+      width: calc(100% - $sequence-width + $sequence-border - ( $spacing-about * 2 ));
+      height: calc(( $spacing-up-and-down * 2 ) + var(--code-font-size));
+      padding: $spacing-up-and-down $spacing-about;
+    }
   }
+}
+
+.sequence-number {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  height: 100%;
+  width: 20%;
+  color: var(--sequence-text-color);
+}
+
+.edit {
+  font-size: 20px;
+  color: #bdbdbd;
+  .function {
+    color: #cb7832;
+  }
+}
+
+.edit:hover > *[contenteditable="true"] {
+  background-color: rgba(217, 245, 255,0.5);
 }
