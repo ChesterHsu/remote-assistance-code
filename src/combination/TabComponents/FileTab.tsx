@@ -39,7 +39,7 @@ const GetPopover = (props : FileInformation, id, openPopover, popoverText = '') 
 
 }
 
-const Header = (props : FileTabProps, key) => {
+const Header = (props : FileTabProps) => {
 
     let [hover, setHover] = useState(false);
     let [popoverMessage, setPopoverMessage] = useState('')

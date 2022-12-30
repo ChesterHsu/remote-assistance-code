@@ -1,5 +1,5 @@
 import { FileValue } from "@/combination/TabComponents/js/interface";
-import { FileInformation } from "@/components/Popover/js/interface";
+import { FileInformation } from "@/combination/PopoverComponents/js/interface";
 
 export function fileAnalyze(props : FileValue) : FileInformation {
     const {

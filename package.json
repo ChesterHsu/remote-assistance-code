@@ -21,6 +21,7 @@
     "format": "prettier --write \"**/*.+(ts|tsx|json)\""
   },
   "dependencies": {
+    "@babel/runtime": "7.10.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@popperjs/core": "^2.11.6",
@@ -37,6 +38,8 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.1",
+    "rehype": "~12.0.1",
+    "rehype-prism-plus": "1.5.0",
     "styled-components": "^5.3.6",
     "vite-plugin-html": "^3.2.0",
     "vite-plugin-svg-icons": "^2.0.1",

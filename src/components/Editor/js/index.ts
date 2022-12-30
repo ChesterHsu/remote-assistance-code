@@ -18,7 +18,7 @@ export function recompilation(code : string) {
 
     switch (code) {
         case ' ':
-            result.code = ' '
+            result.code = '&nbsp'
             break;
         default:
             result.className = code
