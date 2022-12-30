@@ -16,6 +16,11 @@ const isProduction = process.env.NODE_ENV === "production"
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    }
+  },
   resolve: {
     // 設置別名
     alias: {

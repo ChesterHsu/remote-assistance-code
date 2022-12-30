@@ -2,21 +2,14 @@ const aiga = new RegExp(/([\.|\(|\)|,|{|}|\W])/g)
 
 export function codeToSplit(code : string) : Array<string> {
     return code.split(/\n/)
-
-    // splitLine.map((item: string) => {
-    //     result.push(combination(item.split(aiga)))
-    // })
-    //
-    // return result
 }
 
-// ${codeRecompilation.className ? `className='${codeRecompilation.className}'` : ''}
 
 export function combination(code: string) {
-    console.log(code.split(aiga))
+    return code.split(aiga)
 }
 
-function recompilation(code : string) {
+export function recompilation(code : string) {
 
     const result = {
         className: '',
@@ -25,7 +18,7 @@ function recompilation(code : string) {
 
     switch (code) {
         case ' ':
-            result.code = '&nbsp'
+            result.code = ' '
             break;
         default:
             result.className = code

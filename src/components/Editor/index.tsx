@@ -1,6 +1,6 @@
 import '@/css/components/Editor/index.scss'
 import React, { useEffect, useState } from "react";
-import { codeToSplit, combination } from "@/components/Editor/js";
+import { codeToSplit, combination, recompilation } from "@/components/Editor/js";
 
 function Editor() {
     const [codeStr, setCodeRow] = useState(`function  add(a, b) {\n  return a + b;\n}`)
@@ -12,12 +12,18 @@ function Editor() {
         const change = code
         change[index] = event.currentTarget.textContent
         setCode(change)
+        setCodeRow(code.join(''))
     }
 
     const CodeDetail = (value: string) => {
-        combination(value)
+
         return(
-            <>{value}</>
+            <>{
+                combination(value).map((item: string, index: number) => {
+                    const detail = recompilation(item)
+                    return(<span className={ detail.className } key={ index }> { detail.code } </span>)
+                })
+            }</>
         )
     }
 
