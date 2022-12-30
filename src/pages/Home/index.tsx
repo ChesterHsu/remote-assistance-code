@@ -6,8 +6,12 @@ import { setDarkTheme, setLightTheme } from "@/store/slice/themeSlice";
 import { setAttribute } from "@/tools/getTheme";
 import { FileTabProps, ProjectTabProps } from "@/combination/TabComponents/js/interface";
 
-const ProjectTab = lazy(() => import('@/combination/TabComponents/ProjectTab'))
-const FileTab = lazy(() => import('@/combination/TabComponents/FileTab'))
+import ProjectTab from "@/combination/TabComponents/ProjectTab";
+import FileTab from "@/combination/TabComponents/FileTab";
+// const ProjectTab = lazy(() => import('@/combination/TabComponents/ProjectTab'))
+// const FileTab = lazy(() => import('@/combination/TabComponents/FileTab'))
+
+
 
 
 

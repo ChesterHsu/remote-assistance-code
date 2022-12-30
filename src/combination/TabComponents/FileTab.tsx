@@ -6,12 +6,19 @@ import { IconProps } from "@/components/SvgIcon/js/interface";
 import { fileAnalyze } from "@/combination/TabComponents/js/fileAnalyze";
 import { FileInformation, SvgPopoverProps, TextPopoverProps } from "@/combination/PopoverComponents/js/interface";
 
-const Tab = lazy(() => import('@/components/Tabs/Tab'))
-const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
-const Editor = lazy(() => import('@/components/Editor'))
-const SvgIcon = lazy(() => import('@/components/SvgIcon'))
-const SvgPopover = lazy(() => import('@/combination/PopoverComponents/SvgPopover'))
-const TextPopover = lazy(() => import('@/combination/PopoverComponents/TextPopover'))
+import Tab from "@/components/Tabs/Tab";
+import TabHeader from "@/components/Tabs/TabHeader";
+import TextPopover from "@/combination/PopoverComponents/TextPopover";
+import SvgIcon from "@/components/SvgIcon";
+import SvgPopover from "@/combination/PopoverComponents/SvgPopover";
+import Editor from "@/components/Editor";
+
+// const Tab = lazy(() => import('@/components/Tabs/Tab'))
+// const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
+// const Editor = lazy(() => import('@/components/Editor'))
+// const SvgIcon = lazy(() => import('@/components/SvgIcon'))
+// const SvgPopover = lazy(() => import('@/combination/PopoverComponents/SvgPopover'))
+// const TextPopover = lazy(() => import('@/combination/PopoverComponents/TextPopover'))
 
 // 取得 Popover
 const GetPopover = (props : FileInformation, id, openPopover, popoverText = '') => {

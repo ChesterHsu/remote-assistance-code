@@ -4,9 +4,11 @@ import { useSelector } from "react-redux";
 import { selectTranslations } from "@/store/slice/i18nSlice";
 import '@/css/combination/PopoverComponents/index.scss'
 import { IconProps } from "@/components/SvgIcon/js/interface";
-const SvgIcon = lazy(() => import('@/components/SvgIcon'))
 
-const Popover = lazy(() => import('@/components/Popover'))
+import SvgIcon from "@/components/SvgIcon";
+import Popover from "@/components/Popover";
+// const SvgIcon = lazy(() => import('@/components/SvgIcon'))
+// const Popover = lazy(() => import('@/components/Popover'))
 
 
 
