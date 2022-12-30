@@ -8,6 +8,7 @@ import electron from 'vite-electron-plugin'
 import { customStart, loadViteEnv } from 'vite-electron-plugin/plugin'
 import renderer from 'vite-plugin-electron-renderer'
 import pkg from './package.json'
+import {viteCommonjs, esbuildCommonjs} from '@originjs/vite-plugin-commonjs'
 
 rmSync(path.join(__dirname, 'dist-electron'), { recursive: true, force: true })
 
@@ -17,9 +18,15 @@ const isProduction = process.env.NODE_ENV === "production"
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
+    outDir: 'build',
     commonjsOptions: {
       transformMixedEsModules: true,
     }
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      plugins: [esbuildCommonjs(['react-s3'])],
+    },
   },
   resolve: {
     // 設置別名
@@ -41,6 +48,7 @@ export default defineConfig({
     react(),
     svgr(),
     babel(),
+    viteCommonjs(),
     electron({
       include: [
         'electron'
