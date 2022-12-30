@@ -27,7 +27,8 @@ export function getTheme() {
                     setAttribute('dark')
                     break;
                 case 'light':
-                    lightTheme()
+                    darkTheme()
+                    // lightTheme()
                     setAttribute('light')
                     break;
             }
@@ -54,7 +55,8 @@ function setTheme(darkTheme, lightTheme) {
         ) {
             darkTheme()
         } else {
-            lightTheme()
+            darkTheme()
+            // lightTheme()
         }
 
         /**
