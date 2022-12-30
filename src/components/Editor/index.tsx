@@ -15,7 +15,7 @@ function Editor(props) {
         language = 'js',
         className,
         style = {
-            fontSize: 12,
+            fontSize: 16,
             width: '100%',
             backgroundColor: "transparent",
             fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
@@ -69,10 +69,18 @@ function Editor(props) {
 
     return(
         <div className={`editor`}>
-            <div className={ `sequence` }>
+            <div className={ `sequence` } style={{ ...contentStyle }}>
                 {
                     Array(codeRows).fill(1).map((value, key) => {
-                        return(<div key={ `k${key}` }> { key + 1 } </div>)
+                        return(
+                            <div
+                                className={ `sequence-number` }
+                                style={{ minHeight }}
+                                key={ `k${key}` }
+                            >
+                                { key + 1 }
+                            </div>
+                        )
                     })
                 }
             </div>
