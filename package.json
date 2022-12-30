@@ -71,9 +71,6 @@
     "vite-plugin-require-transform": "^1.0.4",
     "vite-plugin-svgr": "^2.4.0"
   },
-  "engines": {
-    "node": "^14.18.0 || >=16.0.0"
-  },
   "lint-staged": {
     "src/**": "eslint"
   }

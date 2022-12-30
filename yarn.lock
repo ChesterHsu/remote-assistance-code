@@ -3797,7 +3797,7 @@ levn@^0.4.1:
 
 lib-esm@~0.3.0:
   version "0.3.0"
-  resolved "https://registry.npmjs.org/lib-esm/-/lib-esm-0.3.0.tgz"
+  resolved "https://registry.yarnpkg.com/lib-esm/-/lib-esm-0.3.0.tgz#774d59ef27d3ab2b0485386b5dc70b2556178086"
   integrity sha512-P7YcG7OnoaGL2h4j46g/m0P2xHMXlYf+0iCDvVrEfzUVxLe+abytgd2VjUhj9puqEgqRGEDbT504YWj75jHacA==
 
 lilconfig@2.0.6:
@@ -5555,7 +5555,7 @@ vite-electron-plugin@^0.6.4:
 
 vite-plugin-electron-renderer@^0.11.3:
   version "0.11.3"
-  resolved "https://registry.npmjs.org/vite-plugin-electron-renderer/-/vite-plugin-electron-renderer-0.11.3.tgz"
+  resolved "https://registry.yarnpkg.com/vite-plugin-electron-renderer/-/vite-plugin-electron-renderer-0.11.3.tgz#024cac1f4a5d4fa86a085945bbfdafd705620bde"
   integrity sha512-Td8B+Q2Ncp5e4rG8ZL1/H59dVb7QLx3Aq9FGAgTXeMG4l7Kpfs6Hth5qV8OpJi6AVyicHkmeYC+o7gj0IRxpJg==
   dependencies:
     lib-esm "~0.3.0"
