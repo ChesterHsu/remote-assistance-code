@@ -43,6 +43,7 @@
     "wait-on": "^7.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
     "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
@@ -50,6 +51,7 @@
     "@vitejs/plugin-react": "^3.0.0",
     "electron": "^22.0.0",
     "electron-builder": "^23.6.0",
+    "esbuild": "*",
     "eslint": "8.30.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -59,12 +61,12 @@
     "prettier": "^2.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-is": "^18.2.0",
     "sass": "^1.57.1",
     "terser": "^5.16.1",
     "typescript": "^4.9.4",
-    "vite": "^4.0.3",
+    "vite": "^4.0.0",
     "vite-electron-plugin": "^0.6.4",
-    "vite-plugin-babel": "^1.1.2",
     "vite-plugin-electron-renderer": "^0.11.3",
     "vite-plugin-svgr": "^2.4.0"
   },

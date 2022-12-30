@@ -2,7 +2,6 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import * as path from 'path';
 import svgr from "vite-plugin-svgr";
-import babel from 'vite-plugin-babel';
 import { rmSync } from 'node:fs'
 import electron from 'vite-electron-plugin'
 import { customStart, loadViteEnv } from 'vite-electron-plugin/plugin'
@@ -47,7 +46,6 @@ export default defineConfig({
   plugins: [
     react(),
     svgr(),
-    babel(),
     viteCommonjs(),
     electron({
       include: [
