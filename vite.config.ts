@@ -11,6 +11,7 @@ import { viteCommonjs, esbuildCommonjs } from '@originjs/vite-plugin-commonjs';
 import requireTransform from 'vite-plugin-require-transform';
 import qiankun from 'vite-plugin-qiankun';
 import reactRefresh from '@vitejs/plugin-react-refresh'
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 rmSync(path.join(__dirname, 'dist-electron'), { recursive: true, force: true });
 
@@ -51,6 +52,7 @@ export default defineConfig({
     reactRefresh(),
     svgr(),
     viteCommonjs(),
+    nodeResolve(),
     requireTransform({}),
     qiankun('remote-assistance-code', {
       // 微前端應用名,主應用接口名需一致
