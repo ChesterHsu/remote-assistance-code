@@ -51,6 +51,7 @@ export default defineConfig({
     svgr(),
     viteCommonjs(),
     requireTransform({}),
+    legacy({}),
     qiankun('remote-assistance-code', {
       // 微前端應用名,主應用接口名需一致
       useDevMode: true
