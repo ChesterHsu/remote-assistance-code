@@ -7,12 +7,7 @@ import electron from 'vite-electron-plugin';
 import { customStart, loadViteEnv } from 'vite-electron-plugin/plugin';
 import renderer from 'vite-plugin-electron-renderer';
 import pkg from './package.json';
-import { viteCommonjs, esbuildCommonjs } from '@originjs/vite-plugin-commonjs';
-import requireTransform from 'vite-plugin-require-transform';
 import qiankun from 'vite-plugin-qiankun';
-import reactRefresh from '@vitejs/plugin-react-refresh'
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
 
 rmSync(path.join(__dirname, 'dist-electron'), { recursive: true, force: true });
 
@@ -25,11 +20,6 @@ export default defineConfig({
     outDir: 'dist',
     commonjsOptions: {
       transformMixedEsModules: true
-    }
-  },
-  optimizeDeps: {
-    esbuildOptions: {
-      plugins: [esbuildCommonjs(['react-calendar','react-date-picker'])]
     }
   },
   resolve: {
@@ -50,15 +40,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    reactRefresh(),
     svgr(),
-    viteCommonjs(),
-    commonjs({
-      transformMixedEsModules: true,
-      include: ['path/to/xxx.js'],
-    }),
-    nodeResolve(),
-    requireTransform({}),
     qiankun('remote-assistance-code', {
       // 微前端應用名,主應用接口名需一致
       useDevMode: true
