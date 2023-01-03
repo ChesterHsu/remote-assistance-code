@@ -19,6 +19,9 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
+  optimizeDeps: {
+    include: ['react/jsx-runtime'],
+  },
   resolve: {
     // 設置別名
     alias: {
