@@ -27,7 +27,7 @@ export default defineConfig({
   },
   optimizeDeps: {
     esbuildOptions: {
-      plugins: [esbuildCommonjs(['react-s3'])]
+      plugins: [esbuildCommonjs(['react-calendar','react-date-picker'])]
     }
   },
   resolve: {
