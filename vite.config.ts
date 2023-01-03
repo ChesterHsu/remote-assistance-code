@@ -18,6 +18,9 @@ const isProduction = process.env.NODE_ENV === 'production';
 export default defineConfig({
   build: {
     outDir: 'dist',
+    commonjsOptions: {
+      transformMixedEsModules: true
+    }
   },
   resolve: {
     // 設置別名
@@ -56,9 +59,11 @@ export default defineConfig({
               )
             ]
           : []),
+        // Allow use `import.meta.env.VITE_SOME_KEY` in Electron-Main
         loadViteEnv()
       ]
     }),
+    // Use Node.js API in the Renderer-process
     renderer({
       nodeIntegration: true
     })
