@@ -5962,11 +5962,6 @@ vite-electron-plugin@^0.6.4:
     fast-glob "^3.2.12"
     notbundle "~0.3.3"
 
-vite-plugin-babel@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/vite-plugin-babel/-/vite-plugin-babel-1.1.2.tgz#faf27bf69628e20d4f36f85b415789e6121d93e3"
-  integrity sha512-NPqUSzxzdPo1UyZGvL1KOIYy5R1T9+Af6cZ9Qw/f7tepjp6FSmx4SbK6eZ9xttEnSsdYj3IJmXwlU8PYeZstWw==
-
 vite-plugin-electron-renderer@^0.11.3:
   version "0.11.3"
   resolved "https://registry.npmjs.org/vite-plugin-electron-renderer/-/vite-plugin-electron-renderer-0.11.3.tgz"
