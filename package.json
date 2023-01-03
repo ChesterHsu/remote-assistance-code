@@ -67,6 +67,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
+    "require.js": "^1.0.0",
     "sass": "^1.57.1",
     "terser": "^5.16.1",
     "typescript": "^4.9.4",
