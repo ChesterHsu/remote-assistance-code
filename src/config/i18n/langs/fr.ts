@@ -1,4 +1,4 @@
 export const fr = {
-    tagline: "Continuous improvement",
-    ratings: "Ratings",
-}
+  tagline: 'Continuous improvement',
+  ratings: 'Ratings'
+};

@@ -30,7 +30,7 @@ export class SelectionText {
     const { selectionStart, selectionEnd } = this.elm;
     return this.value.slice(
       typeof start === 'number' && !isNaN(start) ? start : selectionStart,
-      typeof end === 'number' && !isNaN(end) ? start : selectionEnd,
+      typeof end === 'number' && !isNaN(end) ? start : selectionEnd
     );
   }
   getLineStartNumber() {
@@ -62,7 +62,7 @@ export class SelectionText {
           str
             .split('\n')
             .map((txt) => text + txt)
-            .join('\n'),
+            .join('\n')
         )
         .position(oldStart + text.length, this.end);
     }
@@ -83,7 +83,7 @@ export class SelectionText {
           str
             .split('\n')
             .map((txt) => txt.replace(reg, ''))
-            .join('\n'),
+            .join('\n')
         )
         .position(newStart, this.end);
     }

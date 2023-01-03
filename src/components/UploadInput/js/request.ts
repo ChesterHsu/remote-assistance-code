@@ -1,7 +1,6 @@
 import type { UploadRequestOption, UploadRequestError, UploadProgressEvent } from './interface';
 import defaultRequest from './request';
 
-
 function getError(option: UploadRequestOption, xhr: XMLHttpRequest) {
   const msg = `cannot ${option.method} ${option.action} ${xhr.status}'`;
   const err = new Error(msg) as UploadRequestError;
@@ -37,16 +36,15 @@ export default function upload(option: UploadRequestOption) {
     };
   }
 
-
   // eslint-disable-next-line no-undef
   const formData = new FormData();
 
   if (option.data) {
-    Object.keys(option.data).forEach(key => {
+    Object.keys(option.data).forEach((key) => {
       const value = option.data![key];
       // support key-value array data
       if (Array.isArray(value)) {
-        value.forEach(item => {
+        value.forEach((item) => {
           // { list: [ 11, 22 ] }
           // formData.append('list[]', 11);
           formData.append(`${key}[]`, item);
@@ -58,7 +56,6 @@ export default function upload(option: UploadRequestOption) {
     });
   }
 
-
   // eslint-disable-next-line no-undef
   if (option.file instanceof Blob) {
     formData.append(<string>option.filename, option.file, (option.file as any).name);
@@ -69,8 +66,6 @@ export default function upload(option: UploadRequestOption) {
   xhr.onerror = function error(e) {
     option.onError!(e);
   };
-
-
 
   xhr.onload = function onload() {
     if (xhr.status < 200 || xhr.status >= 300) {
@@ -94,31 +89,29 @@ export default function upload(option: UploadRequestOption) {
   if (headers['X-Requested-With'] !== null) {
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
   }
-  const headersKeyArray = Object.keys(headers)
+  const headersKeyArray = Object.keys(headers);
 
   if (!headersKeyArray.length) {
-
-    headersKeyArray.forEach(h => {
+    headersKeyArray.forEach((h) => {
       if (headers[h] !== null) {
         xhr.setRequestHeader(h, headers[h]);
       }
     });
-
   }
 
-  Object.keys(headers).forEach(h => {
+  Object.keys(headers).forEach((h) => {
     if (headers[h] !== null) {
       xhr.setRequestHeader(h, headers[h]);
     }
   });
 
-  const formDataIsNotNull = !Object.keys(headers).length
+  const formDataIsNotNull = !Object.keys(headers).length;
 
   if (!formDataIsNotNull) xhr.send(formData);
 
   return {
     abort() {
       xhr.abort();
-    },
+    }
   };
 }

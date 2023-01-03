@@ -40,21 +40,21 @@ const traverseFileTree = (files: InternalDataTransferItem[], callback, isAccepte
     // eslint-disable-next-line no-param-reassign
     item.path = path || '';
     if (item.isFile) {
-      item.file(file => {
+      item.file((file) => {
         if (isAccepted(file)) {
           // https://github.com/ant-design/ant-design/issues/16426
           if (item.fullPath && !file.webkitRelativePath) {
             Object.defineProperties(file, {
               webkitRelativePath: {
-                writable: true,
-              },
+                writable: true
+              }
             });
             // eslint-disable-next-line no-param-reassign
             (file as any).webkitRelativePath = item.fullPath.replace(/^\//, '');
             Object.defineProperties(file, {
               webkitRelativePath: {
-                writable: false,
-              },
+                writable: false
+              }
             });
           }
           callback([file]);
@@ -62,13 +62,13 @@ const traverseFileTree = (files: InternalDataTransferItem[], callback, isAccepte
       });
     } else if (item.isDirectory) {
       loopFiles(item, (entries: InternalDataTransferItem[]) => {
-        entries.forEach(entryItem => {
+        entries.forEach((entryItem) => {
           _traverseFileTree(entryItem, `${path}${item.name}/`);
         });
       });
     }
   };
-  files.forEach(file => {
+  files.forEach((file) => {
     _traverseFileTree(file.webkitGetAsEntry() as any);
   });
 };

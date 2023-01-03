@@ -1,29 +1,21 @@
-import {
-    BrowserRouter as Router,
-    useRoutes,
-} from "react-router-dom";
+import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
 
 // 頁面組件
-import Home from "@/pages/Home/index"
+import Home from '@/pages/Home/index';
 
 const App = () => {
-    let routes = useRoutes([
-        { path: "/", element: <Home /> },
-    ]);
-    return routes;
+  let routes = useRoutes([{ path: '/', element: <Home /> }]);
+  return routes;
 };
 
 const RemoteAssistanceRoute = () => {
-    return (
-        <div className="remote-assistance-route">
-            <Router>
-                <App />
-            </Router>
-        </div>
-    )
+  return (
+    <div className="remote-assistance-route">
+      <Router>
+        <App />
+      </Router>
+    </div>
+  );
+};
 
-}
-
-export default RemoteAssistanceRoute
-
-
+export default RemoteAssistanceRoute;

@@ -18,9 +18,9 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "baseUrl": "./",
     "types": ["vite/client", "vite-plugin-svg-icons/client"],
-    "paths":{
+    "paths": {
       "@": ["src"],
-      "@/*": ["src/*"],
+      "@/*": ["src/*"]
     },
     "allowJs": false,
     "skipLibCheck": true,

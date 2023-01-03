@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 /**  @type {IconProps}
  *   @property {string} iconName icon 名稱 範例（路徑：src/icons/svg/icon1.svg）iconName: 'icon1'.
@@ -8,11 +8,11 @@ import React from "react";
  *   @property {function} onStart 點擊Icon後觸發.
  * **/
 export interface IconProps {
-    iconName: string,
-    wrapperClassName?: string,
-    svgProp?: React.SVGProps<SVGSVGElement>,
-    darkTheme?: boolean | string,
-    onStart?: () => void,
+  iconName: string;
+  wrapperClassName?: string;
+  svgProp?: React.SVGProps<SVGSVGElement>;
+  darkTheme?: boolean | string;
+  onStart?: () => void;
 }
 
 /**  @type {IconProps}
@@ -20,6 +20,6 @@ export interface IconProps {
  *   @property {string} light light色碼.
  * **/
 export interface SvgDarkColor {
-    dark: string,
-    light: string,
+  dark: string;
+  light: string;
 }

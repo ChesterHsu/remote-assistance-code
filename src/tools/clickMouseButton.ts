@@ -1,3 +1,1 @@
-export function clickMouseButton(elementId) {
-
-}
+export function clickMouseButton(elementId) {}

@@ -1,14 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 export const uploadSlice = createSlice({
-    name: "upload",
-    initialState: {
-        uid: ''
-    },
-    reducers: {
-        setUid: (state, action) => {
-            state.uid = action.payload
-        }
-    },
+  name: 'upload',
+  initialState: {
+    uid: ''
+  },
+  reducers: {
+    setUid: (state, action) => {
+      state.uid = action.payload;
+    }
+  }
 });
 
 export const upload = (state) => state.upload;

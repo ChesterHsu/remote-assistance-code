@@ -1,3 +1,3 @@
 export const de = {
-    file: "File",
-}
+  file: 'File'
+};

@@ -8,10 +8,10 @@ import * as React from 'react';
  *  @property {function} onHover 移動TabHeader會觸發,isHove = true時 為移動到上方,移開時會轉為false
  * **/
 export interface Tab {
-    uid: string,
-    text: string,
-    onStart?: () => void;
-    onHover?: (e) => void;
+  uid: string;
+  text: string;
+  onStart?: () => void;
+  onHover?: (e) => void;
 }
 
 /**
@@ -23,12 +23,11 @@ export interface Tab {
  *   @property {React.ElementType} TabContent Tab 內層中資訊顯示功能
  * **/
 export interface TabProps {
-    tabClassName?: string;
-    tabHeaderItemClassName? : string;
-    tabStyle?: React.CSSProperties;
-    TabHeader?: React.ElementType;
-    TabContent? : React.ElementType;
-
+  tabClassName?: string;
+  tabHeaderItemClassName?: string;
+  tabStyle?: React.CSSProperties;
+  TabHeader?: React.ElementType;
+  TabContent?: React.ElementType;
 }
 
 /**  @type {TabHeaderProps}
@@ -39,14 +38,12 @@ export interface TabProps {
  *   @property {React.ElementType} TextFont TabHeader文字“前”的元件
  *   @property {React.ElementType} TextBack TabHeader文字“後”的元件
  * **/
-export interface TabHeaderProps extends Tab{
-    index?: string;
-    id?: string;
-    contentStyle?: React.CSSProperties;
-    contentClassName?: string;
-    textClassName?: string;
-    TextFont?: React.ElementType;
-    TextBack?: React.ElementType;
+export interface TabHeaderProps extends Tab {
+  index?: string;
+  id?: string;
+  contentStyle?: React.CSSProperties;
+  contentClassName?: string;
+  textClassName?: string;
+  TextFont?: React.ElementType;
+  TextBack?: React.ElementType;
 }
-
-

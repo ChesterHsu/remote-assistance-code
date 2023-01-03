@@ -1,19 +1,19 @@
-import { Popover } from "@/components/Popover/js/interface";
+import { Popover } from '@/components/Popover/js/interface';
 
 /**  @type {TextPopoverProps}
  *   @property {string} text 顯示在Tab中的文字.
  *   @property {string} TextPopoverClassName Text Popover ClassName.
  * **/
-export interface TextPopoverProps extends Popover{
-    text: string,
-    TextPopoverClassName?: string,
+export interface TextPopoverProps extends Popover {
+  text: string;
+  TextPopoverClassName?: string;
 }
 
 /**  @type {SvgPopoverProps}
  *   @property {string} svgPopoverClassName Svg Popover ClassName.
  * **/
-export interface SvgPopoverProps extends Popover, FileInformation{
-    svgPopoverClassName?: string,
+export interface SvgPopoverProps extends Popover, FileInformation {
+  svgPopoverClassName?: string;
 }
 
 /**  @type {FileInformation}
@@ -23,8 +23,8 @@ export interface SvgPopoverProps extends Popover, FileInformation{
  *   @property {string} filePatch 檔案路徑.
  * **/
 export interface FileInformation {
-    file: string,
-    fileSize: string,
-    fileType: string,
-    filePatch: string,
+  file: string;
+  fileSize: string;
+  fileType: string;
+  filePatch: string;
 }
