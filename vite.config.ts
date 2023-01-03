@@ -10,7 +10,7 @@ import pkg from './package.json';
 import { viteCommonjs, esbuildCommonjs } from '@originjs/vite-plugin-commonjs';
 import requireTransform from 'vite-plugin-require-transform';
 import qiankun from 'vite-plugin-qiankun';
-import reactRefresh from '@vitejs/plugin-react-refresh'
+import legacy from '@vitejs/plugin-legacy'
 
 rmSync(path.join(__dirname, 'dist-electron'), { recursive: true, force: true });
 
@@ -48,7 +48,6 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    reactRefresh(),
     svgr(),
     viteCommonjs(),
     requireTransform({}),
