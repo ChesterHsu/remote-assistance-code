@@ -203,7 +203,7 @@
 
 "@babel/runtime@^7.10.5", "@babel/runtime@^7.7.2":
   version "7.20.7"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.20.7.tgz#fcb41a5a70550e04a7b708037c7c32f7f356d8fd"
+  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.20.7.tgz"
   integrity sha512-UF0tvkUtxwAgZ5W/KrkHf0Rn0fdnLDU9ScxBrEVNUprE/MzirjK4MJUX1/BVDv00Sv8cljtukVK1aky++X1SjQ==
   dependencies:
     regenerator-runtime "^0.13.11"
@@ -3076,7 +3076,7 @@ global-agent@^3.0.0:
 
 globals@^11.1.0:
   version "11.12.0"
-  resolved "https://registry.yarnpkg.com/globals/-/globals-11.12.0.tgz#ab8795338868a0babd8525758018c2a7eb95c42e"
+  resolved "https://registry.npmjs.org/globals/-/globals-11.12.0.tgz"
   integrity sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==
 
 globals@^13.19.0:
@@ -3451,7 +3451,7 @@ import-fresh@^3.0.0, import-fresh@^3.2.1:
 
 import-html-entry@^1.14.0:
   version "1.14.0"
-  resolved "https://registry.yarnpkg.com/import-html-entry/-/import-html-entry-1.14.0.tgz#9a05928373bb7e9362cd8dd428a82387a87524ff"
+  resolved "https://registry.npmjs.org/import-html-entry/-/import-html-entry-1.14.0.tgz"
   integrity sha512-CQQMV+2rxHCLMSXsajV1cjT1g6xi3ujMAPnGwR96xHaN5/JEVIOUGkM7LDRn73dk8E8NaHmOf3rvPPExPPe1xw==
   dependencies:
     "@babel/runtime" "^7.7.2"
@@ -4733,7 +4733,7 @@ punycode@^2.1.0:
 
 qiankun@^2.8.4:
   version "2.8.4"
-  resolved "https://registry.yarnpkg.com/qiankun/-/qiankun-2.8.4.tgz#c35244ee8256ddc4e221d066956342d6ff8804f2"
+  resolved "https://registry.npmjs.org/qiankun/-/qiankun-2.8.4.tgz"
   integrity sha512-9MCKTJZpb0L7CcWC80jNr4TZz9m2Pvh9QWHNKJ7vZAEUMRZBbMl3+wCV1VBcUJJIgfRMU5G+ksoW142rMFA0Ew==
   dependencies:
     "@babel/runtime" "^7.10.5"
@@ -4791,7 +4791,7 @@ react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0:
 
 react-is@^18.0.0, react-is@^18.2.0:
   version "18.2.0"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
+  resolved "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
 react-property@2.0.0:
@@ -5216,7 +5216,7 @@ simple-update-notifier@^1.0.7:
 
 single-spa@^5.9.2:
   version "5.9.4"
-  resolved "https://registry.yarnpkg.com/single-spa/-/single-spa-5.9.4.tgz#2a995b0784867a3f60ceb458de295ee67f045077"
+  resolved "https://registry.npmjs.org/single-spa/-/single-spa-5.9.4.tgz"
   integrity sha512-QkEoh0AzGuU82qnbUUk0ydF78QbU5wMKqKKJn7uUQfBiOYlRQEfIOpLM4m23Sab+kTOLI1kbYhYeiQ7fX5KVVw==
 
 slice-ansi@^3.0.0:
@@ -5894,7 +5894,7 @@ vite-electron-plugin@^0.6.4:
 
 vite-plugin-electron-renderer@^0.11.3:
   version "0.11.3"
-  resolved "https://registry.npmjs.org/vite-plugin-electron-renderer/-/vite-plugin-electron-renderer-0.11.3.tgz"
+  resolved "https://registry.yarnpkg.com/vite-plugin-electron-renderer/-/vite-plugin-electron-renderer-0.11.3.tgz#024cac1f4a5d4fa86a085945bbfdafd705620bde"
   integrity sha512-Td8B+Q2Ncp5e4rG8ZL1/H59dVb7QLx3Aq9FGAgTXeMG4l7Kpfs6Hth5qV8OpJi6AVyicHkmeYC+o7gj0IRxpJg==
   dependencies:
     lib-esm "~0.3.0"
