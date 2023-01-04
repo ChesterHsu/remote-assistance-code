@@ -27,11 +27,7 @@ export default defineConfig({
           if (id.includes('node_modules')) {
             const arr = id.toString().split('node_modules/')[1].split('/')
             switch(arr[0]) {
-              case '@naturefw': // 自然框架
-              case '@popperjs':
-              case '@vue':
-              case 'element-plus': // UI 库
-              case '@element-plus': // 图标
+              case '@react':
                 return '_' + arr[0]
                 break
               default :
