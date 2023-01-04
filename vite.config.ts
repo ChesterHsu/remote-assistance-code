@@ -8,8 +8,8 @@ import { customStart, loadViteEnv } from 'vite-electron-plugin/plugin';
 import renderer from 'vite-plugin-electron-renderer';
 import pkg from './package.json';
 import { viteCommonjs, esbuildCommonjs } from '@originjs/vite-plugin-commonjs';
-import qiankun from 'vite-plugin-qiankun';
 import requireTransform from 'vite-plugin-require-transform';
+import qiankun from 'vite-plugin-qiankun';
 
 rmSync(path.join(__dirname, 'dist-electron'), { recursive: true, force: true });
 
@@ -49,9 +49,7 @@ export default defineConfig({
     react(),
     svgr(),
     viteCommonjs(),
-    requireTransform({
-      fileRegex: /.ts$|.js$|.tsx$/
-    }),
+    requireTransform({}),
     qiankun('remote-assistance-code', {
       // 微前端應用名,主應用接口名需一致
       useDevMode: true
