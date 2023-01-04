@@ -10,7 +10,6 @@ import pkg from './package.json';
 import { viteCommonjs, esbuildCommonjs } from '@originjs/vite-plugin-commonjs';
 import qiankun from 'vite-plugin-qiankun';
 import requireTransform from 'vite-plugin-require-transform';
-import babel from 'vite-plugin-babel';
 
 rmSync(path.join(__dirname, 'dist-electron'), { recursive: true, force: true });
 
@@ -50,7 +49,6 @@ export default defineConfig({
     react(),
     svgr(),
     viteCommonjs(),
-    babel(),
     requireTransform({
       fileRegex: /.ts$|.js$|.tsx$/
     }),
