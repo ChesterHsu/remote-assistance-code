@@ -3,15 +3,11 @@ import { TabHeaderProps, TabProps } from '@/components/Tabs/js/interface';
 import '@/css/combination/TabComponents/index.scss';
 import { IconProps } from '@/components/SvgIcon/js/interface';
 import { ProjectTabProps } from '@/combination/TabComponents/js/interface';
-import Tab from '@/components/Tabs/Tab';
-import TabHeader from '@/components/Tabs/TabHeader';
-import TextPopover from '@/combination/PopoverComponents/TextPopover';
-import SvgIcon from '@/components/SvgIcon';
 
-// const Tab = lazy(() => import('@/components/Tabs/Tab'))
-// const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
-// const TextPopover = lazy(() => import('@/combination/PopoverComponents/TextPopover'))
-// const SvgIcon = lazy(() => import('@/components/SvgIcon'))
+const Tab = lazy(() => import('@/components/Tabs/Tab'))
+const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
+const TextPopover = lazy(() => import('@/combination/PopoverComponents/TextPopover'))
+const SvgIcon = lazy(() => import('@/components/SvgIcon'))
 
 const Header = (props: TabHeaderProps) => {
   let [hover, setHover] = useState(false);

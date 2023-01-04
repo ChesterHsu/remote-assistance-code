@@ -5,8 +5,8 @@ import { selectTranslations } from '@/store/slice/i18nSlice';
 import '@/css/combination/PopoverComponents/index.scss';
 import { IconProps } from '@/components/SvgIcon/js/interface';
 
-import SvgIcon from '@/components/SvgIcon';
-import Popover from '@/components/Popover';
+const SvgIcon = lazy(() => import('@/components/SvgIcon'));
+const Popover = lazy(() => import('@/components/Popover'));
 
 function SvgPopover(props: SvgPopoverProps) {
   const t = useSelector(selectTranslations);
