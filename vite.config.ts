@@ -19,8 +19,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 export default defineConfig({
   build: {
     sourcemap: true,
-    outDir: 'dist', //指定输出路径
-    assetsDir: 'static/img/', // 指定生成静态资源的存放路径
+    outDir: 'dist',
+    assetsDir: 'static/img/',
     rollupOptions: {
       output: {
         manualChunks(id) {
