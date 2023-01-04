@@ -59,6 +59,7 @@
     "vite": "^4.0.3",
     "vite-electron-plugin": "^0.6.4",
     "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-pwa": "^0.14.1",
     "vite-plugin-require-transform": "^1.0.4",
     "vite-plugin-svgr": "^2.4.0"
   },

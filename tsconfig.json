@@ -17,7 +17,7 @@
     "noImplicitAny": false,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "baseUrl": "./",
-    "types": ["vite/client", "vite-plugin-svg-icons/client"],
+    "types": ["vite/client", "vite-plugin-svg-icons/client", "node"],
     "paths": {
       "@": ["src"],
       "@/*": ["src/*"]

@@ -8,6 +8,7 @@ import { customStart, loadViteEnv } from 'vite-electron-plugin/plugin';
 import { defineConfig } from 'vite';
 import { rmSync } from 'node:fs';
 import viteCompression from 'vite-plugin-compression';
+import { VitePWA } from 'vite-plugin-pwa'
 import pkg from './package.json';
 
 
@@ -65,6 +66,12 @@ export default defineConfig({
     qiankun('remote-assistance-code', {
       // 微前端應用名,主應用接口名需一致
       useDevMode: true
+    }),
+    VitePWA({
+      registerType: 'autoUpdate',
+      devOptions: {
+        enabled: true
+      }
     }),
     electron({
       include: ['electron'],
