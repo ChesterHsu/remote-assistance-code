@@ -1,32 +1,49 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import * as path from 'path';
 import svgr from 'vite-plugin-svgr';
-import { rmSync } from 'node:fs';
-import electron from 'vite-electron-plugin';
-import { customStart, loadViteEnv } from 'vite-electron-plugin/plugin';
-import renderer from 'vite-plugin-electron-renderer';
-import pkg from './package.json';
-import { viteCommonjs, esbuildCommonjs } from '@originjs/vite-plugin-commonjs';
-import requireTransform from 'vite-plugin-require-transform';
 import qiankun from 'vite-plugin-qiankun';
+import electron from 'vite-electron-plugin';
+import requireTransform from 'vite-plugin-require-transform';
+import { customStart, loadViteEnv } from 'vite-electron-plugin/plugin';
+import { defineConfig } from 'vite';
+import { rmSync } from 'node:fs';
+import viteCompression from 'vite-plugin-compression';
+import pkg from './package.json';
+
 
 rmSync(path.join(__dirname, 'dist-electron'), { recursive: true, force: true });
 
 const isDevelopment = process.env.NODE_ENV === 'development' || !!process.env.VSCODE_DEBUG;
 const isProduction = process.env.NODE_ENV === 'production';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   build: {
-    outDir: 'dist',
-    commonjsOptions: {
-      transformMixedEsModules: true
-    }
-  },
-  optimizeDeps: {
-    esbuildOptions: {
-      plugins: [esbuildCommonjs(['react-s3'])]
+    sourcemap: true,
+    outDir: 'dist', //指定输出路径
+    assetsDir: 'static/img/', // 指定生成静态资源的存放路径
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            const arr = id.toString().split('node_modules/')[1].split('/')
+            switch(arr[0]) {
+              case '@naturefw': // 自然框架
+              case '@popperjs':
+              case '@vue':
+              case 'element-plus': // UI 库
+              case '@element-plus': // 图标
+                return '_' + arr[0]
+                break
+              default :
+                return '__vendor'
+                break
+            }
+          }
+        },
+        chunkFileNames: 'static/js1/[name]-[hash].js',
+        entryFileNames: 'static/js2/[name]-[hash].js',
+        assetFileNames: 'static/[ext]/[name]-[hash].[ext]'
+      },
     }
   },
   resolve: {
@@ -48,7 +65,6 @@ export default defineConfig({
   plugins: [
     react(),
     svgr(),
-    viteCommonjs(),
     requireTransform({}),
     qiankun('remote-assistance-code', {
       // 微前端應用名,主應用接口名需一致
@@ -62,30 +78,25 @@ export default defineConfig({
       plugins: [
         ...(!!process.env.VSCODE_DEBUG
           ? [
-              // Will start Electron via VSCode Debug
               customStart(() =>
                 debounce(() => console.log(/* For `.vscode/.debug.script.mjs` */ '[startup] Electron App'))
               )
             ]
           : []),
-        // Allow use `import.meta.env.VITE_SOME_KEY` in Electron-Main
         loadViteEnv()
       ]
     }),
-    // Use Node.js API in the Renderer-process
-    renderer({
-      nodeIntegration: true
-    })
+    viteCompression(),
   ],
   server: !!process.env.VSCODE_DEBUG
-    ? (() => {
+      ? (() => {
         const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL);
         return {
           host: url.hostname,
           port: +url.port
         };
       })()
-    : undefined,
+      : undefined,
   clearScreen: false
 });
 
