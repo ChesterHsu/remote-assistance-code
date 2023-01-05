@@ -19,14 +19,19 @@ $w-textarea: 'w-tc-editor';
                   transparent calc($sequence-width + $sequence-border),
                   transparent 100%
   );
-  .sequence {
-    min-width: calc($sequence-width + $sequence-border - ( $spacing-about * 2 ));
-    height: calc(( $spacing-up-and-down * 2 ) + var(--code-font-size));
-    .sequence-number {
-      display: flex;
-      align-items: center;
-      color: var(--sequence-text-color);
-    }
+}
+
+.code-content {
+  display: flex;
+}
+
+.sequence {
+  min-width: calc($sequence-width + $sequence-border - ( $spacing-about * 2 ));
+  height: 100%;
+  .sequence-number {
+    display: flex;
+    align-items: center;
+    color: var(--sequence-text-color);
   }
 }
 

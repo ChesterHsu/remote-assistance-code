@@ -5,11 +5,10 @@ export const container: React.CSSProperties = {
   textAlign: 'left',
   boxSizing: 'border-box',
   padding: 0,
-  overflow: 'hidden',
+  overflowY: 'scroll',
 };
 
 export const textarea: React.CSSProperties = {
-  position: 'absolute',
   top: 0,
   left: 0,
   height: '100%',
@@ -44,4 +43,5 @@ export const editor: React.CSSProperties = {
   wordBreak: 'keep-all',
   overflowWrap: 'break-word',
   outline: 0,
+  position: 'absolute',
 };
