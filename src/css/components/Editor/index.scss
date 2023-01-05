@@ -22,13 +22,33 @@ $w-textarea: 'w-tc-editor';
   .sequence {
     min-width: calc($sequence-width + $sequence-border - ( $spacing-about * 2 ));
     height: calc(( $spacing-up-and-down * 2 ) + var(--code-font-size));
-    padding: $spacing-up-and-down $spacing-about;
     .sequence-number {
       display: flex;
       align-items: center;
       color: var(--sequence-text-color);
     }
   }
+}
+
+.w-tc-editor {
+  font-family: inherit;
+  font-size: 12px;
+  background-color: var(--color-canvas-subtle);
+  color: var(--color-fg-default);
+}
+.w-tc-editor-text,
+.w-tc-editor-preview {
+  min-height: 16px;
+}
+.w-tc-editor-preview pre {
+  margin: 0;
+  padding: 0;
+  white-space: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+.w-tc-editor-preview pre code {
+  font-family: inherit;
 }
 
 .language-js {

@@ -5,7 +5,7 @@ export const container: React.CSSProperties = {
   textAlign: 'left',
   boxSizing: 'border-box',
   padding: 0,
-  overflow: 'hidden'
+  overflow: 'hidden',
 };
 
 export const textarea: React.CSSProperties = {
@@ -20,7 +20,7 @@ export const textarea: React.CSSProperties = {
   overflow: 'hidden',
   MozOsxFontSmoothing: 'grayscale',
   WebkitFontSmoothing: 'antialiased',
-  WebkitTextFillColor: 'transparent'
+  WebkitTextFillColor: 'transparent',
 };
 
 export const editor: React.CSSProperties = {
@@ -43,5 +43,5 @@ export const editor: React.CSSProperties = {
   whiteSpace: 'pre-wrap',
   wordBreak: 'keep-all',
   overflowWrap: 'break-word',
-  outline: 0
+  outline: 0,
 };
