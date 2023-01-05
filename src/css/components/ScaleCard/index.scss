@@ -1,0 +1,27 @@
+@import "@/css/variable.scss";
+
+.scale {
+  position: relative;
+  float: left;
+  background: var(--scale-border);
+}
+.resizable {
+  overflow: scroll;
+  resize: horizontal;
+  cursor: col-resize;
+  min-width: 20px;
+  opacity: 0;
+}
+
+.resizable::-webkit-scrollbar {
+  width: 5px;
+  height: 900px;
+}
+
+.scale-content {
+  position: absolute;
+  top: 0;
+  right: 3px;
+  height: 100%;
+  width: 100%;
+}

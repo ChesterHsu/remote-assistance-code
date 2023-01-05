@@ -24,7 +24,7 @@ $file-tab-height: 25px;
 .file-tab {
   background-color: var(--file-tab-background-color);
   flex-grow: 1;
-  display: flex;
+  overflow: hidden;
 }
 
 .file-header-item {
