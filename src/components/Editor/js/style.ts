@@ -1,28 +1,47 @@
 import React from 'react';
 
-export const container: React.CSSProperties = {
+export const editorColumn: React.CSSProperties = {
   position: 'relative',
-  textAlign: 'left',
-  boxSizing: 'border-box',
-  padding: 0,
-  overflowY: 'scroll',
+};
+
+export const editorColumnContent: React.CSSProperties = {
+  position: 'relative',
+  top: 0,
+  bottom: 0,
+  left: 0,
+  right: 0,
+  padding: '0px',
+  margin: '0px',
+  overflowY: 'hidden',
+  overflowX: 'auto',
+  height: '100%'
 };
 
 export const textarea: React.CSSProperties = {
-  top: 0,
-  left: 0,
+  position: 'absolute',
   height: '100%',
   width: '100%',
+  padding: '0px',
+  display: 'inline-block',
+  background: 'none',
+  textDecoration: 'none',
+  whiteSpace: 'pre',
   resize: 'none',
   color: 'inherit',
-  opacity: 0.8,
   overflow: 'hidden',
   MozOsxFontSmoothing: 'grayscale',
   WebkitFontSmoothing: 'antialiased',
   WebkitTextFillColor: 'transparent',
+  top: 0,
+  left: 0,
+  opacity: 0.8,
 };
 
 export const editor: React.CSSProperties = {
+  position: 'absolute',
+  outline: 0,
+  width: '100%',
+  top: 0,
   margin: 0,
   border: 0,
   background: 'none',
@@ -42,6 +61,13 @@ export const editor: React.CSSProperties = {
   whiteSpace: 'pre-wrap',
   wordBreak: 'keep-all',
   overflowWrap: 'break-word',
-  outline: 0,
-  position: 'absolute',
 };
+
+export const container: React.CSSProperties = {
+  position: 'relative',
+  textAlign: 'left',
+  boxSizing: 'border-box',
+  padding: 0,
+  overflow: 'hidden',
+};
+
