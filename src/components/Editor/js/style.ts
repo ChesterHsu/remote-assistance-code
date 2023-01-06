@@ -20,7 +20,6 @@ export const editorColumnContent: React.CSSProperties = {
 export const textarea: React.CSSProperties = {
   position: 'absolute',
   height: '100%',
-  width: '100%',
   padding: '0px',
   display: 'inline-block',
   background: 'none',
@@ -28,7 +27,7 @@ export const textarea: React.CSSProperties = {
   whiteSpace: 'pre',
   resize: 'none',
   color: 'inherit',
-  overflow: 'hidden',
+  overflow: 'scroll',
   MozOsxFontSmoothing: 'grayscale',
   WebkitFontSmoothing: 'antialiased',
   WebkitTextFillColor: 'transparent',
@@ -40,7 +39,6 @@ export const textarea: React.CSSProperties = {
 export const editor: React.CSSProperties = {
   position: 'absolute',
   outline: 0,
-  width: '100%',
   top: 0,
   margin: 0,
   border: 0,

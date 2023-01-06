@@ -1,10 +1,11 @@
 import '@/css/components/Editor/index.scss';
-import React, { useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import React, {useEffect, useImperativeHandle, useLayoutEffect, useMemo, useRef, useState} from 'react';
 import * as styles from './js/style';
 import shortcuts from './js/shortcuts';
 import { htmlEncode, processHtml } from './js/utils';
 import { TextareaCodeEditorProps } from './js/interface';
 import { textarea } from "./js/style";
+import useSize from "@/tools/useSize";
 
 export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((props, ref) => {
     const {
@@ -27,6 +28,14 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
     useImperativeHandle<HTMLTextAreaElement, HTMLTextAreaElement>(ref, () => textRef.current!);
     const [codeRows, setCodeRows] = useState(typeof value === "string" ? value.split(/\r\n|\r|\n/).length : 0);
     useEffect(() => setCodeRows(typeof value === "string" ? value.split(/\r\n|\r|\n/).length : 0), [value]);
+    const [codeWidth, setCodeWidth] = useState({ width: '100%' })
+    const getSize = (size) => {
+        if (size.scrollWidth > size.width ) {
+            setCodeWidth({ width: `${size.scrollWidth}px` })
+        }
+    }
+    const state = useSize('column-content-id', getSize);
+    useEffect(() => { console.log(state) }, [state]);
 
 
     const htmlStr = useMemo(
@@ -43,14 +52,13 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
     const PreView = useMemo(
         () => (
             <div
-                style={{ ...styles.editor, minHeight }}
+                style={{ ...styles.editor, minHeight, ...codeWidth, }}
                 className={`${prefixCls}-preview ${language ? `language-${language}` : ''}`}
                 dangerouslySetInnerHTML={{
                     __html: htmlStr,
                 }}
             />
         ),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         [prefixCls, language, htmlStr],
     );
 
@@ -63,34 +71,48 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
                     style={{ ...styles.editorColumn }}
                 >
                     <div
+                        id={ `column-content-id` }
                         style={{ ...styles.editorColumnContent }}
                         className={ `editor-column-content` }
                     >
-                  <textarea
-                      autoComplete="off"
-                      autoCorrect="off"
-                      spellCheck="false"
-                      autoCapitalize="off"
-                      {...other}
-                      placeholder={placeholder}
-                      onKeyDown={(evn) => {
-                          if (!other.onKeyDown || other.onKeyDown(evn) !== false) {
-                              shortcuts(evn);
-                          }
-                      }}
-                      style={{
-                          ...styles.editor,
-                          ...styles.textarea,
-                          minHeight,
-                          ...(placeholder && !value ? { WebkitTextFillColor: 'inherit' } : {}),
-                      }}
-                      onChange={(event) => {
-                          setValue(event.target.value);
-                          onChange && onChange(event);
-                      }}
-                      className={`${prefixCls}-text`}
-                      value={value}
-                  />
+                        <textarea
+                            {...other}
+                            placeholder={placeholder}
+                            onKeyDown={(evn) => {
+                                if (!other.onKeyDown || other.onKeyDown(evn) !== false) {
+                                    shortcuts(evn);
+                                }
+                            }}
+                            style={{
+                                ...styles.editor,
+                                ...styles.textarea,
+                                minHeight,
+                                ...(placeholder && !value ? { WebkitTextFillColor: 'inherit' } : {}),
+                                ...codeWidth,
+                            }}
+                            onChange={(event) => {
+                                setValue(event.target.value);
+                                onChange && onChange(event);
+                            }}
+                            className={`${prefixCls}-text`}
+                            value={value}
+                        />
+                        {/*<div*/}
+                        {/*    contentEditable*/}
+                        {/*    className={`${prefixCls}-text`}*/}
+                        {/*    style={{*/}
+                        {/*        ...styles.editor,*/}
+                        {/*        ...styles.textarea,*/}
+                        {/*        minHeight,*/}
+                        {/*        ...(placeholder && !value ? { WebkitTextFillColor: 'inherit' } : {}),*/}
+                        {/*    }}*/}
+                        {/*    dangerouslySetInnerHTML={{*/}
+                        {/*        __html: value as string,*/}
+                        {/*    }}*/}
+                        {/*    onInput={ event => {*/}
+                        {/*        setValue(event.currentTarget.textContent as string);*/}
+                        {/*    } }*/}
+                        {/*></div>*/}
                         { PreView }
                     </div>
                 </div>

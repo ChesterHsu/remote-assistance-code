@@ -15,6 +15,9 @@ $w-textarea: 'w-tc-editor';
 .w-tc-editor-preview, {
   pointer-events: none;
 }
+.w-tc-editor-text::-webkit-scrollbar {
+  width: 0;
+}
 
 
 
