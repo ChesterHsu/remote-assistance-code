@@ -12,14 +12,13 @@ export const editorColumnContent: React.CSSProperties = {
   right: 0,
   padding: '0px',
   margin: '0px',
-  overflowY: 'hidden',
+  overflowY: 'visible',
   overflowX: 'auto',
   height: '100%'
 };
 
 export const textarea: React.CSSProperties = {
   position: 'absolute',
-  height: '100%',
   padding: '0px',
   display: 'inline-block',
   background: 'none',
@@ -61,11 +60,9 @@ export const editor: React.CSSProperties = {
   overflowWrap: 'break-word',
 };
 
-export const container: React.CSSProperties = {
+export const sequence: React.CSSProperties = {
   position: 'relative',
-  textAlign: 'left',
-  boxSizing: 'border-box',
-  padding: 0,
-  overflow: 'hidden',
+  display: 'flex',
+  flexDirection: 'column'
 };
 

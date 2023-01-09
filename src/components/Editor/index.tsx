@@ -29,13 +29,21 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
     const [codeRows, setCodeRows] = useState(typeof value === "string" ? value.split(/\r\n|\r|\n/).length : 0);
     useEffect(() => setCodeRows(typeof value === "string" ? value.split(/\r\n|\r|\n/).length : 0), [value]);
     const [codeWidth, setCodeWidth] = useState({ width: '100%' })
-    const getSize = (size) => {
+    const [codeHeight, setCodeHeight] = useState({ height: '100%' })
+
+    const getColumnSize = (size) => {
         if (size.scrollWidth > size.width ) {
             setCodeWidth({ width: `${size.scrollWidth}px` })
         }
     }
-    const state = useSize('column-content-id', getSize);
-    useEffect(() => { console.log(state) }, [state]);
+
+    const getRowSize = (size) => {
+        if (size.scrollHeight > size.height ) {
+            setCodeHeight({ height: `${size.scrollHeight}px` })
+        }
+    }
+    useSize('column-content-id', getColumnSize);
+    useSize('editor-id', getRowSize);
 
 
     const htmlStr = useMemo(
@@ -64,17 +72,54 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
 
     return (
         <>
-            <div className={ `editor` }>
-                <div className={ `sequence` }></div>
+            <div
+                className={ `editor` }>
                 <div
-                    className={ `editor-column` }
-                    style={{ ...styles.editorColumn }}
+                    id={ `editor-id` }
+                    className={ `editor-row` }
                 >
                     <div
-                        id={ `column-content-id` }
-                        style={{ ...styles.editorColumnContent }}
-                        className={ `editor-column-content` }
+                        className={ `sequence` }
+                        style={{
+                            ...styles.editor,
+                            ...styles.sequence
+                        }}
                     >
+                    <pre>
+                        <code>
+                        {Array(codeRows)
+                            .fill(1)
+                            .map((value, key) => {
+                                return (
+                                    <>
+                                        <span
+                                            className={`sequence-number code-line`}
+                                            style={{ minHeight }}
+                                            key={`k${key}`}>
+                                            { key + 1 }
+                                        </span>
+                                        <br />
+                                    </>
+
+                                );
+                            })}
+                    </code>
+                    </pre>
+                    </div>
+                    <div
+                        className={ `editor-column` }
+                        style={{
+                            ...styles.editorColumn,
+                        }}
+                    >
+                        <div
+                            id={ `column-content-id` }
+                            style={{
+                                ...styles.editorColumnContent,
+
+                            }}
+                            className={ `editor-column-content` }
+                        >
                         <textarea
                             {...other}
                             placeholder={placeholder}
@@ -89,6 +134,7 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
                                 minHeight,
                                 ...(placeholder && !value ? { WebkitTextFillColor: 'inherit' } : {}),
                                 ...codeWidth,
+                                ...codeHeight
                             }}
                             onChange={(event) => {
                                 setValue(event.target.value);
@@ -97,23 +143,8 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
                             className={`${prefixCls}-text`}
                             value={value}
                         />
-                        {/*<div*/}
-                        {/*    contentEditable*/}
-                        {/*    className={`${prefixCls}-text`}*/}
-                        {/*    style={{*/}
-                        {/*        ...styles.editor,*/}
-                        {/*        ...styles.textarea,*/}
-                        {/*        minHeight,*/}
-                        {/*        ...(placeholder && !value ? { WebkitTextFillColor: 'inherit' } : {}),*/}
-                        {/*    }}*/}
-                        {/*    dangerouslySetInnerHTML={{*/}
-                        {/*        __html: value as string,*/}
-                        {/*    }}*/}
-                        {/*    onInput={ event => {*/}
-                        {/*        setValue(event.currentTarget.textContent as string);*/}
-                        {/*    } }*/}
-                        {/*></div>*/}
-                        { PreView }
+                            { PreView }
+                        </div>
                     </div>
                 </div>
             </div>
