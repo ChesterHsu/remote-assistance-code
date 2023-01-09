@@ -39,7 +39,7 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
 
     const getRowSize = (size) => {
         if (size.scrollHeight > size.height ) {
-            setCodeHeight({ height: `${size.scrollHeight}px` })
+            setCodeHeight({ height: `${size.scrollHeight - 20}px` })
         }
     }
     useSize('column-content-id', getColumnSize);
@@ -60,7 +60,7 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
     const PreView = useMemo(
         () => (
             <div
-                style={{ ...styles.editor, minHeight, ...codeWidth, }}
+                style={{ ...styles.editor, minHeight, ...codeWidth}}
                 className={`${prefixCls}-preview ${language ? `language-${language}` : ''}`}
                 dangerouslySetInnerHTML={{
                     __html: htmlStr,
@@ -116,7 +116,7 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
                             id={ `column-content-id` }
                             style={{
                                 ...styles.editorColumnContent,
-
+                                ...codeHeight,
                             }}
                             className={ `editor-column-content` }
                         >
@@ -134,7 +134,7 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
                                 minHeight,
                                 ...(placeholder && !value ? { WebkitTextFillColor: 'inherit' } : {}),
                                 ...codeWidth,
-                                ...codeHeight
+                                ...codeHeight,
                             }}
                             onChange={(event) => {
                                 setValue(event.target.value);

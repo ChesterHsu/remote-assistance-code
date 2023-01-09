@@ -12,9 +12,8 @@ export const editorColumnContent: React.CSSProperties = {
   right: 0,
   padding: '0px',
   margin: '0px',
-  overflowY: 'visible',
+  overflowY: 'hidden',
   overflowX: 'auto',
-  height: '100%'
 };
 
 export const textarea: React.CSSProperties = {
@@ -26,7 +25,7 @@ export const textarea: React.CSSProperties = {
   whiteSpace: 'pre',
   resize: 'none',
   color: 'inherit',
-  overflow: 'scroll',
+  overflow: 'hidden',
   MozOsxFontSmoothing: 'grayscale',
   WebkitFontSmoothing: 'antialiased',
   WebkitTextFillColor: 'transparent',

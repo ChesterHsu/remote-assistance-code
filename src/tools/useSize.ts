@@ -10,9 +10,10 @@ function useSize(id, callback) {
 
     const elementId = document.querySelector(`#${id}`)
 
-    if (elementId) return observer.observe(elementId)
+    if (elementId) observer.observe(elementId)
 
-    observer.disconnect();
+    // observer.disconnect();
+
 }
 
 export default useSize
