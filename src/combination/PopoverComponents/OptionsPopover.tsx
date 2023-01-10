@@ -19,20 +19,26 @@ function OptionsPopover(props) {
         return(
             <div className={ `options-popover` }>
                 {
-                    Object.entries(options).map(([key, item]) => {
+                    Object.entries(options).map(([key]) => {
 
-                        // @ts-ignore
-                        const setUrl = `../../${item!.url.replace('.', '/') as string}`
+                        const tap = (e) => {
+                            const item = options[key]
+                            console.log(item)
 
-                        import(setUrl)
-                            .then((module) => {
-                                // @ts-ignore
-                                console.log(module[item.action]())
-                            })
+                            //@ts-ignore
+                            const setUrl = `../../${item!.url.replace('.', '/') as string}`
+
+                            import(setUrl)
+                                .then((module) => {
+                                    module[item.action]()
+                                })
+                        }
+
+
 
 
                         return(
-                            <div key={ key }>{ key }</div>
+                            <div className={ `options-item` } key={ key } onClick={ tap }>{ key }</div>
                         )
                     })
                 }

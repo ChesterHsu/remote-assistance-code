@@ -3,6 +3,10 @@
     "open": {
       "url": "components.FileSystemAccessing",
       "action": "getFile"
+    },
+    "save": {
+      "url": "components.FileSystemAccessing",
+      "action": "123123123"
     }
   }
 }

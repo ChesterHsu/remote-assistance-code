@@ -32,4 +32,10 @@
   width: 100%;
   background-color: #3c3029;
   border: 0.5px solid #696462;
+  .options-item {
+    height: 20px;
+    &:hover{
+      background-color: #7ee787;
+    }
+  }
 }
