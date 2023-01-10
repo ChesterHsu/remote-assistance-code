@@ -6,58 +6,9 @@ import '@/css/page/Home/index.scss'
 const ProjectTab = lazy(() => import('@/combination/TabComponents/ProjectTab'))
 const FileTab = lazy(() => import('@/combination/TabComponents/FileTab'))
 const ScaleCard = lazy(() => import('@/components/ScaleCard'))
+const Header = lazy(() => import('@/combination/Header'))
 
 function Home() {
-  // function empty(val) {
-  //   console.log(val);
-  // }
-  //
-  // const style = {
-  //   uploadStyle: {
-  //     // display: 'none',
-  //   }
-  // };
-  // const start = (e) => {
-  //   console.log(e);
-  // };
-  //
-  // const props = {
-  //   component: 'span',
-  //   prefixCls: 'rc-js',
-  //   data: {},
-  //   style: style.uploadStyle,
-  //   headers: {},
-  //   name: 'file',
-  //   multipart: false,
-  //   onStart: start,
-  //   onError: empty,
-  //   onSuccess: empty,
-  //   multiple: false,
-  //   beforeUpload: null,
-  //   customRequest: null,
-  //   withCredentials: true,
-  //   openFileDialogOnClick: true,
-  //   directory: true
-  // };
-  //
-  // // 切換Dark模式
-  // const nowTheme = localStorage.getItem('now-theme');
-  //
-  // const dispatch = useDispatch();
-  //
-  // const lightTheme = () => {
-  //   setAttribute('light');
-  //   dispatch(setLightTheme());
-  // };
-  // const darkTheme = () => {
-  //   setAttribute('dark');
-  //   dispatch(setDarkTheme());
-  // };
-  //
-  // const iconProps = {
-  //   iconName: 'logo',
-  //   darkTheme: '#1da7da|#e3e6e8'
-  // };
 
   const projectTabProps: Array<ProjectTabProps> = [
     {
@@ -90,6 +41,7 @@ function Home() {
   return (
     <>
       <Suspense>
+        <Header />
         <ProjectTab {...projectTabProps} />
         <div className={ `main-content` }>
           <ScaleCard />

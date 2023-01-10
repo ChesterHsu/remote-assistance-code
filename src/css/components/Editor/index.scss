@@ -11,7 +11,7 @@ $w-textarea: 'w-tc-editor';
   width: calc(100% - 20px);
   height: calc(100% - 20px);
   &::-webkit-scrollbar {
-    background-color: transparent;
+    //background-color: transparent;
   }
   &::-webkit-scrollbar-corner {
     background-color: transparent;
@@ -34,9 +34,11 @@ $w-textarea: 'w-tc-editor';
                   transparent 100%
   );
   .sequence {
-    min-width: calc($sequence-width + $sequence-border - 20px);
-    padding: 10px;
-    height: calc(100% - 20px);
+    min-width: calc($sequence-width + $sequence-border);
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      background-color: transparent;
+    }
     .sequence-number {
       color: var(--sequence-text-color);
     }

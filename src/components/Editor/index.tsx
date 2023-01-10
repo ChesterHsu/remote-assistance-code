@@ -1,5 +1,5 @@
 import '@/css/components/Editor/index.scss';
-import React, {useEffect, useImperativeHandle, useLayoutEffect, useMemo, useRef, useState} from 'react';
+import React, {useEffect, useImperativeHandle, useMemo, useRef, useState} from 'react';
 import * as styles from './js/style';
 import shortcuts from './js/shortcuts';
 import { htmlEncode, processHtml } from './js/utils';
@@ -25,16 +25,22 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
     useEffect(() => setValue(props.value || ''), [props.value]);
     const textRef = useRef<HTMLTextAreaElement>(null);
     useImperativeHandle<HTMLTextAreaElement, HTMLTextAreaElement>(ref, () => textRef.current!);
+    const [codeRows, setCodeRows] = useState(typeof value === "string" ? value.split(/\r\n|\r|\n/).length : 0);
+    useEffect(() => setCodeRows(typeof value === "string" ? value.split(/\r\n|\r|\n/).length : 0), [value]);
     const [scrollWidth, setScrollWidth] = useState({ width: '100%' })
     const [scrollHeight, setScrollHeight] = useState({ height: '100%' })
 
     const getColumnSize = (size) => {
         if (size.scrollWidth > size.width ) {
             setScrollWidth({ width: `${size.scrollWidth}px` })
+        } else if (size.width >= size.scrollWidth) {
+            setScrollWidth({ width: `100%` })
         }
 
         if (size.scrollHeight > size.height ) {
             setScrollHeight({ height: `${size.scrollHeight}px` })
+        } else if (size.height >= size.scrollHeight) {
+            setScrollHeight({ height: `100%` })
         }
     }
     useSize('column-id', getColumnSize);
@@ -69,7 +75,11 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
             <div
                 id={ `editor-id` }
                 className={ `editor` }>
-                <div className={ `sequence` }></div>
+                <div
+                    className={ `sequence` }
+                    style={{ ...styles.sequence }}
+                >
+                </div>
                 <div
                     id={ `column-id` }
                     className={ `editor-column` }
