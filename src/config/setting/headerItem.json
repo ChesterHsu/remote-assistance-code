@@ -1,5 +1,8 @@
 {
   "file": {
-    "open": ""
+    "open": {
+      "url": "components.FileSystemAccessing",
+      "action": "getFile"
+    }
   }
 }

@@ -7,7 +7,8 @@
     justify-content: center;
     align-items: center;
     height: 40px;
-    width: 30px;
-    color: #efefef;
+    width: 100px;
+    color: var(--header-text-color);
+    cursor: pointer;
   }
 }

@@ -1,4 +1,7 @@
 @mixin light {
+  // Header
+  --header-background-color: #000000;
+  --header-text-color: #efefef;
   // Project Tab
   --project-tab-background-color: #180e0c;
   --project-tab-hover-background-color: #282221;
@@ -32,6 +35,7 @@
 @mixin dark {
   // Header
   --header-background-color: #000000;
+  --header-text-color: #efefef;
   // Project Tab
   --project-tab-background-color: #180e0c;
   --project-tab-hover-background-color: #282221;

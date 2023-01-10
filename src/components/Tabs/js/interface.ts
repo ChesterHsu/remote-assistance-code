@@ -10,7 +10,7 @@ import * as React from 'react';
 export interface Tab {
   uid: string;
   text: string;
-  onStart?: () => void;
+  onStart?: (e) => void;
   onHover?: (e) => void;
 }
 

@@ -19,6 +19,7 @@ export interface Popover {
   referenceID: string;
   spacing?: number;
   placement?: Placement;
+  onHover?: (e) => void;
 }
 
 export interface PopoverProps extends Popover {

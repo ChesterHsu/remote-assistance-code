@@ -8,7 +8,8 @@ function Popover(props: PopoverProps) {
     placement = 'bottom',
     spacing = 10,
     PopoverChildren,
-    popoverClassName
+    popoverClassName,
+    onHover
   }: PopoverProps = props;
 
   const popoverID = `${referenceID}-popover`;
@@ -105,12 +106,19 @@ function Popover(props: PopoverProps) {
     }
   };
 
+  const hoverAction = (e) => {
+    e['isHove'] = e._reactName === 'onMouseOver';
+    if (onHover) onHover(e);
+  };
+
   const Children = () => {
     return (
       <div
         id={popoverID}
         className={`popover${popoverClassName ? ` ${popoverClassName}` : ''}`}
         style={style.popoverStyle as React.CSSProperties}
+        onMouseOver={ hoverAction }
+        onMouseLeave={ hoverAction }
       >
         {PopoverChildren === undefined ? null : <PopoverChildren />}
       </div>

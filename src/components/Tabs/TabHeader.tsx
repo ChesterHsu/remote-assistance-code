@@ -21,12 +21,18 @@ export default function TabHeader(props: TabHeaderProps) {
     if (onHover) onHover(e);
   };
 
+  // 移動到Tab上觸發功能
+  const tapAction = (e) => {
+    e['tabContent'] = props;
+    if (onStart) onStart(e);
+  };
+
   return (
     <div
       id={`${id}`}
       className={`content${contentClassName ? ` ${contentClassName}` : ''}`}
       style={contentStyle}
-      onClick={onStart}
+      onClick={tapAction}
       onMouseOver={hoverAction}
       onMouseLeave={hoverAction}
     >
