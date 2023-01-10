@@ -10,10 +10,6 @@ function OptionsPopover(props) {
         hover
     } = props
 
-    Object.entries(options).map(([key, item]) => {
-        console.log(key)
-    })
-
 
     const Content = () => {
         return(
@@ -33,9 +29,6 @@ function OptionsPopover(props) {
                                     module[item.action]()
                                 })
                         }
-
-
-
 
                         return(
                             <div className={ `options-item` } key={ key } onClick={ tap }>{ key }</div>
