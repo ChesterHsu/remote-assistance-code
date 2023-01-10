@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { PluggableList } from 'unified';
 import { rehype } from 'rehype';
 import rehypePrism from 'rehype-prism-plus';
@@ -30,7 +30,4 @@ export function stopPropagation(e: React.KeyboardEvent<HTMLTextAreaElement>) {
   e.preventDefault();
 }
 
-function test() {
-
-}
-
+function test() {}

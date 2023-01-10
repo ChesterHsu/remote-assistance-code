@@ -1,15 +1,13 @@
 import React, { lazy, Suspense } from 'react';
 import { FileTabProps, ProjectTabProps } from '@/combination/TabComponents/js/interface';
-import '@/css/page/Home/index.scss'
+import '@/css/page/Home/index.scss';
 
-
-const ProjectTab = lazy(() => import('@/combination/TabComponents/ProjectTab'))
-const FileTab = lazy(() => import('@/combination/TabComponents/FileTab'))
-const ScaleCard = lazy(() => import('@/components/ScaleCard'))
-const Header = lazy(() => import('@/combination/Header'))
+const ProjectTab = lazy(() => import('@/combination/TabComponents/ProjectTab'));
+const FileTab = lazy(() => import('@/combination/TabComponents/FileTab'));
+const ScaleCard = lazy(() => import('@/components/ScaleCard'));
+const Header = lazy(() => import('@/combination/Header'));
 
 function Home() {
-
   const projectTabProps: Array<ProjectTabProps> = [
     {
       uid: '324324',
@@ -43,7 +41,7 @@ function Home() {
       <Suspense>
         <Header />
         <ProjectTab {...projectTabProps} />
-        <div className={ `main-content` }>
+        <div className={`main-content`}>
           <ScaleCard />
           <FileTab {...fileTabProps} />
         </div>

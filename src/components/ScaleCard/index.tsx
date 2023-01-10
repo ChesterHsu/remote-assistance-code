@@ -1,13 +1,12 @@
-import '@/css/components/ScaleCard/index.scss'
+import '@/css/components/ScaleCard/index.scss';
 
-function ScaleCard () {
-    return(
-        <div className={ 'scale' }>
-            <div className={ 'resizable' }></div>
-            <div className={ `scale-content` }></div>
-        </div>
-
-    )
+function ScaleCard() {
+  return (
+    <div className={'scale'}>
+      <div className={'resizable'}></div>
+      <div className={`scale-content`}></div>
+    </div>
+  );
 }
 
-export default ScaleCard
+export default ScaleCard;

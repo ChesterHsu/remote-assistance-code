@@ -6,13 +6,12 @@ import { IconProps } from '@/components/SvgIcon/js/interface';
 import { fileAnalyze } from '@/combination/TabComponents/js/fileAnalyze';
 import { FileInformation, SvgPopoverProps, TextPopoverProps } from '@/combination/PopoverComponents/js/interface';
 
-const Tab = lazy(() => import('@/components/Tabs/Tab'))
-const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
-const Editor = lazy(() => import('@/components/Editor'))
-const SvgIcon = lazy(() => import('@/components/SvgIcon'))
-const SvgPopover = lazy(() => import('@/combination/PopoverComponents/SvgPopover'))
-const TextPopover = lazy(() => import('@/combination/PopoverComponents/TextPopover'))
-
+const Tab = lazy(() => import('@/components/Tabs/Tab'));
+const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'));
+const Editor = lazy(() => import('@/components/Editor'));
+const SvgIcon = lazy(() => import('@/components/SvgIcon'));
+const SvgPopover = lazy(() => import('@/combination/PopoverComponents/SvgPopover'));
+const TextPopover = lazy(() => import('@/combination/PopoverComponents/TextPopover'));
 
 // 取得 Popover
 const GetPopover = (props: FileInformation, id, openPopover, popoverText = '') => {
@@ -97,7 +96,7 @@ const Header = (props: FileTabProps) => {
 };
 
 function FileTab(props: Array<FileTabProps>) {
-  const HeaderItem = () => {
+  const TabHeaderItem = () => {
     return (
       <>
         {Object.entries(props).map(([key, projectTab]) => {
@@ -111,34 +110,30 @@ function FileTab(props: Array<FileTabProps>) {
     );
   };
 
-
   const CodeEdit = () => {
+    const [code, setCode] = React.useState(`function add(a, b) {\n  return a + b;\n}`);
 
-    const [code, setCode] = React.useState(
-        `function add(a, b) {\n  return a + b;\n}`
+    return (
+      <Editor
+        value={code}
+        language="js"
+        onChange={(evn) => setCode(evn.target.value)}
+        minHeight={16}
+        padding={10}
+        style={{
+          width: '100%',
+          fontSize: 12,
+          backgroundColor: 'transparent',
+          fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace'
+        }}
+      />
     );
-
-    return(
-        <Editor
-            value={code}
-            language="js"
-            onChange={(evn) => setCode(evn.target.value)}
-            minHeight={ 16 }
-            padding={ 10 }
-            style={{
-              width: '100%',
-              fontSize: 12,
-              backgroundColor: "transparent",
-              fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-            }}
-        />
-    )
-  }
+  };
 
   const tabProps: TabProps = {
     tabClassName: 'file-tab',
     tabHeaderItemClassName: 'file-header-item',
-    TabHeader: HeaderItem,
+    TabHeader: TabHeaderItem,
     TabContent: CodeEdit
   };
 

@@ -8,12 +8,12 @@ export const column: React.CSSProperties = {
   right: 0,
   padding: '0px',
   margin: '0px',
-  overflow: 'auto',
+  overflow: 'auto'
 };
 
 export const columnScroll: React.CSSProperties = {
   position: 'fixed'
-}
+};
 
 export const textarea: React.CSSProperties = {
   display: 'inline-block',
@@ -42,7 +42,7 @@ export const editor: React.CSSProperties = {
   boxSizing: 'inherit',
   display: 'inherit',
   fontFamily: 'inherit',
-  lineHeight: 'inherit',
+  lineHeight: 'inherit'
 };
 
 export const sequence: React.CSSProperties = {
@@ -50,6 +50,5 @@ export const sequence: React.CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   fontFamily: 'inherit',
-  lineHeight: 'inherit',
+  lineHeight: 'inherit'
 };
-

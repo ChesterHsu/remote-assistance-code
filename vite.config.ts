@@ -8,9 +8,8 @@ import { customStart, loadViteEnv } from 'vite-electron-plugin/plugin';
 import { defineConfig } from 'vite';
 import { rmSync } from 'node:fs';
 import viteCompression from 'vite-plugin-compression';
-import { VitePWA } from 'vite-plugin-pwa'
+import { VitePWA } from 'vite-plugin-pwa';
 import pkg from './package.json';
-
 
 rmSync(path.join(__dirname, 'dist-electron'), { recursive: true, force: true });
 
@@ -26,21 +25,21 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            const arr = id.toString().split('node_modules/')[1].split('/')
-            switch(arr[0]) {
+            const arr = id.toString().split('node_modules/')[1].split('/');
+            switch (arr[0]) {
               case '@react':
-                return '_' + arr[0]
-                break
-              default :
-                return '__vendor'
-                break
+                return '_' + arr[0];
+                break;
+              default:
+                return '__vendor';
+                break;
             }
           }
         },
         chunkFileNames: 'static/js1/[name]-[hash].js',
         entryFileNames: 'static/js2/[name]-[hash].js',
         assetFileNames: 'static/[ext]/[name]-[hash].[ext]'
-      },
+      }
     }
   },
   resolve: {
@@ -89,17 +88,17 @@ export default defineConfig({
         loadViteEnv()
       ]
     }),
-    viteCompression(),
+    viteCompression()
   ],
   server: !!process.env.VSCODE_DEBUG
-      ? (() => {
+    ? (() => {
         const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL);
         return {
           host: url.hostname,
           port: +url.port
         };
       })()
-      : undefined,
+    : undefined,
   clearScreen: false
 });
 

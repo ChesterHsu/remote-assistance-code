@@ -27,7 +27,7 @@ export function getTheme() {
           setAttribute('dark');
           break;
         case 'light':
-          lightTheme()
+          lightTheme();
           setAttribute('light');
           break;
       }
@@ -49,7 +49,7 @@ function setTheme(darkTheme, lightTheme) {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       darkTheme();
     } else {
-      lightTheme()
+      lightTheme();
     }
 
     /**

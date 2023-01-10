@@ -1,10 +1,10 @@
 declare const window: any;
 
-export {}
+export {};
 
 declare global {
-    interface Window {
-        showOpenFilePicker: any;
-        showDirectoryPicker: any;
-    }
+  interface Window {
+    showOpenFilePicker: any;
+    showDirectoryPicker: any;
+  }
 }

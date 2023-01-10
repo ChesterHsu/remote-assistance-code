@@ -4,10 +4,10 @@ import '@/css/combination/TabComponents/index.scss';
 import { IconProps } from '@/components/SvgIcon/js/interface';
 import { ProjectTabProps } from '@/combination/TabComponents/js/interface';
 
-const Tab = lazy(() => import('@/components/Tabs/Tab'))
-const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'))
-const TextPopover = lazy(() => import('@/combination/PopoverComponents/TextPopover'))
-const SvgIcon = lazy(() => import('@/components/SvgIcon'))
+const Tab = lazy(() => import('@/components/Tabs/Tab'));
+const TabHeader = lazy(() => import('@/components/Tabs/TabHeader'));
+const TextPopover = lazy(() => import('@/combination/PopoverComponents/TextPopover'));
+const SvgIcon = lazy(() => import('@/components/SvgIcon'));
 
 const Header = (props: TabHeaderProps) => {
   let [hover, setHover] = useState(false);
@@ -57,7 +57,8 @@ const Header = (props: TabHeaderProps) => {
 };
 
 export default function ProjectTab(props: Array<ProjectTabProps>) {
-  const HeaderItem = () => {
+
+  const TabHeaderItem = () => {
     return (
       <>
         {Object.entries(props).map(([key, projectTab]) => {
@@ -73,7 +74,7 @@ export default function ProjectTab(props: Array<ProjectTabProps>) {
 
   const tabProps: TabProps = {
     tabClassName: 'project-tab',
-    TabHeader: HeaderItem
+    TabHeader: TabHeaderItem
   };
 
   return (

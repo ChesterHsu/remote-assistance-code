@@ -1,5 +1,13 @@
 @import "@/css/variable.scss";
 
 .header-core {
-
+  background-color: var(--header-background-color);
+  .header-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 30px;
+    color: #efefef;
+  }
 }
