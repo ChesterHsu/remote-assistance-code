@@ -10,16 +10,13 @@ $w-textarea: 'w-tc-editor';
   padding: 10px;
   width: calc(100% - 20px);
   height: calc(100% - 20px);
+  &::-webkit-scrollbar {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
 }
-
-.w-tc-editor-preview, {
-  pointer-events: none;
-}
-.w-tc-editor-text::-webkit-scrollbar {
-  width: 0;
-}
-
-
 
 .editor {
   position: relative;
@@ -36,17 +33,6 @@ $w-textarea: 'w-tc-editor';
                   transparent calc($sequence-width + $sequence-border),
                   transparent 100%
   );
-  .editor-row {
-    position: absolute;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
   .sequence {
     min-width: calc($sequence-width + $sequence-border - 20px);
     padding: 10px;
@@ -57,6 +43,9 @@ $w-textarea: 'w-tc-editor';
   }
 }
 
+.w-tc-editor-preview, {
+  pointer-events: none;
+}
 
 .language-js {
   color: #a9b7c6;

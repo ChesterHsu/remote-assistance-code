@@ -6,13 +6,12 @@ function useSize(id, callback) {
                 scrollWidth: entries[0].target.scrollWidth,
                 scrollHeight: entries[0].target.scrollHeight,
             }))
+        observer.disconnect();
     });
 
     const elementId = document.querySelector(`#${id}`)
 
     if (elementId) observer.observe(elementId)
-
-    // observer.disconnect();
 
 }
 

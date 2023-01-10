@@ -4,7 +4,6 @@ import * as styles from './js/style';
 import shortcuts from './js/shortcuts';
 import { htmlEncode, processHtml } from './js/utils';
 import { TextareaCodeEditorProps } from './js/interface';
-import { textarea } from "./js/style";
 import useSize from "@/tools/useSize";
 
 export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((props, ref) => {
@@ -26,24 +25,19 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
     useEffect(() => setValue(props.value || ''), [props.value]);
     const textRef = useRef<HTMLTextAreaElement>(null);
     useImperativeHandle<HTMLTextAreaElement, HTMLTextAreaElement>(ref, () => textRef.current!);
-    const [codeRows, setCodeRows] = useState(typeof value === "string" ? value.split(/\r\n|\r|\n/).length : 0);
-    useEffect(() => setCodeRows(typeof value === "string" ? value.split(/\r\n|\r|\n/).length : 0), [value]);
-    const [codeWidth, setCodeWidth] = useState({ width: '100%' })
-    const [codeHeight, setCodeHeight] = useState({ height: '100%' })
+    const [scrollWidth, setScrollWidth] = useState({ width: '100%' })
+    const [scrollHeight, setScrollHeight] = useState({ height: '100%' })
 
     const getColumnSize = (size) => {
         if (size.scrollWidth > size.width ) {
-            setCodeWidth({ width: `${size.scrollWidth}px` })
+            setScrollWidth({ width: `${size.scrollWidth}px` })
         }
-    }
 
-    const getRowSize = (size) => {
         if (size.scrollHeight > size.height ) {
-            setCodeHeight({ height: `${size.scrollHeight - 20}px` })
+            setScrollHeight({ height: `${size.scrollHeight}px` })
         }
     }
-    useSize('column-content-id', getColumnSize);
-    useSize('editor-id', getRowSize);
+    useSize('column-id', getColumnSize);
 
 
     const htmlStr = useMemo(
@@ -60,7 +54,7 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
     const PreView = useMemo(
         () => (
             <div
-                style={{ ...styles.editor, minHeight, ...codeWidth}}
+                style={{ ...styles.editor, minHeight, ...scrollWidth , ...scrollHeight}}
                 className={`${prefixCls}-preview ${language ? `language-${language}` : ''}`}
                 dangerouslySetInnerHTML={{
                     __html: htmlStr,
@@ -73,79 +67,40 @@ export default React.forwardRef<HTMLTextAreaElement, TextareaCodeEditorProps>((p
     return (
         <>
             <div
+                id={ `editor-id` }
                 className={ `editor` }>
+                <div className={ `sequence` }></div>
                 <div
-                    id={ `editor-id` }
-                    className={ `editor-row` }
+                    id={ `column-id` }
+                    className={ `editor-column` }
+                    style={{
+                        ...styles.column
+                    }}
                 >
-                    <div
-                        className={ `sequence` }
+                    <textarea
+                        {...other}
+                        placeholder={placeholder}
+                        onKeyDown={(evn) => {
+                            if (!other.onKeyDown || other.onKeyDown(evn) !== false) {
+                                shortcuts(evn);
+                            }
+                        }}
                         style={{
                             ...styles.editor,
-                            ...styles.sequence
+                            ...styles.textarea,
+                            minHeight,
+                            ...(placeholder && !value ? { WebkitTextFillColor: 'inherit' } : {}),
+                            ...scrollWidth,
+                            ...scrollHeight
                         }}
-                    >
-                    <pre>
-                        <code>
-                        {Array(codeRows)
-                            .fill(1)
-                            .map((value, key) => {
-                                return (
-                                    <>
-                                        <span
-                                            className={`sequence-number code-line`}
-                                            style={{ minHeight }}
-                                            key={`k${key}`}>
-                                            { key + 1 }
-                                        </span>
-                                        <br />
-                                    </>
-
-                                );
-                            })}
-                    </code>
-                    </pre>
-                    </div>
-                    <div
-                        className={ `editor-column` }
-                        style={{
-                            ...styles.editorColumn,
+                        onChange={(event) => {
+                            setValue(event.target.value);
+                            onChange && onChange(event);
                         }}
-                    >
-                        <div
-                            id={ `column-content-id` }
-                            style={{
-                                ...styles.editorColumnContent,
-                                ...codeHeight,
-                            }}
-                            className={ `editor-column-content` }
-                        >
-                        <textarea
-                            {...other}
-                            placeholder={placeholder}
-                            onKeyDown={(evn) => {
-                                if (!other.onKeyDown || other.onKeyDown(evn) !== false) {
-                                    shortcuts(evn);
-                                }
-                            }}
-                            style={{
-                                ...styles.editor,
-                                ...styles.textarea,
-                                minHeight,
-                                ...(placeholder && !value ? { WebkitTextFillColor: 'inherit' } : {}),
-                                ...codeWidth,
-                                ...codeHeight,
-                            }}
-                            onChange={(event) => {
-                                setValue(event.target.value);
-                                onChange && onChange(event);
-                            }}
-                            className={`${prefixCls}-text`}
-                            value={value}
-                        />
-                            { PreView }
-                        </div>
-                    </div>
+                        className={`${prefixCls}-text`}
+                        value={value}
+                    />
+                    { PreView }
                 </div>
             </div>
         </>
