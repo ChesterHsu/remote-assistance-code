@@ -19,9 +19,7 @@ function OptionsPopover(props) {
 
                         const tap = (e) => {
                             const item = options[key]
-                            console.log(item)
 
-                            //@ts-ignore
                             const setUrl = `../../${item!.url.replace('.', '/') as string}`
 
                             import(setUrl)

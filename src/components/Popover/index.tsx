@@ -102,7 +102,8 @@ function Popover(props: PopoverProps) {
       inset: '0 auto auto 0',
       margin: '0px',
       transform: `translate(${left}px, ${top}px)`,
-      visibility: `${open ? '' : 'hidden'}` as string
+      visibility: `${open ? '' : 'hidden'}` as string,
+      zIndex: 10
     }
   };
 
