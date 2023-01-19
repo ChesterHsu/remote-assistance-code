@@ -3,7 +3,6 @@ import * as path from 'path';
 import svgr from 'vite-plugin-svgr';
 import qiankun from 'vite-plugin-qiankun';
 import electron from 'vite-electron-plugin';
-import requireTransform from 'vite-plugin-require-transform';
 import { customStart, loadViteEnv } from 'vite-electron-plugin/plugin';
 import { defineConfig } from 'vite';
 import { rmSync } from 'node:fs';
@@ -61,7 +60,6 @@ export default defineConfig({
   plugins: [
     react(),
     svgr(),
-    requireTransform({}),
     qiankun('remote-assistance-code', {
       // 微前端應用名,主應用接口名需一致
       useDevMode: true
